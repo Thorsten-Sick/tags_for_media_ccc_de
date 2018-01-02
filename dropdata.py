@@ -42,14 +42,24 @@ MAKING = "making"  # Maker stuff
 TOR = "tor"
 ROBOTICS = "robotics"
 ELECTRONICS = "electronics"
+BIGBROTHER = "bigbrother"  # all big-brother style state actions, not only surveillance
+HACKING = "hacking"  # Do not attach to all talks....
+ENERGY = "energy"  #  global warming, energy generation, ....
 
 # Detailed Tags (let's find out if there are more than 3 talks deserving those tags)
+
+## Anonymisation networks
 I2P = "i2p"
 FREENET = "freenet"
 GNUNET = "gnunet"
 JONDONYM = "jondonym"
 LOOPIX = "loopix"
 VUVUZELA = "vuvuzela"
+
+## Hadware hacking tools
+CHIPWHISPERER = "chipwhisperer"
+GLITCHKIT = "glitchkit"
+
 
 #SERIES
 SECURITY_NIGHTMARES = "security nightmares"
@@ -88,7 +98,7 @@ talks = [{
         "url": "https://media.ccc.de/v/34c3-8946-schnaps_hacking",
         "congress": "34c3",
         "id": "8946",
-        "language": "German",
+        "language": "English",
         "tags": [FOOD, LAW, MAKING],
         "series": None,
         },
@@ -97,7 +107,7 @@ talks = [{
         "url": "https://media.ccc.de/v/34c3-8938-home_distilling",
         "congress": "34c3",
         "id": "8938",
-        "language": "German",
+        "language": "English",
         "tags": [FOOD, LAW, BIO],
         "series": None,
         },
@@ -106,8 +116,35 @@ talks = [{
         "url": "https://media.ccc.de/v/34c3-9104-how_alice_and_bob_meet_if_they_don_t_like_onions",
         "congress": "34c3",
         "id": "9104",
-        "language": "German",
+        "language": "English",
         "tags": [CRYPTO, I2P, FREENET, GNUNET, JONDONYM, TOR, LOOPIX, VUVUZELA, NETWORK],
+        "series": None,
+        },
+        {
+        "title": "All Computers Are Beschlagnahmt",
+        "url": "https://media.ccc.de/v/34c3-8955-all_computers_are_beschlagnahmt",
+        "congress": "34c3",
+        "id": "8955",
+        "language": "German",
+        "tags": [POLITICS, ACTIVISM, LAW, BIGBROTHER],
+        "series": None,
+        },
+        {
+        "title": "Opening Closed Systems with GlitchKit",
+        "url": "https://media.ccc.de/v/34c3-9207-opening_closed_systems_with_glitchkit",
+        "congress": "34c3",
+        "id": "9207",
+        "language": "English",
+        "tags": [HARDWARE, HACKING, CHIPWHISPERER, ELECTRONICS, GLITCHKIT],
+        "series": None,
+        },
+        {
+        "title": "Drones of Power: Airborne Wind Energy",
+        "url": "https://media.ccc.de/v/34c3-8877-drones_of_power_airborne_wind_energy",
+        "congress": "34c3",
+        "id": "8877",
+        "language": "English",
+        "tags": [SCIENCE, MAKING, SOLUTION, ENERGY],
         "series": None,
         },
         {
@@ -124,8 +161,17 @@ talks = [{
         "url": "https://media.ccc.de/v/34c3-9250-the_making_of_a_chip",
         "congress": "34C3",
         "id": "9250",
-        "language": "German",
+        "language": "English",
         "tags": [HARDWARE, ELECTRONICS],
+        "series": None,
+        },
+        {
+        "title": "Zamir Transnational Network und Zagreb Dairy",
+        "url": "https://media.ccc.de/v/34c3-8842-zamir_transnational_network_und_zagreb_dairy",
+        "congress": "34C3",
+        "id": "8842",
+        "language": "German",
+        "tags": [NETWORK, HISTORY, ACTIVISM],
         "series": None,
         },
         {
