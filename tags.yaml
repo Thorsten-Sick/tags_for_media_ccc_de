@@ -1,0 +1,238 @@
+- congress: 34c3
+  id: '9270'
+  language: English
+  series: null
+  tags: [keynote, politics, insights, technology]
+  title: Dude, you broke the Future!
+  url: https://media.ccc.de/v/34c3-9270-dude_you_broke_the_future
+- congress: 34c3
+  id: '9095'
+  language: German
+  series: null
+  tags: [technology, engineering]
+  title: "Antipatterns und Missverst\xE4ndnisse in der Softwareentwicklung"
+  url: https://media.ccc.de/v/34c3-9095-antipatterns_und_missverstandnisse_in_der_softwareentwicklung
+- congress: 34c3
+  id: '9092'
+  language: German
+  series: null
+  tags: [automotive, hacking, security, network, rfid]
+  title: "Ladeinfrastruktur f\xFCr Elektroautos: Ausbau statt Sicherheit"
+  url: https://media.ccc.de/v/34c3-9092-ladeinfrastruktur_fur_elektroautos_ausbau_statt_sicherheit
+- congress: 34c3
+  id: '9064'
+  language: English
+  series: ultimate talks
+  tags: [history, space, hardware, software]
+  title: The Ultimate Apollo Guidance Computer Talk
+  url: https://media.ccc.de/v/34c3-9064-the_ultimate_apollo_guidance_computer_talk
+- congress: 33c3
+  id: '8029'
+  language: English
+  series: ultimate talks
+  tags: [history, hardware, software]
+  title: The Ultimate Game Boy Talk
+  url: https://media.ccc.de/v/33c3-8029-the_ultimate_game_boy_talk
+- congress: 32c3
+  id: '7468'
+  language: English
+  series: ultimate talks
+  tags: [history, hardware, software]
+  title: The Ultimate Amiga 500 Talk
+  url: https://media.ccc.de/v/32c3-7468-the_ultimate_amiga_500_talk
+- congress: 29c3
+  id: '5178'
+  language: English
+  series: ultimate talks
+  tags: [history, hardware, software]
+  title: The ultimate Galaksija talk
+  url: https://media.ccc.de/v/29c3-5178-en-the_ultimate_galaksija_talk_h264
+- congress: 28c3
+  id: '4711'
+  language: English
+  series: ultimate talks
+  tags: [history, hardware, software]
+  title: 'The Atari 2600 Video Computer System: The Ultimate Talk'
+  url: https://media.ccc.de/v/28c3-4711-en-the_atari_2600_video_computer_system_the_ultimate_talk
+- congress: 25c3
+  id: '2874'
+  language: English
+  series: ultimate talks
+  tags: [history, hardware, software]
+  title: The Ultimate Commodore 64 Talk
+  url: https://media.ccc.de/v/25c3-2874-en-the_ultimate_commodore_64_talk
+- congress: 34c3
+  id: '9285'
+  language: German
+  series: null
+  tags: [entertainment]
+  title: QualityLand
+  url: https://media.ccc.de/v/34c3-9285-qualityland
+- congress: 34c3
+  id: '8946'
+  language: English
+  series: null
+  tags: [food, law, making]
+  title: Schnaps Hacking
+  url: https://media.ccc.de/v/34c3-8946-schnaps_hacking
+- congress: 34c3
+  id: '8938'
+  language: English
+  series: null
+  tags: [food, law, bio]
+  title: Home Distilling
+  url: https://media.ccc.de/v/34c3-8938-home_distilling
+- congress: 34c3
+  id: '9104'
+  language: English
+  series: null
+  tags: [crypto, i2p, freenet, gnunet, jondonym, tor, loopix, vuvuzela, network]
+  title: How Alice and Bob meet if they don't like onions
+  url: https://media.ccc.de/v/34c3-9104-how_alice_and_bob_meet_if_they_don_t_like_onions
+- congress: 34c3
+  id: '8955'
+  language: German
+  series: null
+  tags: [politics, activism, law, bigbrother]
+  title: All Computers Are Beschlagnahmt
+  url: https://media.ccc.de/v/34c3-8955-all_computers_are_beschlagnahmt
+- congress: 34c3
+  id: '9207'
+  language: English
+  series: null
+  tags: [hardware, hacking, chipwhisperer, electronics, glitchkit]
+  title: Opening Closed Systems with GlitchKit
+  url: https://media.ccc.de/v/34c3-9207-opening_closed_systems_with_glitchkit
+- congress: 34c3
+  id: '8877'
+  language: English
+  series: null
+  tags: [science, making, solution, energy]
+  title: 'Drones of Power: Airborne Wind Energy'
+  url: https://media.ccc.de/v/34c3-8877-drones_of_power_airborne_wind_energy
+- congress: 34c3
+  id: '8961'
+  language: German
+  series: null
+  tags: [bio, science, robotics]
+  title: 0en & 1en auf dem Acker
+  url: https://media.ccc.de/v/34c3-8961-0en_1en_auf_dem_acker
+- congress: 34C3
+  id: '9250'
+  language: English
+  series: null
+  tags: [hardware, electronics]
+  title: The making of a chip
+  url: https://media.ccc.de/v/34c3-9250-the_making_of_a_chip
+- congress: 34C3
+  id: '8842'
+  language: German
+  series: null
+  tags: [network, history, activism]
+  title: Zamir Transnational Network und Zagreb Dairy
+  url: https://media.ccc.de/v/34c3-8842-zamir_transnational_network_und_zagreb_dairy
+- congress: 34C3
+  id: '8888'
+  language: German
+  series: Security Nightmares
+  tags: [security, entertainment]
+  title: Security Nightmares 0x12
+  url: https://media.ccc.de/v/34c3-8888-security_nightmares_0x12
+- congress: 33C3
+  id: '8413'
+  language: German
+  series: security nightmares
+  tags: [security, entertainment]
+  title: Security Nightmares 0x11
+  url: https://media.ccc.de/v/33c3-8413-security_nightmares_0x11
+- congress: 32C3
+  id: '7446'
+  language: German
+  series: security nightmares
+  tags: [security, entertainment]
+  title: Security Nightmares 0x10
+  url: https://media.ccc.de/v/32c3-7546-security_nightmares_0x10
+- congress: 31C3
+  id: '6572'
+  language: German
+  series: security nightmares
+  tags: [security, entertainment]
+  title: Security Nightmares
+  url: https://media.ccc.de/v/31c3_-_6572_-_de_-_saal_1_-_201412301715_-_security_nightmares_-_frank_-_ron
+- congress: 30C3
+  id: '5413'
+  language: German
+  series: security nightmares
+  tags: [security, entertainment]
+  title: Security Nightmares
+  url: https://media.ccc.de/v/30C3_-_5413_-_de_-_saal_1_-_201312301715_-_security_nightmares_-_frank_-_ron
+- congress: 29C3
+  id: '5244'
+  language: German
+  series: security nightmares
+  tags: [security, entertainment]
+  title: Security Nightmares
+  url: https://media.ccc.de/v/29c3-5244-de-en-security_nightmares2012_h264
+- congress: 28C3
+  id: '4898'
+  language: German
+  series: security nightmares
+  tags: [security, entertainment]
+  title: Security Nightmares
+  url: https://media.ccc.de/v/28c3-4898-de-security_nightmares
+- congress: 27C3
+  id: '4230'
+  language: German
+  series: security nightmares
+  tags: [security, entertainment]
+  title: Security Nightmares
+  url: https://media.ccc.de/v/27c3-4230-de-security_nightmares
+- congress: 26C3
+  id: '3687'
+  language: German
+  series: security nightmares
+  tags: [security, entertainment]
+  title: Security Nightmares
+  url: https://media.ccc.de/v/26c3-3687-de-security_nightmares
+- congress: 25C3
+  id: '3021'
+  language: German
+  series: security nightmares
+  tags: [security, entertainment]
+  title: Security Nightmares 2009
+  url: https://media.ccc.de/v/25c3-3021-de-security_nightmares_2009
+- congress: 24C3
+  id: '2336'
+  language: German
+  series: security nightmares
+  tags: [security, entertainment]
+  title: Security Nightmares 2008
+  url: https://media.ccc.de/v/24c3-2336-de-security_nightmares
+- congress: 23C3
+  id: '1682'
+  language: German
+  series: security nightmares
+  tags: [security, entertainment]
+  title: Security Nightmares 2007
+  url: https://media.ccc.de/v/23C3-1682-de-security_nightmares
+- congress: 22C3
+  id: '600'
+  language: German
+  series: security nightmares
+  tags: [security, entertainment]
+  title: Security Nightmares 2006
+  url: https://media.ccc.de/v/22C3-600-de-security_nightmares
+- congress: 20C3
+  id: '609'
+  language: German
+  series: security nightmares
+  tags: [security, entertainment]
+  title: Security Nightmares III
+  url: https://media.ccc.de/v/20C3-609-Security_Nightmares_III
+- congress: 19C3
+  id: '434'
+  language: German
+  series: security nightmares
+  tags: [security, entertainment]
+  title: Security Nightmares III
+  url: https://media.ccc.de/v/19C3-434-security-nightmares
