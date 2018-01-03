@@ -71,6 +71,10 @@ VUVUZELA = "vuvuzela"
 ## Hardware hacking tools
 CHIPWHISPERER = "chipwhisperer"
 GLITCHKIT = "glitchkit"
+FACEDANCER = "facedancer"
+HACKRF = "hackrf"
+PROXMARK = "proxmark"
+UBERTOOTH = "ubertooth"
 
 
 #SERIES
@@ -244,6 +248,23 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wgpg\W": [CRYPTO],
            r"\Watm\W": [BANKING],
            r"\Wdatenschutz\W": [POLITICS, LAW, PRIVACY],
+           r"\Wi2p\W": [NETWORK, CRYPTO, SECURITY, I2P],
+           r"\Wfreenet\W": [NETWORK, CRYPTO, SECURITY, FREENET],
+           r"\Wgnunet\W": [NETWORK, CRYPTO, SECURITY, GNUNET],
+           r"\Wjondonym\W": [NETWORK, CRYPTO, SECURITY, JONDONYM],
+           r"\Wloopix\W": [NETWORK, CRYPTO, SECURITY, LOOPIX],
+
+           r"\Wchipwhisperer\W": [HARDWARE, HACKING, SECURITY, CHIPWHISPERER],
+           r"\Wglitchkit\W": [HARDWARE, HACKING, SECURITY, GLITCHKIT],
+           r"\Wfacedancer\W": [HARDWARE, HACKING, SECURITY, FACEDANCER],
+           r"\Wgoodfet\W": [HARDWARE, HACKING, SECURITY, FACEDANCER],
+           r"\Whackrf\W": [HARDWARE, HACKING, SECURITY, HACKRF],
+           r"\Wrad1o\W": [HARDWARE, HACKING, SECURITY, HACKRF],
+           r"\Wrad10\W": [HARDWARE, HACKING, SECURITY, HACKRF],
+           r"\Wproxmark3?\W": [HARDWARE, HACKING, SECURITY, PROXMARK, RFID],
+           r"\Wubertooth\W": [HARDWARE, HACKING, SECURITY, UBERTOOTH, BLUETOOTH],
+
+
            }
 
 
@@ -565,46 +586,62 @@ def get_id(filename):
     return filename.split("-")[1]
 
 def get_tags(filename):
+    res = []
     with open(filename, "rt") as fh:
         content = fh.read().lower()
         for akey in regexes.keys():
             if re.search(akey, content, re.MULTILINE):
-                print(akey)
+                res += regexes[akey]
+    return list(set(res))
 
 def from_subtitles(directory):
-    res = []
+    res = {}
 
     for root, dirs, files in os.walk(directory):
         for name in files:
             if name.endswith(".srt"):
                 fullname = os.path.join(root, name)
                 print(fullname)
-                get_tags(fullname)
-
+                tags = get_tags(fullname)
+                print(tags)
+                talkid = get_id(name)
+                if talkid not in res:
+                    res[talkid] = tags
+                else:
+                    res[talkid] = list(set(res[talkid] + tags))
     return res
 
+
+def simplify_defaults():
+    res = {}
+    for talk in default_talks:
+        res[talk["id"]] = talk["tags"]
+    return res
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--subtitles", help="Process subtitles folder. Output json", default = None, type=str)
     parser.add_argument("--out", help="out filename. Without postfix .json or .yaml. This will be added", default = None, type = str)
-    parser.add_argument("--mixin", help="Mix those json data files in")
     parser.add_argument("--default", help="Load hard coded default talks as well", action="store_true", default = False)
     args = parser.parse_args()
 
-    talks = []
+    talks = {}
 
-    # TODO Generate db from subtitles
+    # Generate db from subtitles
+    # Subtitles are on mirror.selfnet.de/c3subtitles/congress...
     if args.subtitles:
-        talks += from_subtitles(args.subtitles)
+        talks = from_subtitles(args.subtitles)
+        print(talks)
 
-    # TODO Load mixins
-
-    # TODO Load defaults
+    # Load defaults: Defaults override everything else !
     if args.default:
-        talks += default_talks
+        simple = simplify_defaults()
+        print("Defaults:")
+        print(simple)
+        for akey in simple.keys():
+            talks[akey] = simple[akey]
 
-    # TODO output data
+    # output data
     if args.out:
         with open(args.out+".yaml", "wt") as fh:
             fh.write(dump(talks, Dumper=Dumper))
