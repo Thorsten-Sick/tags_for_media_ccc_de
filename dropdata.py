@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 import json
-import requests
 import argparse
 import os
+import re
 
 from yaml import load, dump
 try:
@@ -49,6 +49,14 @@ HACKING = "hacking"  # Do not attach to all talks....
 ENERGY = "energy"  #  global warming, energy generation, ....
 SPACE = "space"  # space technology, rockets and satellites
 RFID = "rfid"  # RFID/NFC/Mifare
+ART = "art"
+FORENSIC = "forensic"
+BANKING = "banking"
+MOBILE = "mobile"
+ASSEMBLER = "assembler"
+SOCIETY = "society"
+AVIATION = "aviation"
+CLOUD = "cloud"
 
 # Detailed Tags (let's find out if there are more than 3 talks deserving those tags)
 
@@ -75,6 +83,167 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wmifare\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wmifare\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Whitag\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
+           r"\Wgeheimdienste?\W":[BIGBROTHER, POLITICS],
+           r"\Wgchq?\W":[BIGBROTHER, POLITICS],
+           r"\Wnsa?\W":[BIGBROTHER, POLITICS],
+           r"\Wsatellite\W":[SPACE],
+           r"\Wlulzsec\W":[ACTIVISM],
+           r"\Warab spring\W":[POLITICS, ACTIVISM],
+           r"\Wedward snowden\W":[POLITICS, ACTIVISM, PRIVACY],
+           r"\Wtor\W":[NETWORK, PRIVACY, TOR, CRYPTO],
+           r"\Wdragnet surveillance system\W": [NETWORK, PRIVACY, BIGBROTHER],
+           r"\Wquantenphysik\W": [SCIENCE],
+           r"\Wrelativitätstheorie\W": [SCIENCE],
+           r"\Walbert einstein\W": [SCIENCE],
+           r"\Wdigital surveillance\W": [NETWORK, PRIVACY, BIGBROTHER],
+           r"\Wactivism\W": [ACTIVISM],
+           r"\Wquadraturdunet\W": [ACTIVISM],
+           r"\Wngo\W": [ACTIVISM],
+           r"\Wlegal issues\W": [LAW, POLITICS],
+           r"\Wcryptographic\W": [CRYPTO],
+           r"\Wcryptography\W": [CRYPTO],
+           r"\Wnetzpolitik\W": [LAW, POLITICS, NETWORK],
+           r"\Wbreitbandinternet\W": [LAW, POLITICS, NETWORK],
+           r"\Winternetminister\W": [LAW, POLITICS, NETWORK],
+           r"\Wpredective policing\W": [LAW, POLITICS, BIGBROTHER],
+           r"\Wcreditscoring\W": [LAW, POLITICS, BIGBROTHER],
+           r"\Wexploit\W": [HACKING, SECURITY],
+           r"\Wbuffer overflow\W": [HACKING, SECURITY],
+           r"\Wvulnerability\W": [HACKING, SECURITY],
+           r"\Wshellcode\W": [HACKING, SECURITY],
+           r"\Wfingerkuppe\W": [BIO],
+           r"\Wfingernagel\W": [BIO],
+           r"\Wschmuckkunst\W": [ART],
+           r"\Wforensic\W": [FORENSIC],
+           r"\Wpolice\W": [LAW, POLITICS],
+           r"\Wiot\W": [IOT, HARDWARE],
+           r"\Wformally verified software\W": [ENGINEERING, SOFTWARE, SECURITY],
+           r"\Wpersonal data\W": [PRIVACY],
+           r"\Wmobilebanking\W": [MOBILE, BANKING],
+           r"\Wonlinebanking\W": [NETWORK, BANKING],
+           r"\Wzwei-faktor\W": [SECURITY],
+           r"\Wtwo-factor\W": [SECURITY],
+           r"\Wzertifikat\W": [SECURITY],
+           r"\Wsocial credit system\W": [LAW, POLITICS, BIGBROTHER],
+           r"\Wsociety\W": [POLITICS, SOCIETY],
+           r"\Wbgp\W": [NETWORK],
+           r"\Wandroid\W": [MOBILE],
+           r"\Wboot ?loader\W": [SOFTWARE],
+           r"\Wida\W": [SOFTWARE, SECURITY, ASSEMBLER],
+           r"\Wassembler\W": [SOFTWARE, ASSEMBLER],
+           r"\Wamendment\W": [LAW],
+           r"\Wreaper drone\W": [POLITICS, AVIATION],
+           r"\Wmri\W": [BIO],
+           r"\Weeg\W": [BIO],
+           r"\Wtomography\W": [BIO],
+           r"\Wbiomedical\W": [BIO, SCIENCE],
+           r"\Wfitbit\W": [BIO, HARDWARE],
+           r"\Wsecurity\W": [SECURITY],
+           r"\Wencryption\W": [CRYPTO],
+           r"\Wfirmware\W": [HARDWARE, SOFTWARE],
+           r"\Wreverse engineering\W": [HACKING, SECURITY],
+           r"\Welektroautos?\W": [AUTOMOTIVE],
+           r"\Wladeinfrastruktur\W": [AUTOMOTIVE],
+           r"\Wdieselgate\W": [AUTOMOTIVE],
+           r"\Wcan bus\W": [AUTOMOTIVE],
+           r"\Whacking\W": [HACKING],
+           r"\Wseawatch\W": [ACTIVISM, POLITICS],
+           r"\Wjugend rettet\W": [ACTIVISM, POLITICS],
+           r"\Wmsf\W": [ACTIVISM, POLITICS],
+           r"\Wchaos macht schule\W": [ACTIVISM, POLITICS],
+           r"\Wcaliope\W": [HARDWARE, SOFTWARE],
+           r"\Wtcp\W": [NETWORK],
+           r"\Wvlan\W": [NETWORK],
+           r"\Wpci express\W": [HARDWARE],
+           r"\Wnics?\W": [HARDWARE, NETWORK],
+           r"\Wnintendo\W": [CONSOLE],
+           r"\Wblockchains?\W": [CRYPTO],
+           r"\Wopensource\W": [SOFTWARE],
+           r"\Wstaatsanwalt\W": [LAW],
+           r"\Wanwälte\W": [LAW],
+           r"\Wabmahnanwälte\W": [LAW],
+           r"\Wreverse engineering\W": [HACKING],
+           r"\Wfake news\W": [POLITICS, SOCIETY],
+           r"\Wlügenpresse\W": [POLITICS, SOCIETY],
+           r"\Wdata-science\W": [SCIENCE],
+           r"\Wcertificate transparency\W": [CRYPTO],
+           r"\Wsha1\W": [CRYPTO],
+           r"\Wtls\W": [CRYPTO],
+           r"\Wsha256\W": [CRYPTO],
+           r"\Wmd5\W": [CRYPTO],
+           r"\Wcypher\W": [CRYPTO],
+           r"\Wstarttls\W": [CRYPTO],
+           r"\Wperfect forward secrecy\W": [CRYPTO],
+           r"\Wman-in-the-middle\W": [CRYPTO, HACKING, NETWORK],
+           r"\Waktivisten\W": [ACTIVISM],
+           r"\Wrouterzwang\W": [NETWORK, WIFI, POLITICS],
+           r"\Wcensorship\W": [POLITICS, BIGBROTHER],
+           r"\Wfatca\W": [BANKING, POLITICS],
+           r"\Wmobile networks?\W": [MOBILE, NETWORK],
+           r"\Wmobile phones?\W": [MOBILE],
+           r"\Wsurveillance\W": [BIGBROTHER],
+           r"\Wbluetooth\W": [WIFI, BLUETOOTH],
+           r"\Wps3\W": [CONSOLE],
+           r"\Wgame boy\W": [CONSOLE],
+           r"\Waircraft\W": [AVIATION],
+           r"\Wpopulisten\W": [SOCIETY],
+           r"\Wwhistleblower\W": [SOCIETY, ACTIVISM, POLITICS],
+           r"\Wparagrafen\W": [LAW],
+           r"\Whdmi\W": [HARDWARE],
+           r"\Wamazon aws\W": [CLOUD],
+           r"\Ws3\W": [CLOUD],
+           r"\Wcloudfront\W": [CLOUD],
+           r"\Wgenetic fingerprint\W": [BIO],
+           r"\Wgenome\W": [BIO],
+           r"\Wdna\W": [BIO],
+           r"\Wanti-terror-kampf\W": [POLITICS],
+           r"\Wurheberrecht\W": [POLITICS, LAW],
+           r"\Wspread spectrum technology\W": [WIFI],
+           r"\Wlhc\W": [SCIENCE],
+           r"\Whiggs\W": [SCIENCE],
+           r"\Wcern\W": [SCIENCE],
+           r"\Whadron\W": [SCIENCE],
+           r"\Wfragdenstaat\W": [ACTIVISM, POLITICS, LAW],
+           r"\Winformationsfreiheitsgesetz\W": [ACTIVISM, POLITICS, LAW],
+           r"\Wnet neutrality\W": [NETWORK, POLITICS, LAW],
+           r"\Wgalaxy\W": [SPACE],
+           r"\Wbiochemie\W": [SCIENCE, BIO],
+           r"\Wmikroskop\W": [SCIENCE],
+           r"\Wecu\W": [AUTOMOTIVE],
+           r"\Wvolkswagen\W": [AUTOMOTIVE],
+           r"\Wbotnet\W": [MALWARE],
+           r"\Wmalware\W": [MALWARE],
+           r"\Wtrojaner\W": [MALWARE],
+           r"\Wcompiler\W": [SOFTWARE, ASSEMBLER],
+           r"\Wmicrocontroller\W": [HARDWARE],
+           r"\Wlogjam\W": [CRYPTO],
+           r"\Wdiffie-hellman\W": [CRYPTO],
+           r"\Wblackout\W": [IOT],
+           r"\Wperl\W": [SOFTWARE],
+           r"\Wsql\W": [SOFTWARE],
+           r"\Wtan\W": [BANKING],
+           r"\Wbandwidth\W": [NETWORK],
+           r"\Wlasers?\W": [SCIENCE],
+           r"\Wiridium\W": [NETWORK, MOBILE, SPACE],
+           r"\Wsocial media\W": [SOCIETY],
+           r"\Wheart monitor\W": [BIO],
+           r"\Wweltall\W": [SPACE],
+           r"\Wgrundrechte\W": [POLITICS, LAW],
+           r"\Wanonymous communication\W": [PRIVACY],
+           r"\Wprofiling\W": [PRIVACY],
+           r"\Wdprk\W": [POLITICS],
+           r"\Wnsaua\W": [POLITICS],
+           r"\Wfreifunk\W": [NETWORK, WIFI, ACTIVISM],
+           r"\Wgeflüchtete\W": [POLITICS, ACTIVISM],
+           r"\Wlandesverrat\W": [POLITICS, ACTIVISM],
+           r"\Wbig brother\W": [POLITICS, BIGBROTHER],
+           r"\Wuefi\W": [SOFTWARE],
+           r"\Wlet's encrypt\W": [SOFTWARE, CRYPTO, NETWORK],
+           r"\Weff\W": [ACTIVISM, LAW, POLITICS],
+           r"\W3g\W": [NETWORK, MOBILE, WIFI],
+           r"\Wgpg\W": [CRYPTO],
+           r"\Watm\W": [BANKING],
+           r"\Wdatenschutz\W": [POLITICS, LAW, PRIVACY],
            }
 
 
@@ -397,8 +566,10 @@ def get_id(filename):
 
 def get_tags(filename):
     with open(filename, "rt") as fh:
-        content = fh.read()
-        print (content)
+        content = fh.read().lower()
+        for akey in regexes.keys():
+            if re.search(akey, content, re.MULTILINE):
+                print(akey)
 
 def from_subtitles(directory):
     res = []
@@ -434,8 +605,9 @@ if __name__ == "__main__":
         talks += default_talks
 
     # TODO output data
-    with open(args.out+".yaml", "wt") as fh:
-        fh.write(dump(talks, Dumper=Dumper))
+    if args.out:
+        with open(args.out+".yaml", "wt") as fh:
+            fh.write(dump(talks, Dumper=Dumper))
 
-    with open(args.out+".json", "wt") as fh:
-        json.dump(talks, fh, indent=4)
+        with open(args.out+".json", "wt") as fh:
+            json.dump(talks, fh, indent=4)
