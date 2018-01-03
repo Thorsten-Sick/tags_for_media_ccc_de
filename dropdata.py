@@ -2,6 +2,8 @@
 
 import json
 import requests
+import argparse
+import os
 
 from yaml import load, dump
 try:
@@ -69,7 +71,14 @@ METHODISCH_INKORREKT = "methodisch inkorrekt"  # TODO
 ULTIMATE_TALK = "ultimate talks"
 INFRASTRUCTURE_REV = "infrastructure review" # TODO
 
-talks = [{
+regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
+           r"\Wmifare\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
+           r"\Wmifare\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
+           r"\Whitag\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
+           }
+
+
+default_talks = [{
           "title": "Dude, you broke the Future!",
           "url": "https://media.ccc.de/v/34c3-9270-dude_you_broke_the_future",
           "congress": "34c3",
@@ -379,8 +388,54 @@ talks = [{
         # No security nightmares left...
         ]
 
-with open("tags.yaml", "wt") as fh:
-    fh.write(dump(talks, Dumper=Dumper))
 
-with open("tags.json", "wt") as fh:
-    json.dump(talks, fh, indent=4)
+def get_congress(filename):
+    return filename.split("-")[0]
+
+def get_id(filename):
+    return filename.split("-")[1]
+
+def get_tags(filename):
+    with open(filename, "rt") as fh:
+        content = fh.read()
+        print (content)
+
+def from_subtitles(directory):
+    res = []
+
+    for root, dirs, files in os.walk(directory):
+        for name in files:
+            if name.endswith(".srt"):
+                fullname = os.path.join(root, name)
+                print(fullname)
+                get_tags(fullname)
+
+    return res
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--subtitles", help="Process subtitles folder. Output json", default = None, type=str)
+    parser.add_argument("--out", help="out filename. Without postfix .json or .yaml. This will be added", default = None, type = str)
+    parser.add_argument("--mixin", help="Mix those json data files in")
+    parser.add_argument("--default", help="Load hard coded default talks as well", action="store_true", default = False)
+    args = parser.parse_args()
+
+    talks = []
+
+    # TODO Generate db from subtitles
+    if args.subtitles:
+        talks += from_subtitles(args.subtitles)
+
+    # TODO Load mixins
+
+    # TODO Load defaults
+    if args.default:
+        talks += default_talks
+
+    # TODO output data
+    with open(args.out+".yaml", "wt") as fh:
+        fh.write(dump(talks, Dumper=Dumper))
+
+    with open(args.out+".json", "wt") as fh:
+        json.dump(talks, fh, indent=4)
