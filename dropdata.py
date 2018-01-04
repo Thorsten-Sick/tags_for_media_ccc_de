@@ -76,6 +76,7 @@ HACKRF = "hackrf"
 PROXMARK = "proxmark"
 UBERTOOTH = "ubertooth"
 
+SHODAN = "shodan"
 
 #SERIES
 SECURITY_NIGHTMARES = "security nightmares"
@@ -253,7 +254,6 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wgnunet\W": [NETWORK, CRYPTO, SECURITY, GNUNET],
            r"\Wjondonym\W": [NETWORK, CRYPTO, SECURITY, JONDONYM],
            r"\Wloopix\W": [NETWORK, CRYPTO, SECURITY, LOOPIX],
-
            r"\Wchipwhisperer\W": [HARDWARE, HACKING, SECURITY, CHIPWHISPERER],
            r"\Wglitchkit\W": [HARDWARE, HACKING, SECURITY, GLITCHKIT],
            r"\Wfacedancer\W": [HARDWARE, HACKING, SECURITY, FACEDANCER],
@@ -263,6 +263,8 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wrad10\W": [HARDWARE, HACKING, SECURITY, HACKRF],
            r"\Wproxmark3?\W": [HARDWARE, HACKING, SECURITY, PROXMARK, RFID],
            r"\Wubertooth\W": [HARDWARE, HACKING, SECURITY, UBERTOOTH, BLUETOOTH],
+           r"\Wobd-ii\W": [AUTOMOTIVE, HARDWARE],
+           r"\Wshodan\W": [NETWORK, HACKING, IOT, HARDWARE],
 
 
            }
@@ -284,6 +286,33 @@ default_talks = [{
         "id": "9095",
         "language": "German",
         "tags": [TECHNOLOGY, ENGINEERING],
+        "series": None,
+        },
+        {
+        "title": "Die fabelhafte Welt des Mobilebankings",
+        "url": "https://media.ccc.de/v/34c3-8805-die_fabelhafte_welt_des_mobilebankings",
+        "congress": "34c3",
+        "id": "8805",
+        "language": "German",
+        "tags": [MOBILE, BANKING, RFID],
+        "series": None,
+        },
+        {
+        "title": "Internet of Fails",
+        "url": "https://media.ccc.de/v/34c3-9193-internet_of_fails",
+        "congress": "34c3",
+        "id": "9193",
+        "language": "English",
+        "tags": [IOT, PRIVACY, SECURITY, HARDWARE, SOFTWARE, HACKING, BLUETOOTH],
+        "series": None,
+        },
+        {
+        "title": "How to drift with any car",
+        "url": "https://media.ccc.de/v/34c3-8758-how_to_drift_with_any_car",
+        "congress": "34c3",
+        "id": "8758",
+        "language": "English",
+        "tags": [AUTOMOTIVE, HACKING, SECURITY, HARDWARE, SOFTWARE, ELECTRONICS],
         "series": None,
         },
         {
