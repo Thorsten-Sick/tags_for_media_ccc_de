@@ -58,6 +58,9 @@ SOCIETY = "society"
 AVIATION = "aviation"
 CLOUD = "cloud"
 
+ANDROID = "android"
+IOS = "ios"
+
 # Detailed Tags (let's find out if there are more than 3 talks deserving those tags)
 
 ## Anonymisation networks
@@ -265,6 +268,11 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wubertooth\W": [HARDWARE, HACKING, SECURITY, UBERTOOTH, BLUETOOTH],
            r"\Wobd-ii\W": [AUTOMOTIVE, HARDWARE],
            r"\Wshodan\W": [NETWORK, HACKING, IOT, HARDWARE],
+           r"\Wswift\W": [BANKING],
+           r"\Wfingerabdruckscanner\W": [BIOMETRICS],
+           r"\Wfingerabdrucksensor\W": [BIOMETRICS],
+           r"\Wfingerabdruckdaten\W": [BIOMETRICS, PRIVACY],
+           r"\Wfingerprint reader\W": [BIOMETRICS],
 
 
            }
@@ -288,15 +296,15 @@ default_talks = [{
         "tags": [TECHNOLOGY, ENGINEERING],
         "series": None,
         },
-        #{
-        #"title": "Die fabelhafte Welt des Mobilebankings",
-        #"url": "https://media.ccc.de/v/34c3-8805-die_fabelhafte_welt_des_mobilebankings",
-        #"congress": "34c3",
-        #"id": "8805",
-        #"language": "German",
-        #"tags": [MOBILE, BANKING, RFID],
-        #"series": None,
-        #},
+        {
+        "title": "Die fabelhafte Welt des Mobilebankings",
+        "url": "https://media.ccc.de/v/34c3-8805-die_fabelhafte_welt_des_mobilebankings",
+        "congress": "34c3",
+        "id": "8805",
+        "language": "German",
+        "tags": [MOBILE, BANKING, ANDROID, SOFTWARE, IOS, HACKING, SECURITY],
+        "series": None,
+        },
         {
         "title": "Internet of Fails",
         "url": "https://media.ccc.de/v/34c3-9193-internet_of_fails",
