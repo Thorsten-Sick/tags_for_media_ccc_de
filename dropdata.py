@@ -57,6 +57,9 @@ ASSEMBLER = "assembler"
 SOCIETY = "society"
 AVIATION = "aviation"
 CLOUD = "cloud"
+LOCKPICKING = "lockpicking"
+EDUCATION = "education"
+USB = "usb"
 
 ANDROID = "android"
 IOS = "ios"
@@ -158,8 +161,8 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wseawatch\W": [ACTIVISM, POLITICS],
            r"\Wjugend rettet\W": [ACTIVISM, POLITICS],
            r"\Wmsf\W": [ACTIVISM, POLITICS],
-           r"\Wchaos macht schule\W": [ACTIVISM, POLITICS],
-           r"\Wcaliope\W": [HARDWARE, SOFTWARE],
+           r"\Wchaos macht schule\W": [ACTIVISM, POLITICS, EDUCATION],
+           r"\Wcaliope\W": [HARDWARE, SOFTWARE, EDUCATION],
            r"\Wtcp\W": [NETWORK],
            r"\Wvlan\W": [NETWORK],
            r"\Wpci express\W": [HARDWARE],
@@ -259,7 +262,7 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wloopix\W": [NETWORK, CRYPTO, SECURITY, LOOPIX],
            r"\Wchipwhisperer\W": [HARDWARE, HACKING, SECURITY, CHIPWHISPERER],
            r"\Wglitchkit\W": [HARDWARE, HACKING, SECURITY, GLITCHKIT],
-           r"\Wfacedancer\W": [HARDWARE, HACKING, SECURITY, FACEDANCER],
+           r"\Wfacedancer\W": [HARDWARE, HACKING, SECURITY, FACEDANCER, USB],
            r"\Wgoodfet\W": [HARDWARE, HACKING, SECURITY, FACEDANCER],
            r"\Whackrf\W": [HARDWARE, HACKING, SECURITY, HACKRF],
            r"\Wrad1o\W": [HARDWARE, HACKING, SECURITY, HACKRF],
@@ -294,6 +297,34 @@ default_talks = [{
         "id": "9095",
         "language": "German",
         "tags": [TECHNOLOGY, ENGINEERING],
+        "series": None,
+        },
+        {
+        "title": "Black Hat Locksmithing",
+        "url": "https://media.ccc.de/v/SHA2017-34-black_hat_locksmithing",
+        "congress": "sha2017",
+        "id": "34",
+        "language": "English",
+        "tags": [TECHNOLOGY, HARDWARE, LOCKPICKING, SECURITY, HISTORY],
+        "series": None,
+        },
+        {
+        "title": "Blinkenrocket!",
+        "url": "https://media.ccc.de/v/34c3-8721-blinkenrocket",
+        "congress": "34c3",
+        "id": "8721",
+        "language": "English",
+        "tags": [ELECTRONICS, ENGINEERING, HARDWARE, SOFTWARE, EDUCATION],
+        "series": None,
+        },
+        {
+        "title": "FaceDancer 2.0",
+        "url": "https://media.ccc.de/v/SHA2017-221-facedancer_2_0",
+        "congress": "sha2017",
+        "id": "221",
+        "language": "English",
+        "tags": [FACEDANCER, USB, HARDWARE, SECURITY, HACKING],
+        "external_links": ["https://github.com/ktemkin/FaceDancer", "https://github.com/greatscottgadgets/greatfet"],
         "series": None,
         },
         {

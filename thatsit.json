@@ -1,909 +1,909 @@
 {
     "5405": [
-        "activism",
-        "society",
         "law",
+        "society",
+        "activism",
         "politics"
     ],
     "5623": [
-        "politics",
+        "law",
         "biometrics",
         "privacy",
         "bio",
-        "bigbrother",
+        "banking",
         "activism",
-        "law",
-        "banking"
+        "politics",
+        "bigbrother"
     ],
     "5477": [
-        "software",
         "assembler",
-        "security",
+        "hacking",
         "hardware",
-        "hacking"
+        "software",
+        "security"
     ],
     "5476": [
-        "software",
-        "assembler",
-        "malware",
-        "politics",
-        "security",
-        "crypto",
-        "forensic",
-        "hacking",
-        "bigbrother",
         "law",
-        "banking"
+        "assembler",
+        "crypto",
+        "banking",
+        "malware",
+        "hacking",
+        "security",
+        "forensic",
+        "politics",
+        "software",
+        "bigbrother"
     ],
     "5469": [
-        "software",
-        "politics",
-        "hardware",
         "society",
         "hacking",
+        "politics",
+        "hardware",
+        "software",
         "bigbrother"
     ],
     "5210": [
-        "malware",
-        "politics",
-        "security",
+        "law",
         "privacy",
         "bigbrother",
+        "malware",
+        "network",
         "activism",
-        "law",
-        "network"
+        "politics",
+        "security"
     ],
     "5605": [
         "bigbrother"
     ],
     "5463": [
-        "software",
-        "space",
-        "hackrf",
         "bluetooth",
-        "security",
-        "hardware",
         "crypto",
-        "society",
-        "hacking",
+        "space",
         "mobile",
+        "society",
         "wifi",
-        "network"
+        "hacking",
+        "network",
+        "hackrf",
+        "hardware",
+        "software",
+        "security"
     ],
     "5610": [
         "tor",
-        "security",
-        "privacy",
         "crypto",
+        "privacy",
         "hacking",
-        "network"
+        "network",
+        "security"
     ],
     "5449": [
-        "software",
-        "malware",
-        "politics",
-        "security",
-        "biometrics",
         "crypto",
-        "forensic",
-        "hacking",
+        "biometrics",
         "mobile",
-        "bigbrother",
+        "malware",
+        "hacking",
+        "network",
         "wifi",
-        "network"
+        "security",
+        "forensic",
+        "politics",
+        "software",
+        "bigbrother"
     ],
     "5305": [
-        "science",
-        "bigbrother",
+        "politics",
         "network",
-        "politics"
+        "bigbrother",
+        "science"
     ],
     "5397": [
-        "politics",
-        "privacy",
+        "law",
         "crypto",
+        "privacy",
         "society",
         "hacking",
-        "bigbrother",
+        "network",
         "activism",
-        "law",
-        "network"
+        "politics",
+        "bigbrother"
     ],
     "5622": [
-        "tor",
-        "politics",
-        "security",
-        "privacy",
-        "crypto",
-        "society",
-        "hacking",
-        "mobile",
-        "bigbrother",
-        "activism",
         "law",
-        "network"
+        "tor",
+        "crypto",
+        "privacy",
+        "mobile",
+        "society",
+        "bigbrother",
+        "hacking",
+        "network",
+        "activism",
+        "politics",
+        "security"
     ],
     "5713": [
-        "software",
-        "malware",
-        "space",
-        "politics",
-        "security",
-        "privacy",
-        "hardware",
-        "crypto",
-        "hacking",
-        "bigbrother",
-        "activism",
         "law",
-        "network"
+        "crypto",
+        "space",
+        "privacy",
+        "bigbrother",
+        "malware",
+        "hacking",
+        "network",
+        "activism",
+        "politics",
+        "hardware",
+        "software",
+        "security"
     ],
     "5526": [
-        "security",
-        "cloud"
+        "cloud",
+        "security"
     ],
     "5415": [
-        "politics",
+        "law",
         "privacy",
-        "bigbrother",
         "activism",
-        "law"
+        "politics",
+        "bigbrother"
     ],
     "5420": [
-        "malware",
         "bluetooth",
-        "hardware",
         "crypto",
         "mobile",
-        "wifi"
+        "wifi",
+        "malware",
+        "hardware"
     ],
     "5311": [
         "science",
-        "space",
-        "hacking"
+        "hacking",
+        "space"
     ],
     "5377": [
-        "politics",
-        "security",
-        "bigbrother",
         "law",
-        "network"
+        "network",
+        "security",
+        "politics",
+        "bigbrother"
     ],
     "5423": [
-        "tor",
-        "malware",
-        "politics",
-        "security",
-        "privacy",
-        "crypto",
-        "society",
-        "hacking",
-        "bigbrother",
-        "activism",
         "law",
-        "network"
-    ],
-    "5588": [
-        "software",
+        "tor",
+        "crypto",
+        "privacy",
+        "society",
+        "bigbrother",
+        "malware",
         "hacking",
         "network",
-        "crypto"
+        "activism",
+        "politics",
+        "security"
+    ],
+    "5588": [
+        "hacking",
+        "network",
+        "crypto",
+        "software"
     ],
     "7368": [
-        "software",
-        "electronics",
         "tor",
-        "security",
-        "privacy",
-        "hardware",
         "crypto",
-        "rfid",
+        "privacy",
         "wireless",
-        "hacking",
         "mobile",
         "wifi",
-        "network"
+        "rfid",
+        "network",
+        "hacking",
+        "hardware",
+        "electronics",
+        "software",
+        "security"
     ],
     "7202": [
-        "electronics",
-        "automotive",
-        "hardware",
-        "rfid",
         "wireless",
-        "activism",
+        "automotive",
+        "rfid",
+        "network",
         "wifi",
-        "network"
+        "activism",
+        "hardware",
+        "electronics"
     ],
     "7550": [
         "tor",
-        "privacy",
         "crypto",
-        "activism",
+        "privacy",
         "wifi",
-        "network"
+        "network",
+        "activism"
     ],
     "7210": [
-        "politics",
-        "security",
-        "crypto",
         "science",
-        "bigbrother"
+        "crypto",
+        "bigbrother",
+        "politics",
+        "security"
     ],
     "7291": [
-        "software",
-        "politics",
-        "security",
         "crypto",
         "hacking",
+        "security",
+        "politics",
+        "software",
         "bigbrother"
     ],
     "7513": [
-        "politics",
-        "security",
-        "privacy",
+        "science",
+        "law",
         "crypto",
+        "privacy",
         "society",
         "hacking",
-        "science",
-        "bigbrother",
         "activism",
-        "law"
+        "security",
+        "politics",
+        "bigbrother"
     ],
     "7166": [
-        "software",
-        "electronics",
-        "proxmark",
-        "security",
-        "hardware",
         "crypto",
-        "rfid",
         "wireless",
-        "hacking"
+        "rfid",
+        "hacking",
+        "proxmark",
+        "hardware",
+        "electronics",
+        "software",
+        "security"
     ],
     "7135": [
-        "politics",
-        "security",
-        "society",
-        "hacking",
-        "bigbrother",
         "law",
+        "society",
+        "bigbrother",
+        "hacking",
+        "network",
         "activism",
-        "network"
+        "politics",
+        "security"
     ],
     "7520": [
-        "software",
+        "hardware",
         "assembler",
-        "hardware"
+        "software"
     ],
     "7449": [
+        "law",
         "tor",
-        "politics",
-        "security",
-        "privacy",
         "crypto",
+        "privacy",
         "society",
         "bigbrother",
-        "law",
-        "network"
+        "network",
+        "politics",
+        "security"
     ],
     "7288": [
-        "politics",
-        "security",
         "crypto",
         "hacking",
-        "bigbrother",
-        "network"
+        "network",
+        "security",
+        "politics",
+        "bigbrother"
     ],
     "7517": [
         "society"
     ],
     "7483": [
-        "software",
         "assembler",
-        "politics",
         "space",
         "bio",
         "society",
-        "hacking"
+        "hacking",
+        "politics",
+        "software"
     ],
     "7130": [
-        "security",
+        "hacking",
         "software",
-        "hacking"
+        "security"
     ],
     "7529": [
-        "tor",
-        "politics",
-        "security",
-        "privacy",
-        "crypto",
-        "society",
-        "bigbrother",
-        "activism",
         "law",
-        "network"
+        "tor",
+        "crypto",
+        "privacy",
+        "society",
+        "network",
+        "activism",
+        "security",
+        "politics",
+        "bigbrother"
     ],
     "7360": [
-        "malware",
-        "security",
-        "hacking",
         "mobile",
         "banking",
-        "network"
+        "malware",
+        "hacking",
+        "network",
+        "security"
     ],
     "7401": [
-        "software",
         "tor",
-        "politics",
-        "privacy",
         "crypto",
+        "privacy",
         "mobile",
-        "activism",
         "wifi",
-        "network"
+        "network",
+        "activism",
+        "politics",
+        "software"
     ],
     "7387": [
-        "politics",
-        "society",
-        "bigbrother",
         "law",
-        "network"
+        "society",
+        "network",
+        "politics",
+        "bigbrother"
     ],
     "7457": [
-        "tor",
-        "politics",
-        "security",
-        "privacy",
-        "crypto",
-        "society",
         "law",
+        "tor",
+        "crypto",
+        "privacy",
         "aviation",
-        "network"
+        "society",
+        "network",
+        "politics",
+        "security"
     ],
     "7102": [
-        "politics",
-        "automotive",
-        "bigbrother",
         "law",
-        "activism"
+        "automotive",
+        "activism",
+        "politics",
+        "bigbrother"
     ],
     "7570": [
-        "politics",
-        "security",
-        "hacking",
-        "bigbrother",
         "law",
-        "network"
+        "hacking",
+        "network",
+        "security",
+        "politics",
+        "bigbrother"
     ],
     "7530": [
-        "law",
+        "politics",
         "network",
-        "politics"
-    ],
-    "7331": [
-        "software",
-        "security",
-        "automotive",
-        "hardware",
-        "forensic"
-    ],
-    "7162": [
-        "aviation",
-        "space",
-        "science"
-    ],
-    "7154": [
-        "software",
-        "assembler",
-        "space",
-        "politics",
-        "security",
-        "hackrf",
-        "hardware",
-        "crypto",
-        "hacking",
-        "mobile",
-        "bigbrother",
-        "law",
-        "aviation",
-        "network"
-    ],
-    "7323": [
-        "software",
-        "iot",
-        "politics",
-        "automotive",
-        "activism",
         "law"
     ],
-    "7286": [
-        "security",
+    "7331": [
+        "automotive",
+        "forensic",
+        "hardware",
+        "software",
+        "security"
+    ],
+    "7162": [
+        "science",
+        "aviation",
+        "space"
+    ],
+    "7154": [
+        "law",
+        "assembler",
+        "crypto",
+        "space",
+        "aviation",
+        "mobile",
         "bigbrother",
+        "hacking",
+        "network",
+        "hackrf",
+        "politics",
+        "hardware",
+        "software",
+        "security"
+    ],
+    "7323": [
+        "law",
+        "iot",
+        "automotive",
+        "activism",
+        "politics",
+        "software"
+    ],
+    "7286": [
+        "politics",
         "society",
-        "politics"
+        "security",
+        "bigbrother"
     ],
     "7273": [
-        "software",
-        "iot",
-        "malware",
-        "politics",
-        "security",
-        "bluetooth",
-        "bio",
-        "crypto",
-        "hardware",
-        "forensic",
-        "hacking",
-        "mobile",
         "science",
-        "bigbrother",
+        "bluetooth",
+        "crypto",
+        "bio",
+        "mobile",
+        "iot",
         "wifi",
-        "network"
+        "hacking",
+        "malware",
+        "network",
+        "security",
+        "forensic",
+        "politics",
+        "hardware",
+        "software",
+        "bigbrother"
     ],
     "7225": [
-        "space",
-        "politics",
-        "privacy",
-        "bigbrother",
-        "activism",
         "law",
-        "network"
+        "space",
+        "privacy",
+        "network",
+        "activism",
+        "politics",
+        "bigbrother"
     ],
     "7562": [
         "tor",
-        "privacy",
         "crypto",
+        "privacy",
         "mobile",
-        "activism",
         "wifi",
-        "network"
+        "network",
+        "activism"
     ],
     "7525": [
         "science"
     ],
     "7441": [
-        "security",
-        "crypto"
+        "crypto",
+        "security"
     ],
     "7324": [
         "tor",
-        "space",
-        "politics",
-        "security",
-        "privacy",
         "crypto",
-        "bigbrother",
+        "space",
+        "privacy",
+        "network",
         "activism",
-        "network"
+        "security",
+        "politics",
+        "bigbrother"
     ],
     "7322": [
-        "tor",
-        "politics",
-        "security",
-        "privacy",
-        "crypto",
-        "hacking",
-        "bigbrother",
-        "activism",
         "law",
-        "network"
+        "tor",
+        "crypto",
+        "privacy",
+        "hacking",
+        "network",
+        "activism",
+        "security",
+        "politics",
+        "bigbrother"
     ],
     "7551": [
         "hacking"
     ],
     "7501": [
-        "politics",
-        "security",
+        "law",
         "society",
-        "hacking",
         "bigbrother",
+        "hacking",
         "activism",
-        "law"
+        "politics",
+        "security"
     ],
     "7264": [
-        "politics",
+        "law",
         "privacy",
         "society",
-        "bigbrother",
-        "law"
-    ],
-    "7249": [
-        "bigbrother",
-        "society",
-        "politics"
-    ],
-    "7174": [
-        "malware",
         "politics",
-        "security",
-        "crypto",
-        "hacking",
         "bigbrother"
     ],
+    "7249": [
+        "politics",
+        "society",
+        "bigbrother"
+    ],
+    "7174": [
+        "crypto",
+        "bigbrother",
+        "malware",
+        "hacking",
+        "politics",
+        "security"
+    ],
     "7150": [
+        "politics",
+        "activism"
+    ],
+    "7538": [
+        "law",
+        "science",
+        "tor",
+        "crypto",
+        "privacy",
+        "bio",
+        "mobile",
+        "society",
+        "bigbrother",
+        "wifi",
+        "hacking",
+        "network",
+        "activism",
+        "politics",
+        "security"
+    ],
+    "7403": [
+        "law",
+        "crypto",
+        "mobile",
+        "society",
+        "hacking",
+        "network",
+        "security",
+        "politics",
+        "bigbrother"
+    ],
+    "7228": [
+        "law",
+        "space",
+        "privacy",
+        "network",
+        "activism",
+        "politics",
+        "bigbrother"
+    ],
+    "7230": [
+        "wifi",
+        "network",
         "activism",
         "politics"
     ],
-    "7538": [
-        "tor",
-        "politics",
-        "security",
-        "privacy",
-        "bio",
-        "crypto",
-        "society",
-        "hacking",
-        "mobile",
-        "science",
-        "bigbrother",
-        "activism",
-        "law",
-        "wifi",
-        "network"
-    ],
-    "7403": [
-        "politics",
-        "security",
-        "crypto",
-        "society",
-        "mobile",
-        "hacking",
-        "bigbrother",
-        "law",
-        "network"
-    ],
-    "7228": [
-        "space",
-        "politics",
-        "privacy",
-        "bigbrother",
-        "activism",
-        "law",
-        "network"
-    ],
-    "7230": [
-        "activism",
-        "network",
-        "politics",
-        "wifi"
-    ],
     "7240": [
-        "software",
-        "console",
         "assembler",
-        "politics",
-        "security",
-        "hardware",
         "crypto",
         "hacking",
+        "hardware",
+        "security",
+        "politics",
+        "console",
+        "software",
         "bigbrother"
     ],
     "7282": [
-        "software",
+        "law",
         "malware",
+        "hacking",
+        "activism",
         "politics",
         "hardware",
-        "hacking",
-        "bigbrother",
-        "law",
-        "activism"
+        "software",
+        "bigbrother"
     ],
     "7415": [],
     "7138": [
         "space"
     ],
     "7567": [
-        "politics",
-        "bigbrother",
-        "activism",
         "wifi",
-        "network"
+        "network",
+        "activism",
+        "politics",
+        "bigbrother"
     ],
     "7388": [
-        "politics",
-        "security",
-        "privacy",
+        "law",
         "crypto",
+        "privacy",
         "society",
         "bigbrother",
+        "network",
         "activism",
-        "law",
-        "network"
+        "politics",
+        "security"
     ],
     "7209": [
+        "law",
         "space",
-        "politics",
         "society",
-        "bigbrother",
-        "law"
+        "politics",
+        "bigbrother"
     ],
     "7245": [
-        "software",
+        "crypto",
         "space",
-        "security",
         "hardware",
-        "crypto"
+        "software",
+        "security"
     ],
     "7205": [
-        "malware",
+        "law",
         "space",
-        "politics",
         "privacy",
         "mobile",
-        "bigbrother",
-        "law",
         "wifi",
-        "network"
+        "malware",
+        "network",
+        "politics",
+        "bigbrother"
     ],
     "7307": [
-        "tor",
-        "politics",
-        "security",
-        "privacy",
-        "crypto",
-        "society",
-        "hacking",
-        "mobile",
-        "bigbrother",
-        "activism",
         "law",
+        "tor",
+        "crypto",
+        "privacy",
+        "mobile",
+        "society",
+        "bigbrother",
         "wifi",
-        "network"
+        "hacking",
+        "network",
+        "activism",
+        "politics",
+        "security"
     ],
     "7528": [
-        "software",
-        "politics",
-        "security",
-        "crypto",
-        "activism",
         "law",
-        "network"
+        "crypto",
+        "network",
+        "activism",
+        "politics",
+        "software",
+        "security"
     ],
     "7133": [
-        "software",
-        "politics",
-        "security",
-        "hardware",
+        "law",
         "crypto",
         "hacking",
-        "bigbrother",
-        "law",
-        "network"
+        "network",
+        "security",
+        "politics",
+        "hardware",
+        "software",
+        "bigbrother"
     ],
     "7352": [
-        "software",
         "tor",
-        "malware",
-        "politics",
-        "security",
-        "privacy",
-        "hardware",
         "crypto",
+        "privacy",
         "bigbrother",
-        "network"
+        "malware",
+        "network",
+        "politics",
+        "hardware",
+        "software",
+        "security"
     ],
     "7413": [
-        "tor",
-        "politics",
-        "privacy",
-        "crypto",
-        "bigbrother",
         "law",
-        "network"
+        "tor",
+        "crypto",
+        "privacy",
+        "network",
+        "politics",
+        "bigbrother"
     ],
     "7146": [
-        "software",
+        "science",
+        "law",
         "assembler",
+        "privacy",
         "malware",
         "politics",
-        "security",
-        "privacy",
         "hardware",
-        "science",
-        "law"
+        "software",
+        "security"
     ],
     "7412": [
-        "software",
         "assembler",
-        "security",
         "crypto",
         "mobile",
-        "hacking",
-        "wifi",
         "banking",
-        "network"
+        "wifi",
+        "hacking",
+        "network",
+        "software",
+        "security"
     ],
     "7565": [
         "security"
     ],
     "7246": [
-        "society",
-        "politics"
+        "politics",
+        "society"
     ],
     "7340": [
-        "politics",
-        "security",
+        "law",
         "crypto",
         "society",
         "hacking",
-        "bigbrother",
-        "law",
-        "network"
+        "network",
+        "security",
+        "politics",
+        "bigbrother"
     ],
     "7426": [
-        "politics",
-        "security",
         "privacy",
         "society",
         "bigbrother",
+        "banking",
         "activism",
-        "banking"
+        "politics",
+        "security"
     ],
     "8388": [
-        "software",
-        "tor",
-        "politics",
-        "privacy",
-        "crypto",
         "law",
+        "tor",
+        "crypto",
+        "privacy",
         "wifi",
+        "network",
         "activism",
-        "network"
+        "politics",
+        "software"
     ],
     "7912": [
-        "politics",
-        "automotive",
-        "society",
         "science",
+        "society",
+        "automotive",
+        "politics",
         "bigbrother"
     ],
     "8167": [
-        "software",
-        "space",
-        "politics",
-        "security",
+        "law",
         "crypto",
+        "space",
         "mobile",
         "hacking",
+        "network",
         "activism",
-        "law",
-        "network"
+        "politics",
+        "software",
+        "security"
     ],
     "8024": [
-        "software",
+        "wifi",
+        "network",
+        "activism",
         "politics",
         "hardware",
-        "activism",
-        "wifi",
-        "network"
+        "software"
     ],
     "8170": [
-        "iot",
-        "bigbrother",
+        "politics",
         "hardware",
-        "politics"
+        "iot",
+        "bigbrother"
     ],
     "7880": [
-        "politics",
-        "security",
         "crypto",
         "society",
-        "banking"
+        "banking",
+        "politics",
+        "security"
     ],
     "7966": [
-        "politics",
-        "mobile",
-        "bigbrother",
         "law",
-        "network"
+        "mobile",
+        "network",
+        "politics",
+        "bigbrother"
     ],
     "8231": [
-        "software",
-        "security",
-        "hardware",
+        "science",
         "crypto",
         "mobile",
-        "science"
+        "hardware",
+        "software",
+        "security"
     ],
     "7946": [
-        "software",
-        "console",
-        "security",
         "bluetooth",
-        "hardware",
         "crypto",
-        "hacking",
         "wifi",
-        "network"
+        "hacking",
+        "network",
+        "hardware",
+        "console",
+        "software",
+        "security"
     ],
     "8429": [
-        "software",
-        "politics",
+        "law",
         "crypto",
         "society",
-        "bigbrother",
-        "law"
+        "politics",
+        "software",
+        "bigbrother"
     ],
     "8033": [
-        "security",
-        "aviation"
+        "aviation",
+        "security"
     ],
     "8037": [
-        "society",
-        "politics"
+        "politics",
+        "society"
     ],
     "8348": [
         "tor",
-        "security",
-        "privacy",
         "crypto",
-        "hacking",
+        "privacy",
         "mobile",
-        "bigbrother",
-        "network"
+        "hacking",
+        "network",
+        "security",
+        "bigbrother"
     ],
     "8181": [
-        "politics",
+        "law",
         "privacy",
         "society",
-        "bigbrother",
         "activism",
-        "law"
+        "politics",
+        "bigbrother"
     ],
     "8057": [
-        "software",
         "assembler",
-        "hardware",
         "crypto",
         "hacking",
-        "network"
+        "network",
+        "hardware",
+        "software"
     ],
     "7865": [
-        "software",
+        "cloud",
         "malware",
-        "security",
         "hacking",
-        "cloud"
+        "software",
+        "security"
     ],
     "8221": [
-        "bio",
         "law",
+        "bio",
         "politics"
     ],
     "8040": [
         "law",
         "network",
-        "politics",
-        "activism"
+        "activism",
+        "politics"
     ],
     "7969": [
-        "security",
         "crypto",
         "mobile",
         "hacking",
-        "network"
+        "network",
+        "security"
     ],
     "8026": [
-        "bigbrother",
         "law",
         "society",
+        "bigbrother",
         "politics"
     ],
     "8418": [],
     "8034": [
-        "malware",
-        "politics",
-        "automotive",
+        "law",
         "privacy",
-        "bigbrother",
+        "automotive",
+        "malware",
         "activism",
-        "law"
+        "politics",
+        "bigbrother"
     ],
     "8288": [
-        "law",
-        "activism",
+        "politics",
         "society",
-        "politics"
+        "law",
+        "activism"
     ],
     "8029": [
         "history",
@@ -911,78 +911,80 @@
         "software"
     ],
     "7899": [
-        "bigbrother",
-        "activism",
+        "politics",
         "society",
-        "politics"
+        "bigbrother",
+        "activism"
     ],
     "8116": [
-        "bigbrother",
-        "politics"
+        "politics",
+        "bigbrother"
     ],
     "8428": [
-        "activism",
         "politics",
-        "hacking"
+        "hacking",
+        "activism",
+        "education"
     ],
     "8262": [
-        "politics",
-        "privacy",
-        "bigbrother",
         "law",
-        "activism",
+        "education",
+        "privacy",
         "wifi",
-        "network"
+        "network",
+        "activism",
+        "politics",
+        "bigbrother"
     ],
     "8233": [
-        "bluetooth",
         "wifi",
-        "mobile"
+        "mobile",
+        "bluetooth"
     ],
     "8019": [
-        "software",
-        "iot",
-        "assembler",
-        "ubertooth",
-        "security",
         "bluetooth",
-        "hardware",
+        "assembler",
         "crypto",
+        "ubertooth",
         "mobile",
-        "hacking",
+        "iot",
         "wifi",
-        "network"
+        "hacking",
+        "network",
+        "hardware",
+        "software",
+        "security"
     ],
     "8083": [
-        "science",
+        "politics",
         "network",
         "society",
-        "politics"
+        "science"
     ],
     "7811": [
-        "politics",
-        "automotive",
-        "privacy",
         "law",
+        "privacy",
+        "automotive",
+        "network",
         "activism",
-        "network"
+        "politics"
     ],
     "8076": [
-        "politics",
-        "society",
-        "activism",
         "law",
-        "network"
+        "society",
+        "network",
+        "activism",
+        "politics"
     ],
     "7958": [
         "space"
     ],
     "7939": [
-        "politics",
-        "privacy",
-        "activism",
         "law",
-        "network"
+        "privacy",
+        "network",
+        "activism",
+        "politics"
     ],
     "8413": [
         "security",
@@ -992,297 +994,310 @@
         "space"
     ],
     "8018": [
-        "tor",
-        "malware",
-        "politics",
-        "security",
-        "privacy",
-        "crypto",
-        "hacking",
-        "bigbrother",
         "law",
-        "network"
+        "tor",
+        "crypto",
+        "privacy",
+        "bigbrother",
+        "malware",
+        "hacking",
+        "network",
+        "politics",
+        "security"
     ],
     "8439": [
+        "politics",
         "bigbrother",
         "law",
-        "activism",
-        "politics"
+        "activism"
     ],
     "8237": [
         "science",
-        "bio",
-        "hacking"
+        "hacking",
+        "bio"
     ],
     "7824": [
-        "iot",
-        "hardware",
         "crypto",
+        "iot",
         "hacking",
-        "network"
+        "network",
+        "hardware"
     ],
     "8344": [
-        "software",
         "console",
-        "security",
+        "hacking",
         "hardware",
-        "hacking"
+        "software",
+        "security"
     ],
     "8131": [
         "automotive",
         "mobile"
     ],
     "8445": [
-        "tor",
-        "malware",
-        "politics",
-        "privacy",
-        "crypto",
-        "hacking",
-        "bigbrother",
         "law",
-        "network"
+        "tor",
+        "crypto",
+        "privacy",
+        "malware",
+        "hacking",
+        "network",
+        "politics",
+        "bigbrother"
     ],
     "8021": [
         "law",
         "politics"
     ],
     "6584": [
-        "tor",
-        "politics",
-        "privacy",
-        "crypto",
-        "bigbrother",
         "law",
+        "tor",
+        "crypto",
+        "privacy",
+        "network",
         "activism",
-        "network"
+        "politics",
+        "bigbrother"
     ],
     "6123": [
-        "software",
-        "console",
-        "malware",
         "politics",
+        "banking",
+        "malware",
         "hardware",
-        "bigbrother",
-        "banking"
+        "console",
+        "software",
+        "bigbrother"
     ],
     "6294": [
-        "software",
-        "tor",
-        "politics",
-        "security",
-        "privacy",
-        "crypto",
-        "hacking",
-        "bigbrother",
         "law",
-        "network"
+        "tor",
+        "crypto",
+        "privacy",
+        "bigbrother",
+        "hacking",
+        "network",
+        "politics",
+        "software",
+        "security"
     ],
     "6021": [
-        "tor",
-        "politics",
-        "security",
-        "privacy",
-        "crypto",
-        "society",
-        "mobile",
-        "bigbrother",
-        "activism",
         "law",
-        "network"
+        "tor",
+        "crypto",
+        "privacy",
+        "mobile",
+        "society",
+        "bigbrother",
+        "network",
+        "activism",
+        "politics",
+        "security"
     ],
     "6258": [
         "tor",
-        "malware",
-        "politics",
-        "security",
-        "privacy",
         "crypto",
-        "hacking",
+        "privacy",
         "bigbrother",
-        "network"
+        "malware",
+        "hacking",
+        "network",
+        "politics",
+        "security"
     ],
     "6251": [
+        "law",
         "tor",
-        "malware",
-        "politics",
-        "security",
-        "privacy",
         "crypto",
-        "hacking",
+        "privacy",
         "mobile",
         "bigbrother",
+        "malware",
+        "hacking",
+        "network",
         "activism",
-        "law",
-        "network"
+        "politics",
+        "security"
     ],
     "6450": [
-        "security",
         "law",
-        "mobile"
+        "mobile",
+        "security"
     ],
     "6571": [
-        "tor",
-        "politics",
-        "privacy",
-        "crypto",
-        "hacking",
-        "bigbrother",
-        "activism",
         "law",
-        "network"
+        "tor",
+        "crypto",
+        "privacy",
+        "hacking",
+        "network",
+        "activism",
+        "politics",
+        "bigbrother"
     ],
     "6344": [
-        "politics",
+        "law",
         "crypto",
-        "bigbrother",
         "activism",
-        "law"
+        "politics",
+        "bigbrother"
     ],
     "6264": [
-        "politics",
-        "privacy",
-        "bigbrother",
         "law",
-        "network"
+        "privacy",
+        "network",
+        "politics",
+        "bigbrother"
     ],
     "6267": [
-        "software",
         "assembler",
         "space",
-        "security",
-        "hardware",
-        "hacking",
         "mobile",
         "wifi",
-        "network"
+        "hacking",
+        "network",
+        "hardware",
+        "software",
+        "security"
     ],
     "6558": [
-        "software",
-        "politics",
-        "security",
         "biometrics",
+        "activism",
+        "security",
+        "politics",
         "hardware",
-        "bigbrother",
-        "activism"
+        "software",
+        "bigbrother"
     ],
     "6574": [
-        "software",
-        "tor",
-        "assembler",
-        "politics",
-        "security",
-        "privacy",
-        "crypto",
-        "hacking",
-        "mobile",
         "science",
+        "assembler",
+        "tor",
+        "crypto",
+        "privacy",
+        "mobile",
         "bigbrother",
-        "network"
+        "hacking",
+        "network",
+        "politics",
+        "software",
+        "security"
     ],
     "9233": [
         "tor",
-        "malware",
-        "politics",
-        "security",
-        "privacy",
         "crypto",
+        "privacy",
         "society",
         "bigbrother",
+        "malware",
+        "network",
         "activism",
-        "network"
+        "politics",
+        "security"
     ],
     "8710": [
         "science"
     ],
+    "9064": [
+        "history",
+        "space",
+        "hardware",
+        "software"
+    ],
     "8797": [
-        "politics",
-        "security",
+        "law",
         "privacy",
         "society",
         "bigbrother",
+        "network",
         "activism",
-        "law",
-        "network"
+        "politics",
+        "security"
     ],
     "9289": [
-        "politics",
+        "law",
         "privacy",
-        "bigbrother",
         "activism",
-        "law"
+        "politics",
+        "bigbrother"
     ],
     "9190": [
-        "tor",
-        "politics",
-        "security",
-        "privacy",
-        "crypto",
-        "society",
-        "mobile",
-        "bigbrother",
-        "activism",
         "law",
-        "network"
+        "tor",
+        "crypto",
+        "privacy",
+        "mobile",
+        "society",
+        "network",
+        "activism",
+        "security",
+        "politics",
+        "bigbrother"
     ],
     "8919": [
-        "politics",
-        "security",
+        "law",
         "crypto",
         "society",
-        "bigbrother",
         "activism",
-        "law"
+        "security",
+        "politics",
+        "bigbrother"
     ],
     "8916": [
-        "software",
-        "politics",
-        "mobile",
-        "bigbrother",
         "law",
-        "activism",
+        "mobile",
         "wifi",
-        "network"
+        "network",
+        "activism",
+        "politics",
+        "software",
+        "bigbrother"
     ],
     "8936": [
-        "software",
-        "iot",
+        "cloud",
         "assembler",
-        "security",
-        "hardware",
+        "iot",
         "hacking",
         "network",
-        "cloud"
+        "hardware",
+        "software",
+        "security"
     ],
     "9040": [
-        "electronics",
         "bluetooth",
-        "bio",
-        "hardware",
-        "rfid",
+        "art",
         "wireless",
+        "bio",
         "wifi",
-        "art"
+        "rfid",
+        "hardware",
+        "electronics"
     ],
     "9276": [
+        "law",
         "space",
-        "politics",
-        "security",
         "society",
-        "forensic",
         "activism",
-        "law"
+        "forensic",
+        "politics",
+        "security"
     ],
     "8915": [
-        "software",
-        "iot",
         "assembler",
         "engineering",
-        "malware",
-        "security",
         "privacy",
+        "iot",
+        "malware",
+        "hacking",
         "hardware",
-        "hacking"
+        "software",
+        "security"
+    ],
+    "8724": [
+        "assembler",
+        "crypto",
+        "hacking",
+        "software",
+        "security"
     ],
     "8805": [
         "mobile",
@@ -1294,91 +1309,103 @@
         "security"
     ],
     "8900": [
+        "law",
         "tor",
-        "politics",
-        "security",
-        "privacy",
         "crypto",
+        "privacy",
         "society",
         "hacking",
-        "bigbrother",
+        "network",
         "activism",
-        "law",
-        "network"
+        "security",
+        "politics",
+        "bigbrother"
+    ],
+    "9247": [
+        "science",
+        "crypto",
+        "security"
     ],
     "8874": [
-        "politics",
+        "law",
         "privacy",
-        "society",
         "mobile",
-        "bigbrother",
+        "society",
         "activism",
-        "law"
+        "politics",
+        "bigbrother"
     ],
     "9072": [
-        "politics",
+        "law",
         "crypto",
         "society",
-        "law",
-        "network"
+        "network",
+        "politics"
     ],
     "9205": [
-        "software",
         "assembler",
-        "security",
-        "hardware",
         "crypto",
         "mobile",
-        "hacking"
+        "hacking",
+        "hardware",
+        "software",
+        "security"
     ],
     "9027": [
-        "security",
-        "aviation",
         "law",
+        "aviation",
+        "security",
         "politics"
     ],
     "8948": [
-        "software",
-        "politics",
+        "science",
         "bluetooth",
         "bio",
-        "hardware",
         "society",
-        "science",
-        "wifi"
+        "wifi",
+        "politics",
+        "hardware",
+        "software"
     ],
     "8908": [
-        "software",
-        "iot",
-        "security",
         "bluetooth",
-        "hardware",
-        "bio",
         "crypto",
+        "bio",
         "mobile",
+        "iot",
+        "wifi",
         "hacking",
-        "wifi"
+        "hardware",
+        "software",
+        "security"
     ],
     "9297": [
-        "politics",
-        "security",
-        "privacy",
+        "law",
         "crypto",
-        "society",
+        "privacy",
         "mobile",
-        "hacking",
+        "society",
         "bigbrother",
+        "hacking",
         "activism",
-        "law"
+        "politics",
+        "security"
     ],
     "9225": [
-        "software",
-        "iot",
         "assembler",
-        "security",
-        "hardware",
         "crypto",
-        "hacking"
+        "iot",
+        "hacking",
+        "hardware",
+        "software",
+        "security"
+    ],
+    "9296": [
+        "privacy",
+        "society",
+        "hacking",
+        "politics",
+        "security"
     ],
     "9092": [
         "automotive",
@@ -1391,29 +1418,30 @@
         "hardware"
     ],
     "9188": [
-        "software",
-        "activism",
         "politics",
-        "hacking"
+        "hacking",
+        "software",
+        "activism"
     ],
     "9194": [
-        "software",
-        "politics",
-        "privacy",
-        "hardware",
-        "activism",
         "law",
+        "education",
+        "privacy",
         "wifi",
-        "network"
+        "network",
+        "activism",
+        "politics",
+        "hardware",
+        "software"
     ],
     "9159": [
-        "software",
-        "security",
-        "privacy",
-        "hardware",
         "crypto",
+        "privacy",
         "bio",
-        "network"
+        "network",
+        "hardware",
+        "software",
+        "security"
     ],
     "9270": [
         "keynote",
@@ -1424,6 +1452,27 @@
     "9095": [
         "technology",
         "engineering"
+    ],
+    "34": [
+        "technology",
+        "hardware",
+        "lockpicking",
+        "security",
+        "history"
+    ],
+    "8721": [
+        "electronics",
+        "engineering",
+        "hardware",
+        "software",
+        "education"
+    ],
+    "221": [
+        "facedancer",
+        "usb",
+        "hardware",
+        "security",
+        "hacking"
     ],
     "9193": [
         "iot",
@@ -1441,12 +1490,6 @@
         "hardware",
         "software",
         "electronics"
-    ],
-    "9064": [
-        "history",
-        "space",
-        "hardware",
-        "software"
     ],
     "7468": [
         "history",
