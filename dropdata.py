@@ -4,6 +4,9 @@ import json
 import argparse
 import os
 import re
+import xml.etree.ElementTree
+import requests
+import pathlib
 
 from yaml import load, dump
 try:
@@ -60,9 +63,27 @@ CLOUD = "cloud"
 LOCKPICKING = "lockpicking"
 EDUCATION = "education"
 USB = "usb"
+RESILIENCE = "resilience"
+FREIFUNK = "freifunk"
+SURVEILLANCE = "surveillance"
+CENSORSHIP = "censorship"
+OS = "os"  # Operating system stuff
+KERNEL = "kernel"  # OS kernel stuff
+ANARCHY = "anarchy"
+TRAVEL = "travel"
+FUZZING = "fuzzing"
+ASAN = "asan"
+AFL = "afl"
+LIBFUZZER = "libfuzzer"
+IFG = "ifg"
+LORA = "lora"
+VM = "vm"  # virtual machines
+SCADA = "scada"
+APPLE = "apple"
+INTEL = "intel"
+MICROSOFT = "microsoft"
+OS = "os"  # Operating system
 
-ANDROID = "android"
-IOS = "ios"
 
 # Detailed Tags (let's find out if there are more than 3 talks deserving those tags)
 
@@ -84,6 +105,14 @@ UBERTOOTH = "ubertooth"
 
 SHODAN = "shodan"
 
+ANDROID = "android"
+IOS = "ios"
+JTAG = "jtag"
+FPGA = "fpga"
+EEPROM = "eeprom"
+NINTENDO = "nintendo"
+ARM = "arm"
+
 #SERIES
 SECURITY_NIGHTMARES = "security nightmares"
 METHODISCH_INKORREKT = "methodisch inkorrekt"  # TODO
@@ -102,7 +131,7 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Warab spring\W":[POLITICS, ACTIVISM],
            r"\Wedward snowden\W":[POLITICS, ACTIVISM, PRIVACY],
            r"\Wtor\W":[NETWORK, PRIVACY, TOR, CRYPTO],
-           r"\Wdragnet surveillance system\W": [NETWORK, PRIVACY, BIGBROTHER],
+           r"\Wdragnet surveillance system\W": [NETWORK, PRIVACY, BIGBROTHER, SURVEILLANCE],
            r"\Wquantenphysik\W": [SCIENCE],
            r"\Wrelativitätstheorie\W": [SCIENCE],
            r"\Walbert einstein\W": [SCIENCE],
@@ -157,7 +186,6 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wladeinfrastruktur\W": [AUTOMOTIVE],
            r"\Wdieselgate\W": [AUTOMOTIVE],
            r"\Wcan bus\W": [AUTOMOTIVE],
-           r"\Whacking\W": [HACKING],
            r"\Wseawatch\W": [ACTIVISM, POLITICS],
            r"\Wjugend rettet\W": [ACTIVISM, POLITICS],
            r"\Wmsf\W": [ACTIVISM, POLITICS],
@@ -167,7 +195,7 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wvlan\W": [NETWORK],
            r"\Wpci express\W": [HARDWARE],
            r"\Wnics?\W": [HARDWARE, NETWORK],
-           r"\Wnintendo\W": [CONSOLE],
+           r"\Wnintendo\W": [CONSOLE, NINTENDO],
            r"\Wblockchains?\W": [CRYPTO],
            r"\Wopensource\W": [SOFTWARE],
            r"\Wstaatsanwalt\W": [LAW],
@@ -244,7 +272,7 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wprofiling\W": [PRIVACY],
            r"\Wdprk\W": [POLITICS],
            r"\Wnsaua\W": [POLITICS],
-           r"\Wfreifunk\W": [NETWORK, WIFI, ACTIVISM],
+           r"\Wfreifunk\W": [NETWORK, WIFI, ACTIVISM, FREIFUNK, RESILIENCE],
            r"\Wgeflüchtete\W": [POLITICS, ACTIVISM],
            r"\Wlandesverrat\W": [POLITICS, ACTIVISM],
            r"\Wbig brother\W": [POLITICS, BIGBROTHER],
@@ -276,6 +304,44 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wfingerabdrucksensor\W": [BIOMETRICS],
            r"\Wfingerabdruckdaten\W": [BIOMETRICS, PRIVACY],
            r"\Wfingerprint reader\W": [BIOMETRICS],
+           r"\Wjtag\W": [JTAG, ELECTRONICS],
+           r"\Weeprom\W": [EEPROM, ELECTRONICS],
+           r"\Wfpgas?\W": [FPGA, ELECTRONICS],
+           r"\Wfuzzing\W": [FUZZING, SECURITY, SOFTWARE],
+           r"\Wasan\W": [ASAN, SECURITY, SOFTWARE],
+           r"\Wafl\W": [FUZZING, SECURITY, SOFTWARE, AFL],
+           r"\Wlibfuzzer\W": [FUZZING, SECURITY, SOFTWARE, LIBFUZZER],
+           r"\Wparticle accelerators?\W": [SCIENCE],
+           r"\Wembedded systems?\W": [IOT],
+           r"\Wgpio\W": [IOT],
+           r"\Wlora\W": [LORA],
+           r"\Wartist\W": [ART],
+           r"\Wvirtual machines?\W": [VM],
+           r"\Wkvm\W": [VM],
+           r"\Wvirtual box\W": [VM],
+           r"\Wqemu\W": [VM],
+           r"\Wscada\W": [IOT, SCADA],
+           r"\Windustrial control systems?\W": [IOT, SCADA],
+           r"\Wmacbooks?\W": [APPLE],
+           r"\Wmac\W": [APPLE],
+           r"\Wimac\W": [APPLE],
+           r"\Wx86\W": [HARDWARE, INTEL],
+           r"\Wcpu\W": [HARDWARE],
+           r"\Wwindows\W": [MICROSOFT, OS],
+           r"\Wwindows drivers?\W": [MICROSOFT, OS],
+           r"\Wwindows kernel driver\W": [MICROSOFT, OS],
+           r"\Wcable modem\W": [NETWORK],
+           r"\Wembedded devices?\W": [IOT],
+           r"\Wsystem abuse\W": [SECURITY],
+           r"\Wapt\W": [SECURITY, MALWARE, POLITICS],
+           r"\Wfiber optic cables?\W": [NETWORK],
+           r"\Wplcs?\W": [IOT],
+           r"\Whardware design\W": [HARDWARE],
+           r"\Wprogramming\W": [SOFTWARE],
+           r"\Wamiga 500\W": [HARDWARE, HISTORY],
+           r"\Wamiga 1000\W": [HARDWARE, HISTORY],
+           r"\Wrobot\W": [HARDWARE],
+
 
 
            }
@@ -297,6 +363,114 @@ default_talks = [{
         "id": "9095",
         "language": "German",
         "tags": [TECHNOLOGY, ENGINEERING],
+        "series": None,
+        },
+        {
+        "title": "Console Security - Switch",
+        "url": "https://media.ccc.de/v/34c3-8941-console_security_-_switch",
+        "congress": "34c3",
+        "id": "8941",
+        "language": "English",
+        "tags": [CONSOLE, HACKING, NINTENDO, SECURITY, ARM, OS, KERNEL, ASSEMBLER],
+        "series": None,
+        },
+        {
+        "title": "Commissioning methods for IoT",
+        "url": "https://media.ccc.de/v/SHA2017-325-commissioning_methods_for_iot",
+        "congress": "SHA2017",
+        "id": "325",
+        "language": "English",
+        "tags": [HARDWARE, NETWORK, IOT, SECURITY],
+        "series": None,
+        },
+        {
+        "title": "Datengarten 85 Crisis Response Makerspace in Berlin",
+        "url": "https://media.ccc.de/v/dg-85",
+        "congress": "datengarten",
+        "id": "dg-85",
+        "language": "German",
+        "tags": [SOCIETY, POLITICS, ACTIVISM, HARDWARE, MAKING],
+        "series": None,
+        },
+        {
+        "title": "Schreibtisch-Hooligans",
+        "url": "https://media.ccc.de/v/34c3-8714-schreibtisch-hooligans",
+        "congress": "34c3",
+        "id": "8714",
+        "language": "German",
+        "tags": [IFG, ACTIVISM, POLITICS],
+        "series": None,
+        },
+        {
+        "title": "UPSat - the first open source satellite",
+        "url": "https://media.ccc.de/v/34c3-9182-upsat_-_the_first_open_source_satellite",
+        "congress": "34c3",
+        "id": "9182",
+        "language": "English",
+        "tags": [ENGINEERING, SCIENCE, SPACE, HARDWARE],
+        "series": None,
+        },
+        {
+        "title": "Tiger, Drucker und ein Mahnmal",
+        "url": "https://media.ccc.de/v/34c3-8896-tiger_drucker_und_ein_mahnmal",
+        "congress": "34c3",
+        "id": "8896",
+        "language": "German",
+        "tags": [ENTERTAINMENT, ACTIVISM, POLITICS],
+        "series": None,
+        },
+        {
+        "title": "Taxation",
+        "url": "https://media.ccc.de/v/34c3-9047-taxation",
+        "congress": "34c3",
+        "id": "9047",
+        "language": "English",
+        "tags": [SOCIETY, POLITICS, ACTIVISM],
+        "series": None,
+        },
+        {
+        "title": "Protecting Your Privacy at the Border",
+        "url": "https://media.ccc.de/v/34c3-9086-protecting_your_privacy_at_the_border",
+        "congress": "34c3",
+        "id": "9086",
+        "language": "English",
+        "tags": [POLITICS, PRIVACY, SURVEILLANCE, SOLUTION],
+        "series": None,
+        },
+        {
+        "title": "Exploiting The North American Railways",
+        "url": "https://media.ccc.de/v/SHA2017-270-exploiting_the_north_american_railways",
+        "congress": "sha2017",
+        "id": "270",
+        "language": "English",
+        "tags": [ANARCHY, TRAVEL],
+        "series": None,
+        },
+        {
+        "title": "Improving security with Fuzzing and Sanitizers",
+        "url": "https://media.ccc.de/v/SHA2017-148-improving_security_with_fuzzing_and_sanitizers",
+        "congress": "sha2017",
+        "id": "148",
+        "language": "English",
+        "tags": [SECURITY, FUZZING, ASAN, AFL, LIBFUZZER],
+        "series": None,
+        },
+        {
+        "title": "Demystifying Network Cards",
+        "url": "https://media.ccc.de/v/34c3-9159-demystifying_network_cards",
+        "congress": "34c3",
+        "id": "9159",
+        "language": "English",
+        "tags": [NETWORK, KERNEL, SOFTWARE, OS, HARDWARE],
+        "series": None,
+        },
+        {
+        "title": "The Internet in Cuba: A Story of Community Resilience",
+        "url": "https://media.ccc.de/v/34c3-8740-the_internet_in_cuba_a_story_of_community_resilience",
+        "congress": "34c3",
+        "id": "8740",
+        "language": "English",
+        "tags": [NETWORK, ACTIVISM, POLITICS, SOLUTION, FREIFUNK],
         "series": None,
         },
         {
@@ -343,6 +517,15 @@ default_talks = [{
         "id": "9193",
         "language": "English",
         "tags": [IOT, PRIVACY, SECURITY, HARDWARE, SOFTWARE, HACKING, BLUETOOTH],
+        "series": None,
+        },
+        {
+        "title": "Inside Intel Management Engine",
+        "url": "https://media.ccc.de/v/34c3-8762-inside_intel_management_engine",
+        "congress": "34c3",
+        "id": "8762",
+        "language": "English",
+        "tags": [HARDWARE, SECURITY, HACKING, OS, USB, JTAG, ASSEMBLER],
         "series": None,
         },
         {
@@ -469,6 +652,15 @@ default_talks = [{
         "id": "9207",
         "language": "English",
         "tags": [HARDWARE, HACKING, CHIPWHISPERER, ELECTRONICS, GLITCHKIT],
+        "series": None,
+        },
+        {
+        "title": "Hardening Open Source Development",
+        "url": "https://media.ccc.de/v/34c3-9249-hardening_open_source_development",
+        "congress": "34c3",
+        "id": "9249",
+        "language": "English",
+        "tags": [SOFTWARE, SECURITY, ENGINEERING],
         "series": None,
         },
         {
@@ -647,20 +839,110 @@ default_talks = [{
         ]
 
 
+fraps = [("https://fahrplan.events.ccc.de/congress/2017/Fahrplan/schedule.xml",
+          "data/34C3.xml",
+          "34C3"),
+          ("https://fahrplan.events.ccc.de/congress/2016/Fahrplan/schedule.xml",
+          "data/33C3.xml",
+          "33C3"),
+          ("https://fahrplan.events.ccc.de/congress/2015/Fahrplan/schedule.xml",
+          "data/32C3.xml",
+          "32C3"),
+          ("https://fahrplan.events.ccc.de/congress/2014/Fahrplan/schedule.xml",
+          "data/31C3.xml",
+          "31C3"),
+          ("https://fahrplan.events.ccc.de/congress/2013/Fahrplan/schedule.xml",
+          "data/30C3.xml",
+          "30C3"),
+          ("https://fahrplan.events.ccc.de/congress/2012/Fahrplan/schedule.en.xml",
+          "data/29C3.xml",
+          "29C3"),
+          ("https://fahrplan.events.ccc.de/congress/2011/Fahrplan/schedule.en.xml",
+          "data/28C3.xml",
+          "28C3"),
+          ("https://fahrplan.events.ccc.de/congress/2010/Fahrplan/schedule.en.xml",
+          "data/27C3.xml",
+          "27C3"),
+          ("https://fahrplan.events.ccc.de/congress/2009/Fahrplan/schedule.en.xml",
+          "data/26C3.xml",
+          "26C3"),
+          ("https://fahrplan.events.ccc.de/congress/2008/Fahrplan/schedule.en.xml",
+          "data/25C3.xml",
+          "25C3"),
+          ("https://fahrplan.events.ccc.de/congress/2007/Fahrplan/schedule.en.xml",
+          "data/24C3.xml",
+          "24C3"),
+          ("https://fahrplan.events.ccc.de/congress/2006/Fahrplan/schedule.en.xml",
+          "data/23C3.xml",
+          "23C3"),
+
+          ("https://events.ccc.de/camp/2011/Fahrplan/schedule.en.xml",
+          "data/ccc_camp2011.xml",
+          "CCC-CAMP2011"),
+          ("https://events.ccc.de/camp/2015/Fahrplan/schedule.xml",
+          "data/ccc_camp2015.xml",
+          "CCC-CAMP2015"),
+
+          ("https://entropia.de/GPN18:Fahrplan:XML?action=raw",
+          "data/gpn18.xml",
+          "GPN18"),
+          ("https://entropia.de/GPN17:Fahrplan:XML?action=raw",
+          "data/gpn17.xml",
+          "GPN17"),
+          ("https://entropia.de/GPN16:Fahrplan:XML?action=raw",
+          "data/gpn16.xml",
+          "GPN16"),
+          ("https://entropia.de/GPN15:Fahrplan:XML?action=raw",
+          "data/gpn15.xml",
+          "GPN15"),
+          ("https://entropia.de/GPN14:Fahrplan:XML?action=raw",
+          "data/gpn14.xml",
+          "GPN14"),
+          ("https://entropia.de/GPN13:Fahrplan:XML?action=raw",
+          "data/gpn13.xml",
+          "GPN13"),
+          ("https://entropia.de/GPN12:Fahrplan:XML?action=raw",
+          "data/gpn12.xml",
+          "GPN12"),
+          ("https://entropia.de/GPN11:Fahrplan:XML?action=raw",
+          "data/gpn11.xml",
+          "GPN11"),
+
+          ("https://talks.mrmcd.net/2017/schedule/export/schedule.xml",
+          "data/mrmcd2017.xml",
+          "MRMCD2017")]
+
+
+
+
 def get_congress(filename):
     return filename.split("-")[0]
 
+
 def get_id(filename):
     return filename.split("-")[1]
+
+
+def text_to_tags(text):
+    """ Generate tags from a string """
+
+    res = []
+
+    text = text.lower()
+
+    for akey in regexes.keys():
+        if re.search(akey, text, re.MULTILINE):
+            res += regexes[akey]
+
+    return list(set(res))
+
 
 def get_tags(filename):
     res = []
     with open(filename, "rt") as fh:
         content = fh.read().lower()
-        for akey in regexes.keys():
-            if re.search(akey, content, re.MULTILINE):
-                res += regexes[akey]
-    return list(set(res))
+        res = text_to_tags(content)
+    return res
 
 def from_subtitles(directory):
     res = {}
@@ -680,6 +962,53 @@ def from_subtitles(directory):
     return res
 
 
+# FRAB
+
+def from_frabs():
+    collected = {}
+    # Getting files
+    for url, filename, congress in fraps:
+        if pathlib.Path(filename).is_file():
+            continue
+        r = requests.get(url)
+        if r.status_code == requests.codes.ok:
+            with open(filename, "w") as fh:
+                fh.write(r.text)
+
+    # reading files
+    for url, filename, congress in fraps:
+        print(filename)
+        try:
+            e = xml.etree.ElementTree.parse(filename).getroot()
+        except FileNotFoundError:
+            print("Missing file {}".format(filename))
+        else:
+            for days in e.findall('day'):
+                for rooms in days.findall("room"):
+                    for event in rooms.findall("event"):
+                        e = {}
+                        try:
+                            e["guid"] = event.attrib["guid"]
+                        except KeyError:
+                            e["guid"] = None
+                        e["id"] = event.attrib["id"]
+                        e["title"] = event.find("title").text
+                        e["subtitle"] = event.find("subtitle").text
+                        e["abstract"] = event.find("abstract").text
+                        e["description"] = event.find("description").text
+                        try:
+                            e["slug"] = event.find("slug").text
+                        except AttributeError:
+                            e["slug"] = None
+                        e["tags"] = text_to_tags("{title} {subtitle} {abstract} {description}".format(**e))
+
+                        e["congress"] = congress
+                        if e["guid"]:
+                            collected[e["guid"]] = e
+    return collected
+
+# Defaults
+
 def simplify_defaults():
     res = {}
     for talk in default_talks:
@@ -691,9 +1020,14 @@ if __name__ == "__main__":
     parser.add_argument("--subtitles", help="Process subtitles folder. Output json", default = None, type=str)
     parser.add_argument("--out", help="out filename. Without postfix .json or .yaml. This will be added", default = None, type = str)
     parser.add_argument("--default", help="Load hard coded default talks as well", action="store_true", default = False)
+    parser.add_argument("--frab", help="Use frabs to generate data", action="store_true", default = False)
+
     args = parser.parse_args()
 
     talks = {}
+
+    if args.frab:
+        talks = from_frabs()
 
     # Generate db from subtitles
     # Subtitles are on mirror.selfnet.de/c3subtitles/congress...
