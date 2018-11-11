@@ -12,6 +12,10 @@ program - that way it can be exported in any format.
 - jeopardy series
 -
 
+# Calling it
+
+Frab only:
+./dropdata.py --frab --out frab
 
 # Data sources
 
