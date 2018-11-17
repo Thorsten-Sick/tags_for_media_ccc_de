@@ -7,12 +7,17 @@ import re
 import xml.etree.ElementTree
 import requests
 import pathlib
+from concurrent import futures
 
 from yaml import load, dump
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
     from yaml import Loader, Dumper
+
+# For concurrent
+
+MAX_WORKERS = 50
 
 # TAGS
 KEYNOTE = "keynote"
@@ -83,7 +88,12 @@ APPLE = "apple"
 INTEL = "intel"
 MICROSOFT = "microsoft"
 OS = "os"  # Operating system
-
+LINUX = "linux"
+CONTAINER = "container"
+WEB = "web"
+SERVER = "server"
+OPENSOURCE = "opensource"
+BROWSER = "browser"
 
 # Detailed Tags (let's find out if there are more than 3 talks deserving those tags)
 
@@ -197,7 +207,8 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wnics?\W": [HARDWARE, NETWORK],
            r"\Wnintendo\W": [CONSOLE, NINTENDO],
            r"\Wblockchains?\W": [CRYPTO],
-           r"\Wopensource\W": [SOFTWARE],
+           r"\Wopensource\W": [SOFTWARE, OPENSOURCE],
+           r"\Wopen-source\W": [SOFTWARE, OPENSOURCE],
            r"\Wstaatsanwalt\W": [LAW],
            r"\Wanwälte\W": [LAW],
            r"\Wabmahnanwälte\W": [LAW],
@@ -341,6 +352,32 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wamiga 500\W": [HARDWARE, HISTORY],
            r"\Wamiga 1000\W": [HARDWARE, HISTORY],
            r"\Wrobot\W": [HARDWARE],
+           r"\Wlinux\W": [OS, LINUX],
+           r"\Wnetwork\W": [NETWORK],
+           r"\Wnetzwerk\W": [NETWORK],
+           r"\Wdocker\W": [CONTAINER],
+           r"\Wansible\W": [CONTAINER],
+           r"\Wvagrant\W": [CONTAINER],
+           r"\Wapache\W": [WEB, SERVER, NETWORK],
+           r"\Whttp/2\.0\W": [WEB,  NETWORK],
+           r"\Whttp header\.0\W": [WEB,  NETWORK],
+           r"\Wrest\W": [WEB,  NETWORK],
+           r"\Wpgp\W": [CRYPTO, PRIVACY],
+           r"\Wbrowsersecurity\W": [WEB, BROWSER, SECURITY],
+           r"\Wbrowser security\W": [WEB, BROWSER, SECURITY],
+           r"\Wbrowser\W": [WEB, BROWSER],
+           r"\Winternet\W": [NETWORK],
+           r"\W802.11\W": [NETWORK, WIFI],
+           r"\Wmidi\W": [ART, HARDWARE],
+           r"\Wtheater\W": [ART],
+           r"\Wios\W": [OS, IOS, APPLE],
+           r"\Wspace\W": [SPACE, SCIENCE],
+           r"\Winterplanetary\W": [SPACE, SCIENCE],
+           r"\Wmethodisch inkorrekt\W": [SCIENCE],
+           r"\Wartificial intelligence\W": [AI],
+           r"\Wextraterrestrial\W": [SPACE, SCIENCE],
+
+
 
 
 
@@ -840,79 +877,57 @@ default_talks = [{
 
 
 fraps = [("https://fahrplan.events.ccc.de/congress/2017/Fahrplan/schedule.xml",
-          "data/34C3.xml",
-          "34C3"),
+          "34c3"),
           ("https://fahrplan.events.ccc.de/congress/2016/Fahrplan/schedule.xml",
-          "data/33C3.xml",
-          "33C3"),
+          "33c3"),
           ("https://fahrplan.events.ccc.de/congress/2015/Fahrplan/schedule.xml",
-          "data/32C3.xml",
-          "32C3"),
+          "32c3"),
           ("https://fahrplan.events.ccc.de/congress/2014/Fahrplan/schedule.xml",
-          "data/31C3.xml",
-          "31C3"),
+          "31c3"),
           ("https://fahrplan.events.ccc.de/congress/2013/Fahrplan/schedule.xml",
-          "data/30C3.xml",
-          "30C3"),
+          "30c3"),
           ("https://fahrplan.events.ccc.de/congress/2012/Fahrplan/schedule.en.xml",
-          "data/29C3.xml",
-          "29C3"),
+          "29c3"),
           ("https://fahrplan.events.ccc.de/congress/2011/Fahrplan/schedule.en.xml",
-          "data/28C3.xml",
-          "28C3"),
+          "28c3"),
           ("https://fahrplan.events.ccc.de/congress/2010/Fahrplan/schedule.en.xml",
-          "data/27C3.xml",
-          "27C3"),
+          "27c3"),
           ("https://fahrplan.events.ccc.de/congress/2009/Fahrplan/schedule.en.xml",
-          "data/26C3.xml",
-          "26C3"),
+          "26c3"),
           ("https://fahrplan.events.ccc.de/congress/2008/Fahrplan/schedule.en.xml",
-          "data/25C3.xml",
-          "25C3"),
+          "25c3"),
           ("https://fahrplan.events.ccc.de/congress/2007/Fahrplan/schedule.en.xml",
-          "data/24C3.xml",
-          "24C3"),
+          "24c3"),
           ("https://fahrplan.events.ccc.de/congress/2006/Fahrplan/schedule.en.xml",
-          "data/23C3.xml",
-          "23C3"),
+          "23c3"),
 
           ("https://events.ccc.de/camp/2011/Fahrplan/schedule.en.xml",
-          "data/ccc_camp2011.xml",
-          "CCC-CAMP2011"),
+          "camp2011"),
           ("https://events.ccc.de/camp/2015/Fahrplan/schedule.xml",
-          "data/ccc_camp2015.xml",
-          "CCC-CAMP2015"),
+          "camp2015"),
 
           ("https://entropia.de/GPN18:Fahrplan:XML?action=raw",
-          "data/gpn18.xml",
-          "GPN18"),
+          "gpn18"),
           ("https://entropia.de/GPN17:Fahrplan:XML?action=raw",
-          "data/gpn17.xml",
-          "GPN17"),
+          "gpn17"),
           ("https://entropia.de/GPN16:Fahrplan:XML?action=raw",
-          "data/gpn16.xml",
-          "GPN16"),
+          "gpn16"),
           ("https://entropia.de/GPN15:Fahrplan:XML?action=raw",
-          "data/gpn15.xml",
-          "GPN15"),
+          "gpn15"),
           ("https://entropia.de/GPN14:Fahrplan:XML?action=raw",
-          "data/gpn14.xml",
-          "GPN14"),
+          "gpn14"),
           ("https://entropia.de/GPN13:Fahrplan:XML?action=raw",
-          "data/gpn13.xml",
-          "GPN13"),
+          "gpn13"),
           ("https://entropia.de/GPN12:Fahrplan:XML?action=raw",
-          "data/gpn12.xml",
-          "GPN12"),
+          "gpn12"),
           ("https://entropia.de/GPN11:Fahrplan:XML?action=raw",
-          "data/gpn11.xml",
-          "GPN11"),
+          "gpn11"),
 
           ("https://talks.mrmcd.net/2017/schedule/export/schedule.xml",
-          "data/mrmcd2017.xml",
-          "MRMCD2017")]
+          "mrmcd17")]
 
-
+# See: https://github.com/voc/voctoweb/issues/246
+voctoweburl = "https://api.media.ccc.de/public/conferences"
 
 
 def get_congress(filename):
@@ -944,6 +959,7 @@ def get_tags(filename):
         res = text_to_tags(content)
     return res
 
+
 def from_subtitles(directory):
     res = {}
 
@@ -964,24 +980,63 @@ def from_subtitles(directory):
 
 # FRAB
 
+def from_voctoweb():
+    """ Use the voctoweb database and extract complete acronym/schedule-url pairs"""
+    res = []
+    r = requests.get(voctoweburl)
+    if r.status_code == requests.codes.ok:
+        data = r.json()
+        for entry in data["conferences"]:
+            if "acronym" in entry and "schedule_url" in entry and\
+               entry["schedule_url"] and\
+               len(entry.get("acronym", "")) > 0 and \
+               len(entry.get("schedule_url", "")) > 0 and\
+               entry["schedule_url"].startswith("http"):
+                res.append((entry["schedule_url"], entry["acronym"]))
+    return res
+
+
+def download_one(entry):
+    """ Download one entry in the schedule.xml list """
+    url, acronym = entry
+    filename = "data/"+acronym+".xml"
+    if not pathlib.Path(filename).is_file():
+        try:
+            r = requests.get(url)
+            print(url)
+            if r.status_code == requests.codes.ok:
+                with open(filename, "w") as fh:
+                    fh.write(r.text)
+        except requests.exceptions.MissingSchema:
+            print("Error: Broken url: " + url)
+        except requests.exceptions.ConnectionError:
+            print("Error: Connection error url: " + url)
+
 def from_frabs():
     collected = {}
-    # Getting files
-    for url, filename, congress in fraps:
-        if pathlib.Path(filename).is_file():
-            continue
-        r = requests.get(url)
-        if r.status_code == requests.codes.ok:
-            with open(filename, "w") as fh:
-                fh.write(r.text)
 
+    combined_fraps = list(fraps)
+    combined_fraps += from_voctoweb()
+    combined_fraps = list(set(combined_fraps))
+
+    # Getting files
+    # Todo: optimize
+
+    workers = min(MAX_WORKERS, len(combined_fraps))
+    with futures.ThreadPoolExecutor(workers) as executor:
+        res = executor.map(download_one, combined_fraps)
+
+    print("# Processing")
     # reading files
-    for url, filename, congress in fraps:
+    for url, acronym in combined_fraps:
+        filename = "data/"+acronym+".xml"
         print(filename)
         try:
             e = xml.etree.ElementTree.parse(filename).getroot()
         except FileNotFoundError:
-            print("Missing file {}".format(filename))
+            print("Error: Missing file {}".format(filename))
+        except xml.etree.ElementTree.ParseError:
+            print("Error: Broken file {}".format(filename))
         else:
             for days in e.findall('day'):
                 for rooms in days.findall("room"):
@@ -1002,7 +1057,7 @@ def from_frabs():
                             e["slug"] = None
                         e["tags"] = text_to_tags("{title} {subtitle} {abstract} {description}".format(**e))
 
-                        e["congress"] = congress
+                        e["acronym"] = acronym
                         if e["guid"]:
                             collected[e["guid"]] = e
     return collected
