@@ -89,11 +89,39 @@ INTEL = "intel"
 MICROSOFT = "microsoft"
 OS = "os"  # Operating system
 LINUX = "linux"
+BSD = "bsd"
 CONTAINER = "container"
 WEB = "web"
 SERVER = "server"
 OPENSOURCE = "opensource"
 BROWSER = "browser"
+SMARTHOME = "smarthome"
+DIY = "diy"
+DATABASE = "database"
+LATEX = "latex"
+PYTHON = "python"
+RUBY = "ruby"
+LISP = "lisp"
+CPP = "c++"
+JAVA = "java"
+INKSCAPE = "inkscape"
+GRAPHICS = "graphics"
+JAVASCRIPT = "javascript"
+PERL = "perl"
+OPENSTREETMAP = "openstreetmap"
+PODCAST = "podcast"
+WEBSERVER = "webserver"
+HONEYPOT = "honeypot"
+TESTING = "testing"
+IMAGEMAGICK = "imagemagick"
+MESSENGER = "messenger"
+FREIFUNK = "freifunk"
+KEYNOTE = "keynote"
+OPENING = "opening"
+LIGHTNINGTALKS = "lightningtalks"
+LEARNING = "learning"
+WORDPRESS = "wordpress"
+WIKI = "wiki"
 
 # Detailed Tags (let's find out if there are more than 3 talks deserving those tags)
 
@@ -129,18 +157,17 @@ METHODISCH_INKORREKT = "methodisch inkorrekt"  # TODO
 ULTIMATE_TALK = "ultimate talks"
 INFRASTRUCTURE_REV = "infrastructure review" # TODO
 
-regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
-           r"\Wmifare\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
-           r"\Wmifare\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
-           r"\Whitag\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
-           r"\Wgeheimdienste?\W":[BIGBROTHER, POLITICS],
-           r"\Wgchq?\W":[BIGBROTHER, POLITICS],
-           r"\Wnsa?\W":[BIGBROTHER, POLITICS],
-           r"\Wsatellite\W":[SPACE],
-           r"\Wlulzsec\W":[ACTIVISM],
-           r"\Warab spring\W":[POLITICS, ACTIVISM],
-           r"\Wedward snowden\W":[POLITICS, ACTIVISM, PRIVACY],
-           r"\Wtor\W":[NETWORK, PRIVACY, TOR, CRYPTO],
+regexes = {r"\Wrfid\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
+           r"\Wmifare\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
+           r"\Whitag\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
+           r"\Wgeheimdienste?\W": [BIGBROTHER, POLITICS],
+           r"\Wgchq?\W": [BIGBROTHER, POLITICS],
+           r"\Wnsa?\W": [BIGBROTHER, POLITICS],
+           r"\Wsatellite\W": [SPACE],
+           r"\Wlulzsec\W": [ACTIVISM],
+           r"\Warab spring\W": [POLITICS, ACTIVISM],
+           r"\Wedward snowden\W": [POLITICS, ACTIVISM, PRIVACY],
+           r"\Wtor\W": [NETWORK, PRIVACY, TOR, CRYPTO],
            r"\Wdragnet surveillance system\W": [NETWORK, PRIVACY, BIGBROTHER, SURVEILLANCE],
            r"\Wquantenphysik\W": [SCIENCE],
            r"\Wrelativitätstheorie\W": [SCIENCE],
@@ -209,10 +236,10 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wblockchains?\W": [CRYPTO],
            r"\Wopensource\W": [SOFTWARE, OPENSOURCE],
            r"\Wopen-source\W": [SOFTWARE, OPENSOURCE],
+           r"\Wopen source\W": [SOFTWARE, OPENSOURCE],
            r"\Wstaatsanwalt\W": [LAW],
            r"\Wanwälte\W": [LAW],
            r"\Wabmahnanwälte\W": [LAW],
-           r"\Wreverse engineering\W": [HACKING],
            r"\Wfake news\W": [POLITICS, SOCIETY],
            r"\Wlügenpresse\W": [POLITICS, SOCIETY],
            r"\Wdata-science\W": [SCIENCE],
@@ -269,8 +296,6 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wlogjam\W": [CRYPTO],
            r"\Wdiffie-hellman\W": [CRYPTO],
            r"\Wblackout\W": [IOT],
-           r"\Wperl\W": [SOFTWARE],
-           r"\Wsql\W": [SOFTWARE],
            r"\Wtan\W": [BANKING],
            r"\Wbandwidth\W": [NETWORK],
            r"\Wlasers?\W": [SCIENCE],
@@ -315,13 +340,18 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wfingerabdrucksensor\W": [BIOMETRICS],
            r"\Wfingerabdruckdaten\W": [BIOMETRICS, PRIVACY],
            r"\Wfingerprint reader\W": [BIOMETRICS],
+           r"\Wbiometrie\W": [BIOMETRICS, SECURITY],
+           r"\Wbiometrisch\W": [BIOMETRICS, SECURITY],
+           r"\Wvenenerkennung\W": [BIOMETRICS, SECURITY],
+           r"\Wpassword\W": [SECURITY],
+           r"\Wpasswort\W": [SECURITY],
            r"\Wjtag\W": [JTAG, ELECTRONICS],
            r"\Weeprom\W": [EEPROM, ELECTRONICS],
            r"\Wfpgas?\W": [FPGA, ELECTRONICS],
-           r"\Wfuzzing\W": [FUZZING, SECURITY, SOFTWARE],
+           r"\Wfuzzing\W": [FUZZING, SECURITY, SOFTWARE, TESTING],
            r"\Wasan\W": [ASAN, SECURITY, SOFTWARE],
-           r"\Wafl\W": [FUZZING, SECURITY, SOFTWARE, AFL],
-           r"\Wlibfuzzer\W": [FUZZING, SECURITY, SOFTWARE, LIBFUZZER],
+           r"\Wafl\W": [FUZZING, SECURITY, SOFTWARE, AFL, TESTING],
+           r"\Wlibfuzzer\W": [FUZZING, SECURITY, SOFTWARE, LIBFUZZER, TESTING],
            r"\Wparticle accelerators?\W": [SCIENCE],
            r"\Wembedded systems?\W": [IOT],
            r"\Wgpio\W": [IOT],
@@ -358,7 +388,8 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wdocker\W": [CONTAINER],
            r"\Wansible\W": [CONTAINER],
            r"\Wvagrant\W": [CONTAINER],
-           r"\Wapache\W": [WEB, SERVER, NETWORK],
+           r"\Wapache\W": [WEB, SERVER, NETWORK, WEBSERVER],
+           r"\Wnginx\W": [WEB, SERVER, NETWORK, WEBSERVER],
            r"\Whttp/2\.0\W": [WEB,  NETWORK],
            r"\Whttp header\.0\W": [WEB,  NETWORK],
            r"\Wrest\W": [WEB,  NETWORK],
@@ -376,6 +407,111 @@ regexes = {r"\Wrfid\W":[RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wmethodisch inkorrekt\W": [SCIENCE],
            r"\Wartificial intelligence\W": [AI],
            r"\Wextraterrestrial\W": [SPACE, SCIENCE],
+           r"\Wdnssec\W": [NETWORK, SECURITY],
+           r"\Wipsec\W": [NETWORK, SECURITY],
+           r"\Wfirewalls?\W": [NETWORK, SECURITY],
+           r"\Wipv6\W": [NETWORK],
+           r"\Wraspberry pi\W": [HARDWARE],
+           r"\Wsmart ?home\W": [SMARTHOME, IOT],
+           r"\Warduino\W": [IOT, SOFTWARE, HARDWARE, DIY, ELECTRONICS],
+           r"\Wsamba4?\W": [NETWORK],
+           r"\Wsql\W": [DATABASE],
+           r"\Wmysql\W": [DATABASE],
+           r"\Wmongodb\W": [DATABASE],
+           r"\Wcouchbase\W": [DATABASE],
+           r"\Wcouchdb\W": [DATABASE],
+           r"\Wpostgresql\W": [DATABASE],
+           r"\Wnosql\W": [DATABASE],
+           r"\Whtml5?\W": [WEB, SOFTWARE, BROWSER],
+           r"\Wcss\W": [WEB, SOFTWARE, BROWSER],
+           r"\Wbsd\W": [BSD, OS],
+           r"\Wlatex\W": [LATEX],
+           r"\Wpython\W": [PYTHON, SOFTWARE],
+           r"\Wruby\W": [RUBY, SOFTWARE],
+           r"\Wlisp\W": [LISP, SOFTWARE],
+           r"\Wdjango\W": [PYTHON, SOFTWARE, WEB],
+           r"\Wfedora\W": [LINUX, OS],
+           r"\Winkscape\W": [INKSCAPE, GRAPHICS],
+           r"\Wjavascript\W": [JAVASCRIPT, SOFTWARE],
+           r"\Wopenstreetmap\W": [OPENSTREETMAP],
+           r"\Wosm\W": [OPENSTREETMAP],
+           r"\Wpodcast\W": [PODCAST],
+           r"\Wpodlove\W": [PODCAST],
+           r"\Wkeysigning\W": [CRYPTO, PRIVACY],
+           r"\Wwebserver\W": [WEB, WEBSERVER],
+           r"\Wdatabase\W": [DATABASE],
+           r"\Wlamp\W": [DATABASE, WEBSERVER, WEB],
+           r"\Wddos\W": [NETWORK, SECURITY],
+           r"\Whoneypots?\W": [SECURITY, HONEYPOT],
+           r"\Wcuckoo sandbox\W": [SECURITY, HONEYPOT],
+           r"\Wunit testing\W": [TESTING],
+           r"\Wterraforming\W": [SCIENCE],
+           r"\Whydroponics\W": [SCIENCE],
+           r"\Wmusical\W": [ART],
+           r"\Wstaatstrojaner\W": [SECURITY, POLITICS, BIGBROTHER],
+           r"\Wcarhacking\W": [AUTOMOTIVE, SECURITY, HARDWARE],
+           r"\Welectric guitars?\W": [ART],
+           r"\Wmoon\W": [SCIENCE, SPACE],
+           r"\Wraumfahrt\W": [SCIENCE, SPACE],
+           r"\Welectronics\W": [HARDWARE],
+           r"\Welektronik\W": [HARDWARE],
+           r"\Wunix\W": [LINUX, BSD, OS],
+           r"\Wchemie\W": [SCIENCE],
+           r"\Wperl\W": [SOFTWARE, PERL],
+           r"\Wdemokratie\W": [POLITICS],
+           r"\Wc\+\+\W": [CPP, SOFTWARE],
+           r"\Wjava\W": [JAVA, SOFTWARE],
+           r"\Wscience\W": [SCIENCE],
+           r"\Wwar on terror\W": [POLITICS],
+           r"\Wdespot\W": [POLITICS],
+           r"\Wauthentifizieren\W": [SECURITY],
+           r"\Wfiber optics\W": [NETWORK],
+           r"\Wpodcasting\W": [PODCAST],
+           r"\Wkinkygeeks\W": [SOCIETY],
+           r"\Wsticken\W": [HARDWARE, DIY],
+           r"\Wstaat\W": [POLITICS],
+           r"\Wgesetze?\W": [POLITICS],
+           r"\Wdrugs\W": [POLITICS, SCIENCE, BIO],
+           r"\Wlockpicking\W": [SECURITY, HARDWARE],
+           r"\Wschmuck\W": [ART],
+           r"\Wjewellery\W": [POLITICS],
+           r"\Wwebsocket\W": [WEB, SOFTWARE, BROWSER],
+           r"\Wagile\W": [ENGINEERING],
+           r"\Wretrospektive\W": [ENGINEERING],
+           r"\Wbioinformatik\W": [SCIENCE, BIO, SOFTWARE],
+           r"\Wctf\W": [SECURITY],
+           r"\Wimagemagick\W": [GRAPHICS, IMAGEMAGICK],
+           r"\Wamnesty international\W": [ACTIVISM, POLITICS],
+           r"\Wwahl\W": [POLITICS],
+           r"\Wwahlen\W": [POLITICS],
+           r"\Welections?\W": [POLITICS],
+           r"\Wcyborgs?\W": [BIO, HARDWARE, SCIENCE],
+           r"\Wdistilling\W": [DIY, FOOD],
+           r"\Wschnaps\W": [DIY, FOOD],
+           r"\Wbeer\W": [DIY, FOOD],
+           r"\Wmachine learning\W": [AI, SOFTWARE],
+           r"\Wparlament\W": [POLITICS],
+           r"\Wparlamenten\W": [POLITICS],
+           r"\Wjabber\W": [NETWORK, MESSENGER],
+           r"\Wxmpp\W": [NETWORK, MESSENGER],
+           r"\Wwhatsapp\W": [NETWORK, MESSENGER],
+           r"\Wthreema\W": [NETWORK, MESSENGER, PRIVACY],
+           r"\Womemo\W": [NETWORK, MESSENGER, PRIVACY],
+           r"\Wbsi\W": [POLITICS],
+           r"\Wcryptoparties\W": [CRYPTO, SECURITY, PRIVACY],
+           r"\Wcrypto partys?\W": [CRYPTO, SECURITY, PRIVACY],
+           r"\Wkeynote\W": [KEYNOTE],
+           r"\Wglasfasern?\W": [NETWORK],
+           r"\Wlightning talks\W": [LIGHTNINGTALKS],
+           r"\Wlernen\W": [EDUCATION],
+           r"\Wbildung\W": [EDUCATION],
+           r"\Wopening\W": [OPENING],
+           r"\Wwordpress\W": [WORDPRESS],
+           r"\Wwiki\W": [WIKI],
+           r"\Wwikipedia\W": [WIKI],
+           r"\Wfree software\W": [OPENSOURCE],
+
+
 
 
 
