@@ -122,6 +122,9 @@ LIGHTNINGTALKS = "lightningtalks"
 LEARNING = "learning"
 WORDPRESS = "wordpress"
 WIKI = "wiki"
+ADMINISTRATION = "administration"
+MUSIC = "music"
+ALGORITHMS = "algorithms"
 
 # Detailed Tags (let's find out if there are more than 3 talks deserving those tags)
 
@@ -503,6 +506,7 @@ regexes = {r"\Wrfid\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wkeynote\W": [KEYNOTE],
            r"\Wglasfasern?\W": [NETWORK],
            r"\Wlightning talks\W": [LIGHTNINGTALKS],
+           r"\Wlightning-talks\W": [LIGHTNINGTALKS],
            r"\Wlernen\W": [EDUCATION],
            r"\Wbildung\W": [EDUCATION],
            r"\Wopening\W": [OPENING],
@@ -510,6 +514,23 @@ regexes = {r"\Wrfid\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wwiki\W": [WIKI],
            r"\Wwikipedia\W": [WIKI],
            r"\Wfree software\W": [OPENSOURCE],
+           r"\Wowasp\W": [SECURITY, SOFTWARE, WEB],
+           r"\Wsysadmin\W": [ADMINISTRATION],
+           r"\Wadmin\W": [ADMINISTRATION],
+           r"\Wkunst\W": [ART],
+           r"\Wart\W": [ART],
+           r"\Wgulaschausgabe\W": [FOOD],
+           r"\Wdj-set:\W": [MUSIC],
+           r"\Wliveset\W": [MUSIC],
+           r"\Wdata compression\W": [ALGORITHMS, SOFTWARE],
+           r"\Wastrophysik\W": [SPACE, SCIENCE],
+           r"\Wgit\W": [ENGINEERING],
+           r"\Wbrainfuck\W": [SOFTWARE],
+           r"\Walgorithmic\W": [ALGORITHMS, SOFTWARE],
+
+
+
+
 
 
 
@@ -1120,7 +1141,7 @@ fraps = [("https://fahrplan.events.ccc.de/congress/2017/Fahrplan/schedule.xml",
           ("http://frab.fossgis-konferenz.de/en/foss4g-2016/public/schedule",
           "foss4g2016"),
           ("https://frab.sendegate.de/de/ppw15b/public/schedule",
-          "podlove6"),          
+          "podlove6"),
           ]
 
 # See: https://github.com/voc/voctoweb/issues/246
