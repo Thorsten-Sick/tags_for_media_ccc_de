@@ -1060,7 +1060,68 @@ fraps = [("https://fahrplan.events.ccc.de/congress/2017/Fahrplan/schedule.xml",
           "gpn11"),
 
           ("https://talks.mrmcd.net/2017/schedule/export/schedule.xml",
-          "mrmcd17")]
+          "mrmcd17"),
+          ("http://c3voc.de/share/schedules/ogtm18.xml",
+          "ogtm18"),  # Open Government Tag München
+          ("https://cfp.privacyweek.at/pw18/schedule/export/schedule.xml",
+          "pw18"),  #  Privacy Week
+          ("https://c3voc.de/share/schedules/ece-shd18.xml",
+          "shd18"),  # Smart Home Day
+          ("https://cfp.all-systems-go.io/en/ASG2018/public/schedule.xml",
+          "asgo2018"),  # All systems go
+          ("https://2018.fiffkon.de/schedule.xml",
+          "fiffkon2018"),
+          ("https://www.thorti.de/media/np14/np14.xml",
+          "np14"),  # Das ist Netzpolitik 14
+          ("https://www.emfcamp.org/schedule.frab",
+          "emf18"),  # EMF camp 18
+          ("http://data.c3voc.de/dcgtw/schedule-dcgtw.xml",
+          "dcgtw"),  # Das digitale Chamäleon
+          ("https://glt18-programm.linuxtage.at/schedule.xml",
+          "glt18"),  # Grazer Linuxtage
+          ("https://pretalx.sysmocom.de/osmodevcon2018/schedule/",
+          "osmodevcon2018"),
+          ("https://pretalx.eh18.easterhegg.eu/eh18/schedule.xml",
+          "eh18"),
+          ("http://frab.fossgis-konferenz.de/de/2018/public/schedule.xml",
+          "fossgis2018"),
+          ("http://data.c3voc.de/afu-tm18/schedule-afu-tm18.xml",
+          "afu-tm18"),  # Amateurfunktagung
+          ("https://frab.das-sendezentrum.de/de/subscribe9/public/schedule",
+          "subscribe9"),
+          ("https://fahrplan.privacyweek.at/",
+          "pw17"),   # Privacy week
+          ("https://datenspuren.de/2017/fahrplan/schedule.xml",
+          "ds2017"),
+          ("https://cfp.all-systems-go.io/en/ASG2017/public/schedule.xml",
+          "asgo2017"),
+          ("http://c3voc.de/share/schedules/ogtm17.xml",
+          "ogtm17"),
+          ("http://data.c3voc.de/jh17/schedule-jh17-ulm.xml",
+          "jh17-ulm"),   # Jugend hackt
+          ("https://programm.froscon.de/2017/schedule.xml",
+          "froscon2017"),
+          ("https://schedule.battlemesh.org/",
+          "battlemesh"),
+          ("https://events.opensuse.org/conference/oSC17/schedule.xml",
+          "osc17"),
+          ("https://c3voc.de/share/schedules/tib3s.xml",
+          "tib3s"),  # TIB Software and Service for Science
+          ("https://c3voc.de/share/schedules/mm17.xml",
+          "mm17"),  # Make Munich
+          ("http://data.c3voc.de/schedule/osmocon17/schedule.xml",
+          "osmocon17"),
+          ("http://frab.fossgis-konferenz.de/de/2017/public/schedule.xml",
+          "fossgis2017"),
+          ("https://c3voc.de/share/schedules/ogtm16.xml",
+          "ogtm16"),
+          ("https://frab.das-sendezentrum.de/de/subscribe8/public/schedule",
+          "subscribe8"),
+          ("http://frab.fossgis-konferenz.de/en/foss4g-2016/public/schedule",
+          "foss4g2016"),
+          ("https://frab.sendegate.de/de/ppw15b/public/schedule",
+          "podlove6"),          
+          ]
 
 # See: https://github.com/voc/voctoweb/issues/246
 voctoweburl = "https://api.media.ccc.de/public/conferences"
