@@ -527,6 +527,7 @@ regexes = {r"\Wrfid\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wgit\W": [ENGINEERING],
            r"\Wbrainfuck\W": [SOFTWARE],
            r"\Walgorithmic\W": [ALGORITHMS, SOFTWARE],
+           r"\trojan\W": [MALWARE],
 
 
 
@@ -1141,7 +1142,7 @@ fraps = [("https://fahrplan.events.ccc.de/congress/2017/Fahrplan/schedule.xml",
           ("http://frab.fossgis-konferenz.de/en/foss4g-2016/public/schedule",
           "foss4g2016"),
           ("https://frab.sendegate.de/de/ppw15b/public/schedule",
-          "podlove6"),
+          "subscribe6"),
           ]
 
 # See: https://github.com/voc/voctoweb/issues/246
