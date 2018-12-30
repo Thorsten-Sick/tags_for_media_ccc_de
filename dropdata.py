@@ -8,6 +8,8 @@ import xml.etree.ElementTree
 import requests
 import pathlib
 from concurrent import futures
+from collections import defaultdict
+from pprint import pprint
 
 from yaml import load, dump
 try:
@@ -159,6 +161,25 @@ SECURITY_NIGHTMARES = "security nightmares"
 METHODISCH_INKORREKT = "methodisch inkorrekt"  # TODO
 ULTIMATE_TALK = "ultimate talks"
 INFRASTRUCTURE_REV = "infrastructure review" # TODO
+
+
+#################################
+# Not all tags are created equal. Topics are common main topics.
+# I choose common ones and also use the tracks from the Fahrplan
+topics = set([SOFTWARE, HARDWARE, NETWORK, SECURITY, POLITICS, SCIENCE, ART, RESILIENCE])
+
+# There are also subtags and tags
+# "tags" are normal tags
+# "subtags" are very uncommon tags we will not display but keep around. Maybe they will become common sometimes
+SUBTAG_THRESHOLD = 35  # At the moment: The number of congresses so far
+
+# "fulltags" will be the full list of raw tags extracted from the sources
+
+
+
+
+
+##################################
 
 regexes = {r"\Wrfid\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wmifare\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
@@ -548,7 +569,7 @@ default_talks = [{
           "congress": "34c3",
           "id": "9270",
           "language": "English",
-          "tags": [KEYNOTE, POLITICS, INSIGHTS, TECHNOLOGY],
+          "fulltags": [KEYNOTE, POLITICS, INSIGHTS, TECHNOLOGY],
           "series": None,
          },
         {
@@ -557,7 +578,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "9095",
         "language": "German",
-        "tags": [TECHNOLOGY, ENGINEERING],
+        "fulltags": [TECHNOLOGY, ENGINEERING],
         "series": None,
         },
         {
@@ -566,7 +587,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "8941",
         "language": "English",
-        "tags": [CONSOLE, HACKING, NINTENDO, SECURITY, ARM, OS, KERNEL, ASSEMBLER],
+        "fulltags": [CONSOLE, HACKING, NINTENDO, SECURITY, ARM, OS, KERNEL, ASSEMBLER],
         "series": None,
         },
         {
@@ -575,7 +596,7 @@ default_talks = [{
         "congress": "SHA2017",
         "id": "325",
         "language": "English",
-        "tags": [HARDWARE, NETWORK, IOT, SECURITY],
+        "fulltags": [HARDWARE, NETWORK, IOT, SECURITY],
         "series": None,
         },
         {
@@ -584,7 +605,7 @@ default_talks = [{
         "congress": "datengarten",
         "id": "dg-85",
         "language": "German",
-        "tags": [SOCIETY, POLITICS, ACTIVISM, HARDWARE, MAKING],
+        "fulltags": [SOCIETY, POLITICS, ACTIVISM, HARDWARE, MAKING],
         "series": None,
         },
         {
@@ -593,7 +614,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "8714",
         "language": "German",
-        "tags": [IFG, ACTIVISM, POLITICS],
+        "fulltags": [IFG, ACTIVISM, POLITICS],
         "series": None,
         },
         {
@@ -602,7 +623,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "9182",
         "language": "English",
-        "tags": [ENGINEERING, SCIENCE, SPACE, HARDWARE],
+        "fulltags": [ENGINEERING, SCIENCE, SPACE, HARDWARE],
         "series": None,
         },
         {
@@ -611,7 +632,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "8896",
         "language": "German",
-        "tags": [ENTERTAINMENT, ACTIVISM, POLITICS],
+        "fulltags": [ENTERTAINMENT, ACTIVISM, POLITICS],
         "series": None,
         },
         {
@@ -620,7 +641,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "9047",
         "language": "English",
-        "tags": [SOCIETY, POLITICS, ACTIVISM],
+        "fulltags": [SOCIETY, POLITICS, ACTIVISM],
         "series": None,
         },
         {
@@ -629,7 +650,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "9086",
         "language": "English",
-        "tags": [POLITICS, PRIVACY, SURVEILLANCE, SOLUTION],
+        "fulltags": [POLITICS, PRIVACY, SURVEILLANCE, SOLUTION],
         "series": None,
         },
         {
@@ -638,7 +659,7 @@ default_talks = [{
         "congress": "sha2017",
         "id": "270",
         "language": "English",
-        "tags": [ANARCHY, TRAVEL],
+        "fulltags": [ANARCHY, TRAVEL],
         "series": None,
         },
         {
@@ -647,7 +668,7 @@ default_talks = [{
         "congress": "sha2017",
         "id": "148",
         "language": "English",
-        "tags": [SECURITY, FUZZING, ASAN, AFL, LIBFUZZER],
+        "fulltags": [SECURITY, FUZZING, ASAN, AFL, LIBFUZZER],
         "series": None,
         },
         {
@@ -656,7 +677,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "9159",
         "language": "English",
-        "tags": [NETWORK, KERNEL, SOFTWARE, OS, HARDWARE],
+        "fulltags": [NETWORK, KERNEL, SOFTWARE, OS, HARDWARE],
         "series": None,
         },
         {
@@ -665,7 +686,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "8740",
         "language": "English",
-        "tags": [NETWORK, ACTIVISM, POLITICS, SOLUTION, FREIFUNK],
+        "fulltags": [NETWORK, ACTIVISM, POLITICS, SOLUTION, FREIFUNK],
         "series": None,
         },
         {
@@ -674,7 +695,7 @@ default_talks = [{
         "congress": "sha2017",
         "id": "34",
         "language": "English",
-        "tags": [TECHNOLOGY, HARDWARE, LOCKPICKING, SECURITY, HISTORY],
+        "fulltags": [TECHNOLOGY, HARDWARE, LOCKPICKING, SECURITY, HISTORY],
         "series": None,
         },
         {
@@ -683,7 +704,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "8721",
         "language": "English",
-        "tags": [ELECTRONICS, ENGINEERING, HARDWARE, SOFTWARE, EDUCATION],
+        "fulltags": [ELECTRONICS, ENGINEERING, HARDWARE, SOFTWARE, EDUCATION],
         "series": None,
         },
         {
@@ -692,7 +713,7 @@ default_talks = [{
         "congress": "sha2017",
         "id": "221",
         "language": "English",
-        "tags": [FACEDANCER, USB, HARDWARE, SECURITY, HACKING],
+        "fulltags": [FACEDANCER, USB, HARDWARE, SECURITY, HACKING],
         "external_links": ["https://github.com/ktemkin/FaceDancer", "https://github.com/greatscottgadgets/greatfet"],
         "series": None,
         },
@@ -702,7 +723,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "8805",
         "language": "German",
-        "tags": [MOBILE, BANKING, ANDROID, SOFTWARE, IOS, HACKING, SECURITY],
+        "fulltags": [MOBILE, BANKING, ANDROID, SOFTWARE, IOS, HACKING, SECURITY],
         "series": None,
         },
         {
@@ -711,7 +732,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "9193",
         "language": "English",
-        "tags": [IOT, PRIVACY, SECURITY, HARDWARE, SOFTWARE, HACKING, BLUETOOTH],
+        "fulltags": [IOT, PRIVACY, SECURITY, HARDWARE, SOFTWARE, HACKING, BLUETOOTH],
         "series": None,
         },
         {
@@ -720,7 +741,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "8762",
         "language": "English",
-        "tags": [HARDWARE, SECURITY, HACKING, OS, USB, JTAG, ASSEMBLER],
+        "fulltags": [HARDWARE, SECURITY, HACKING, OS, USB, JTAG, ASSEMBLER],
         "series": None,
         },
         {
@@ -729,7 +750,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "8758",
         "language": "English",
-        "tags": [AUTOMOTIVE, HACKING, SECURITY, HARDWARE, SOFTWARE, ELECTRONICS],
+        "fulltags": [AUTOMOTIVE, HACKING, SECURITY, HARDWARE, SOFTWARE, ELECTRONICS],
         "series": None,
         },
         {
@@ -738,7 +759,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "9092",
         "language": "German",
-        "tags": [AUTOMOTIVE, HACKING, SECURITY, NETWORK, RFID],
+        "fulltags": [AUTOMOTIVE, HACKING, SECURITY, NETWORK, RFID],
         "series": None,
         },
         {
@@ -747,7 +768,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "9064",
         "language": "English",
-        "tags": [HISTORY, SPACE, HARDWARE, SOFTWARE],
+        "fulltags": [HISTORY, SPACE, HARDWARE, SOFTWARE],
         "series": ULTIMATE_TALK,
         },
         {
@@ -756,7 +777,7 @@ default_talks = [{
         "congress": "33c3",
         "id": "8029",
         "language": "English",
-        "tags": [HISTORY, HARDWARE, SOFTWARE],
+        "fulltags": [HISTORY, HARDWARE, SOFTWARE],
         "series": ULTIMATE_TALK,
         },
         {
@@ -765,7 +786,7 @@ default_talks = [{
         "congress": "32c3",
         "id": "7468",
         "language": "English",
-        "tags": [HISTORY, HARDWARE, SOFTWARE],
+        "fulltags": [HISTORY, HARDWARE, SOFTWARE],
         "series": ULTIMATE_TALK,
         },
         {
@@ -774,7 +795,7 @@ default_talks = [{
         "congress": "29c3",
         "id": "5178",
         "language": "English",
-        "tags": [HISTORY, HARDWARE, SOFTWARE],
+        "fulltags": [HISTORY, HARDWARE, SOFTWARE],
         "series": ULTIMATE_TALK,
         },
         {
@@ -783,7 +804,7 @@ default_talks = [{
         "congress": "28c3",
         "id": "4711",
         "language": "English",
-        "tags": [HISTORY, HARDWARE, SOFTWARE],
+        "fulltags": [HISTORY, HARDWARE, SOFTWARE],
         "series": ULTIMATE_TALK,
         },
         {
@@ -792,7 +813,7 @@ default_talks = [{
         "congress": "25c3",
         "id": "2874",
         "language": "English",
-        "tags": [HISTORY, HARDWARE, SOFTWARE],
+        "fulltags": [HISTORY, HARDWARE, SOFTWARE],
         "series": ULTIMATE_TALK,
         },
         {
@@ -801,7 +822,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "9285",
         "language": "German",
-        "tags": [ENTERTAINMENT],
+        "fulltags": [ENTERTAINMENT],
         "series": None,
         },
         {
@@ -810,7 +831,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "8946",
         "language": "English",
-        "tags": [FOOD, LAW, MAKING],
+        "fulltags": [FOOD, LAW, MAKING],
         "series": None,
         },
         {
@@ -819,7 +840,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "8938",
         "language": "English",
-        "tags": [FOOD, LAW, BIO],
+        "fulltags": [FOOD, LAW, BIO],
         "series": None,
         },
         {
@@ -828,7 +849,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "9104",
         "language": "English",
-        "tags": [CRYPTO, I2P, FREENET, GNUNET, JONDONYM, TOR, LOOPIX, VUVUZELA, NETWORK],
+        "fulltags": [CRYPTO, I2P, FREENET, GNUNET, JONDONYM, TOR, LOOPIX, VUVUZELA, NETWORK],
         "series": None,
         },
         {
@@ -837,7 +858,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "8955",
         "language": "German",
-        "tags": [POLITICS, ACTIVISM, LAW, BIGBROTHER],
+        "fulltags": [POLITICS, ACTIVISM, LAW, BIGBROTHER],
         "series": None,
         },
         {
@@ -846,7 +867,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "9207",
         "language": "English",
-        "tags": [HARDWARE, HACKING, CHIPWHISPERER, ELECTRONICS, GLITCHKIT],
+        "fulltags": [HARDWARE, HACKING, CHIPWHISPERER, ELECTRONICS, GLITCHKIT],
         "series": None,
         },
         {
@@ -855,7 +876,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "9249",
         "language": "English",
-        "tags": [SOFTWARE, SECURITY, ENGINEERING],
+        "fulltags": [SOFTWARE, SECURITY, ENGINEERING],
         "series": None,
         },
         {
@@ -864,7 +885,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "8877",
         "language": "English",
-        "tags": [SCIENCE, MAKING, SOLUTION, ENERGY],
+        "fulltags": [SCIENCE, MAKING, SOLUTION, ENERGY],
         "series": None,
         },
         {
@@ -873,7 +894,7 @@ default_talks = [{
         "congress": "34c3",
         "id": "8961",
         "language": "German",
-        "tags": [BIO, SCIENCE, ROBOTICS],
+        "fulltags": [BIO, SCIENCE, ROBOTICS],
         "series": None,
         },
         {
@@ -882,7 +903,7 @@ default_talks = [{
         "congress": "34C3",
         "id": "9250",
         "language": "English",
-        "tags": [HARDWARE, ELECTRONICS],
+        "fulltags": [HARDWARE, ELECTRONICS],
         "series": None,
         },
         {
@@ -891,7 +912,7 @@ default_talks = [{
         "congress": "34C3",
         "id": "8842",
         "language": "German",
-        "tags": [NETWORK, HISTORY, ACTIVISM],
+        "fulltags": [NETWORK, HISTORY, ACTIVISM],
         "series": None,
         },
         {
@@ -900,7 +921,7 @@ default_talks = [{
         "congress": "34C3",
         "id": "8888",
         "language": "German",
-        "tags": [SECURITY, ENTERTAINMENT],
+        "fulltags": [SECURITY, ENTERTAINMENT],
         "series": "Security Nightmares",
         },
         {
@@ -909,7 +930,7 @@ default_talks = [{
         "congress": "33C3",
         "id": "8413",
         "language": "German",
-        "tags": [SECURITY, ENTERTAINMENT],
+        "fulltags": [SECURITY, ENTERTAINMENT],
         "series": SECURITY_NIGHTMARES,
         },
         {
@@ -918,7 +939,7 @@ default_talks = [{
         "congress": "32C3",
         "id": "7446",
         "language": "German",
-        "tags": [SECURITY, ENTERTAINMENT],
+        "fulltags": [SECURITY, ENTERTAINMENT],
         "series": SECURITY_NIGHTMARES,
         },
         {
@@ -927,7 +948,7 @@ default_talks = [{
         "congress": "31C3",
         "id": "6572",
         "language": "German",
-        "tags": [SECURITY, ENTERTAINMENT],
+        "fulltags": [SECURITY, ENTERTAINMENT],
         "series": SECURITY_NIGHTMARES,
         },
         {
@@ -936,7 +957,7 @@ default_talks = [{
         "congress": "30C3",
         "id": "5413",
         "language": "German",
-        "tags": [SECURITY, ENTERTAINMENT],
+        "fulltags": [SECURITY, ENTERTAINMENT],
         "series": SECURITY_NIGHTMARES,
         },
         {
@@ -945,7 +966,7 @@ default_talks = [{
         "congress": "29C3",
         "id": "5244",
         "language": "German",
-        "tags": [SECURITY, ENTERTAINMENT],
+        "fulltags": [SECURITY, ENTERTAINMENT],
         "series": SECURITY_NIGHTMARES,
         },
         {
@@ -954,7 +975,7 @@ default_talks = [{
         "congress": "28C3",
         "id": "4898",
         "language": "German",
-        "tags": [SECURITY, ENTERTAINMENT],
+        "fulltags": [SECURITY, ENTERTAINMENT],
         "series": SECURITY_NIGHTMARES,
         },
         {
@@ -963,7 +984,7 @@ default_talks = [{
         "congress": "27C3",
         "id": "4230",
         "language": "German",
-        "tags": [SECURITY, ENTERTAINMENT],
+        "fulltags": [SECURITY, ENTERTAINMENT],
         "series": SECURITY_NIGHTMARES,
         },
         {
@@ -972,7 +993,7 @@ default_talks = [{
         "congress": "26C3",
         "id": "3687",
         "language": "German",
-        "tags": [SECURITY, ENTERTAINMENT],
+        "fulltags": [SECURITY, ENTERTAINMENT],
         "series": SECURITY_NIGHTMARES,
         },
         {
@@ -981,7 +1002,7 @@ default_talks = [{
         "congress": "25C3",
         "id": "3021",
         "language": "German",
-        "tags": [SECURITY, ENTERTAINMENT],
+        "fulltags": [SECURITY, ENTERTAINMENT],
         "series": SECURITY_NIGHTMARES,
         },
         {
@@ -990,7 +1011,7 @@ default_talks = [{
         "congress": "24C3",
         "id": "2336",
         "language": "German",
-        "tags": [SECURITY, ENTERTAINMENT],
+        "fulltags": [SECURITY, ENTERTAINMENT],
         "series": SECURITY_NIGHTMARES,
         },
         {
@@ -999,7 +1020,7 @@ default_talks = [{
         "congress": "23C3",
         "id": "1682",
         "language": "German",
-        "tags": [SECURITY, ENTERTAINMENT],
+        "fulltags": [SECURITY, ENTERTAINMENT],
         "series": SECURITY_NIGHTMARES,
         },
         {
@@ -1008,7 +1029,7 @@ default_talks = [{
         "congress": "22C3",
         "id": "600",
         "language": "German",
-        "tags": [SECURITY, ENTERTAINMENT],
+        "fulltags": [SECURITY, ENTERTAINMENT],
         "series": SECURITY_NIGHTMARES,
         },
         # No security nightmares 21C3 ?
@@ -1018,7 +1039,7 @@ default_talks = [{
         "congress": "20C3",
         "id": "609",
         "language": "German",
-        "tags": [SECURITY, ENTERTAINMENT],
+        "fulltags": [SECURITY, ENTERTAINMENT],
         "series": SECURITY_NIGHTMARES,
         },
         {
@@ -1027,7 +1048,7 @@ default_talks = [{
         "congress": "19C3",
         "id": "434",
         "language": "German",
-        "tags": [SECURITY, ENTERTAINMENT],
+        "fulltags": [SECURITY, ENTERTAINMENT],
         "series": SECURITY_NIGHTMARES,
         },
         # No security nightmares left...
@@ -1231,7 +1252,10 @@ def download_one(entry):
         except requests.exceptions.ConnectionError:
             print("Error: Connection error url: " + url)
 
-def from_frabs():
+def from_frabs(offline=False):
+    """
+    offline: Do not download detailed frabs, use existing files only
+    """
     collected = {}
 
     combined_fraps = list(fraps)
@@ -1241,9 +1265,10 @@ def from_frabs():
     # Getting files
     # Todo: optimize
 
-    workers = min(MAX_WORKERS, len(combined_fraps))
-    with futures.ThreadPoolExecutor(workers) as executor:
-        res = executor.map(download_one, combined_fraps)
+    if not offline:
+        workers = min(MAX_WORKERS, len(combined_fraps))
+        with futures.ThreadPoolExecutor(workers) as executor:
+            res = executor.map(download_one, combined_fraps)
 
     print("# Processing")
     # reading files
@@ -1274,7 +1299,7 @@ def from_frabs():
                             e["slug"] = event.find("slug").text
                         except AttributeError:
                             e["slug"] = None
-                        e["tags"] = text_to_tags("{title} {subtitle} {abstract} {description}".format(**e))
+                        e["fulltags"] = text_to_tags("{title} {subtitle} {abstract} {description}".format(**e))
 
                         e["acronym"] = acronym
                         if e["guid"]:
@@ -1286,7 +1311,7 @@ def from_frabs():
 def simplify_defaults():
     res = {}
     for talk in default_talks:
-        res[talk["id"]] = talk["tags"]
+        res[talk["id"]] = talk["fulltags"]
     return res
 
 if __name__ == "__main__":
@@ -1295,13 +1320,15 @@ if __name__ == "__main__":
     parser.add_argument("--out", help="out filename. Without postfix .json or .yaml. This will be added", default = None, type = str)
     parser.add_argument("--default", help="Load hard coded default talks as well", action="store_true", default = False)
     parser.add_argument("--frab", help="Use frabs to generate data", action="store_true", default = False)
+    parser.add_argument("--statistics", help="calculate and write statistics for the tags", action="store_true", default=False)
+    parser.add_argument("--offline", help="Do not try to fetch data online. Use existing files", action="store_true", default=False)
 
     args = parser.parse_args()
 
     talks = {}
 
     if args.frab:
-        talks = from_frabs()
+        talks = from_frabs(args.offline)
 
     # Generate db from subtitles
     # Subtitles are on mirror.selfnet.de/c3subtitles/congress...
@@ -1317,6 +1344,27 @@ if __name__ == "__main__":
         for akey in simple.keys():
             talks[akey] = simple[akey]
 
+    # Calculate stats to find subtags
+    stats = defaultdict(int)
+    for anid in talks.keys():
+        for atag in talks[anid]["fulltags"]:
+            stats[atag] += 1
+    stats_sorted_by_value = sorted(stats.items(), key=lambda kv: kv[1])
+
+    subtags = []
+    for atag, acount in stats_sorted_by_value:
+        if acount < SUBTAG_THRESHOLD and atag not in topics:
+            subtags.append(atag)
+
+    # Go through talks. Look into fulltags and extract
+    subtags = set(subtags)
+    for anid in talks.keys():
+        # Calculating subtags, tags and topics
+        talks[anid]["subtags"] = list(set(talks[anid]["fulltags"]).intersection(subtags))
+        talks[anid]["topics"] = list(set(talks[anid]["fulltags"]).intersection(topics))
+        talks[anid]["tags"] = list(set(talks[anid]["fulltags"]) - topics - subtags)
+
+
     # output data
     if args.out:
         with open(args.out+".yaml", "wt") as fh:
@@ -1324,3 +1372,7 @@ if __name__ == "__main__":
 
         with open(args.out+".json", "wt") as fh:
             json.dump(talks, fh, indent=4)
+
+    if args.statistics:
+        pprint(stats.items())
+        pprint(stats_sorted_by_value)
