@@ -24,3 +24,8 @@ Frab only:
 ## subtitles
 
 mirror.selfnet.de
+
+## Usage
+
+Getting statistics:
+./dropdata.py --frab --statistics

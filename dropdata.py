@@ -127,6 +127,8 @@ WIKI = "wiki"
 ADMINISTRATION = "administration"
 MUSIC = "music"
 ALGORITHMS = "algorithms"
+NAVIGATION = "navigation"
+GAMES = "games"
 
 # Detailed Tags (let's find out if there are more than 3 talks deserving those tags)
 
@@ -137,6 +139,7 @@ GNUNET = "gnunet"
 JONDONYM = "jondonym"
 LOOPIX = "loopix"
 VUVUZELA = "vuvuzela"
+SSH = "ssh"
 
 ## Hardware hacking tools
 CHIPWHISPERER = "chipwhisperer"
@@ -145,6 +148,7 @@ FACEDANCER = "facedancer"
 HACKRF = "hackrf"
 PROXMARK = "proxmark"
 UBERTOOTH = "ubertooth"
+OSMOCOM = "osmocom"
 
 SHODAN = "shodan"
 
@@ -192,11 +196,11 @@ regexes = {r"\Wrfid\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Warab spring\W": [POLITICS, ACTIVISM],
            r"\Wedward snowden\W": [POLITICS, ACTIVISM, PRIVACY],
            r"\Wtor\W": [NETWORK, PRIVACY, TOR, CRYPTO],
-           r"\Wdragnet surveillance system\W": [NETWORK, PRIVACY, BIGBROTHER, SURVEILLANCE],
+           r"\Wdragnet surveillance system\W": [NETWORK, PRIVACY, BIGBROTHER, SURVEILLANCE, POLITICS],
            r"\Wquantenphysik\W": [SCIENCE],
            r"\Wrelativitätstheorie\W": [SCIENCE],
            r"\Walbert einstein\W": [SCIENCE],
-           r"\Wdigital surveillance\W": [NETWORK, PRIVACY, BIGBROTHER],
+           r"\Wdigital surveillance\W": [NETWORK, PRIVACY, BIGBROTHER, POLITICS],
            r"\Wactivism\W": [ACTIVISM],
            r"\Wquadraturdunet\W": [ACTIVISM],
            r"\Wngo\W": [ACTIVISM],
@@ -234,9 +238,9 @@ regexes = {r"\Wrfid\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wassembler\W": [SOFTWARE, ASSEMBLER],
            r"\Wamendment\W": [LAW],
            r"\Wreaper drone\W": [POLITICS, AVIATION],
-           r"\Wmri\W": [BIO],
-           r"\Weeg\W": [BIO],
-           r"\Wtomography\W": [BIO],
+           r"\Wmri\W": [BIO, SCIENCE],
+           r"\Weeg\W": [BIO, SCIENCE],
+           r"\Wtomography\W": [BIO, SCIENCE],
            r"\Wbiomedical\W": [BIO, SCIENCE],
            r"\Wfitbit\W": [BIO, HARDWARE],
            r"\Wsecurity\W": [SECURITY],
@@ -282,8 +286,8 @@ regexes = {r"\Wrfid\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wfatca\W": [BANKING, POLITICS],
            r"\Wmobile networks?\W": [MOBILE, NETWORK],
            r"\Wmobile phones?\W": [MOBILE],
-           r"\Wsurveillance\W": [BIGBROTHER],
-           r"\Wbluetooth\W": [WIFI, BLUETOOTH],
+           r"\Wsurveillance\W": [BIGBROTHER, POLITICS],
+           r"\Wbluetooth\W": [WIFI, BLUETOOTH, HARDWARE],
            r"\Wps3\W": [CONSOLE],
            r"\Wgame boy\W": [CONSOLE],
            r"\Waircraft\W": [AVIATION],
@@ -295,8 +299,8 @@ regexes = {r"\Wrfid\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Ws3\W": [CLOUD],
            r"\Wcloudfront\W": [CLOUD],
            r"\Wgenetic fingerprint\W": [BIO],
-           r"\Wgenome\W": [BIO],
-           r"\Wdna\W": [BIO],
+           r"\Wgenome\W": [BIO, SCIENCE],
+           r"\Wdna\W": [BIO, SCIENCE],
            r"\Wanti-terror-kampf\W": [POLITICS],
            r"\Wurheberrecht\W": [POLITICS, LAW],
            r"\Wspread spectrum technology\W": [WIFI],
@@ -325,7 +329,7 @@ regexes = {r"\Wrfid\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wlasers?\W": [SCIENCE],
            r"\Wiridium\W": [NETWORK, MOBILE, SPACE],
            r"\Wsocial media\W": [SOCIETY],
-           r"\Wheart monitor\W": [BIO],
+           r"\Wheart monitor\W": [BIO, SCIENCE],
            r"\Wweltall\W": [SPACE],
            r"\Wgrundrechte\W": [POLITICS, LAW],
            r"\Wanonymous communication\W": [PRIVACY],
@@ -548,8 +552,39 @@ regexes = {r"\Wrfid\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wgit\W": [ENGINEERING],
            r"\Wbrainfuck\W": [SOFTWARE],
            r"\Walgorithmic\W": [ALGORITHMS, SOFTWARE],
-           r"\trojan\W": [MALWARE],
-
+           r"\Wtrojan\W": [MALWARE, SECURITY],
+           r"\Wsoftware patent": [POLITICS],
+           r"\Wcnc machine\W": [HARDWARE, DIY],
+           r"\Wprivacy law": [POLITICS, PRIVACY, LAW],
+           r"\Wred cross": [ACTIVISM],
+           r"\Wmedicin sans frontier": [ACTIVISM],
+           r"\Wchiptune\W": [ART],
+           r"\Wnanoloop\W": [ART],
+           r"\Wnorth korea\W": [POLITICS],
+           r"\Wssh\W": [SSH, NETWORK, SECURITY, PRIVACY],
+           r"\Wosmocom\W": [OSMOCOM, NETWORK],
+           r"\Wplone\W": [SOFTWARE],
+           r"\Wlpi certifica": [LINUX],
+           r"\Wgps\W": [NAVIGATION],
+           r"\Wgalileo\W": [NAVIGATION],
+           r"\Wglonass\W": [NAVIGATION],
+           r"\Wminecraft\W": [GAMES],
+           r"\Wgeocaching\W": [GAMES, NAVIGATION],
+           r"\Wgnome\W": [LINUX, SOFTWARE],
+           r"\Wgovernment\W": [POLITICS],
+           r"\Wsystemd\W": [LINUX, SOFTWARE],
+           r"\Wsnmp\W": [NETWORK],
+           r"\Wreproducible build": [SOFTWARE, SECURITY],
+           r"\Wcontinuous delivery\W": [SOFTWARE],
+           r"\Wkubernetes\W": [SOFTWARE, CLOUD, CONTAINER],
+           r"\Wsicherheit\W": [SECURITY],
+           r"\Wedri\W": [POLITICS, ACTIVISM],
+           r"\Wmethodisch inkorrekt\W": [METHODISCH_INKORREKT, SCIENCE],
+           r"\Wsoftwareentwicklung\W": [SOFTWARE],
+           r"\Wclimate change\W": [POLITICS, SCIENCE],
+           r"\Wtreibhausgas": [POLITICS, SCIENCE],
+           r"\Wdrm\W": [POLITICS, CENSORSHIP, SOFTWARE],
+           r"\Wkryptographie\W": [SOFTWARE, SECURITY, CRYPTO],
 
 
 
