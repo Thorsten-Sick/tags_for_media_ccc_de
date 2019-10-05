@@ -1345,8 +1345,10 @@ def from_frabs(offline=False):
 
 def simplify_defaults():
     res = {}
-    for talk in default_talks:
-        res[talk["id"]] = talk["fulltags"]
+    with open("manufactured_data/talks.json") as fh:
+        dt = json.load(fh)
+        for talk in dt:
+            res[talk["id"]] = talk["fulltags"]
     return res
 
 if __name__ == "__main__":
@@ -1373,6 +1375,7 @@ if __name__ == "__main__":
 
     # Load defaults: Defaults override everything else !
     if args.default:
+        # TODO: data format of json file must be changed and adjusted to new features-it is broken currently
         simple = simplify_defaults()
         print("Defaults:")
         print(simple)

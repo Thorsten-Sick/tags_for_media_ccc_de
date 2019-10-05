@@ -1,0 +1,739 @@
+[
+    {
+        "title": "Dude, you broke the Future!",
+        "url": "https://media.ccc.de/v/34c3-9270-dude_you_broke_the_future",
+        "congress": "34c3",
+        "id": "9270",
+        "language": "English",
+        "fulltags": [
+            "keynote",
+            "politics",
+            "insights",
+            "technology"
+        ],
+        "series": null
+    },
+    {
+        "title": "Antipatterns und Missverst\u00e4ndnisse in der Softwareentwicklung",
+        "url": "https://media.ccc.de/v/34c3-9095-antipatterns_und_missverstandnisse_in_der_softwareentwicklung",
+        "congress": "34c3",
+        "id": "9095",
+        "language": "German",
+        "fulltags": [
+            "technology",
+            "engineering"
+        ],
+        "series": null
+    },
+    {
+        "title": "Console Security - Switch",
+        "url": "https://media.ccc.de/v/34c3-8941-console_security_-_switch",
+        "congress": "34c3",
+        "id": "8941",
+        "language": "English",
+        "fulltags": [
+            "console",
+            "hacking",
+            "nintendo",
+            "security",
+            "arm",
+            "os",
+            "kernel",
+            "assembler"
+        ],
+        "series": null
+    },
+    {
+        "title": "Commissioning methods for IoT",
+        "url": "https://media.ccc.de/v/SHA2017-325-commissioning_methods_for_iot",
+        "congress": "SHA2017",
+        "id": "325",
+        "language": "English",
+        "fulltags": [
+            "hardware",
+            "network",
+            "iot",
+            "security"
+        ],
+        "series": null
+    },
+    {
+        "title": "Datengarten 85 Crisis Response Makerspace in Berlin",
+        "url": "https://media.ccc.de/v/dg-85",
+        "congress": "datengarten",
+        "id": "dg-85",
+        "language": "German",
+        "fulltags": [
+            "society",
+            "politics",
+            "activism",
+            "hardware",
+            "making"
+        ],
+        "series": null
+    },
+    {
+        "title": "Schreibtisch-Hooligans",
+        "url": "https://media.ccc.de/v/34c3-8714-schreibtisch-hooligans",
+        "congress": "34c3",
+        "id": "8714",
+        "language": "German",
+        "fulltags": [
+            "ifg",
+            "activism",
+            "politics"
+        ],
+        "series": null
+    },
+    {
+        "title": "UPSat - the first open source satellite",
+        "url": "https://media.ccc.de/v/34c3-9182-upsat_-_the_first_open_source_satellite",
+        "congress": "34c3",
+        "id": "9182",
+        "language": "English",
+        "fulltags": [
+            "engineering",
+            "science",
+            "space",
+            "hardware"
+        ],
+        "series": null
+    },
+    {
+        "title": "Tiger, Drucker und ein Mahnmal",
+        "url": "https://media.ccc.de/v/34c3-8896-tiger_drucker_und_ein_mahnmal",
+        "congress": "34c3",
+        "id": "8896",
+        "language": "German",
+        "fulltags": [
+            "entertainment",
+            "activism",
+            "politics"
+        ],
+        "series": null
+    },
+    {
+        "title": "Taxation",
+        "url": "https://media.ccc.de/v/34c3-9047-taxation",
+        "congress": "34c3",
+        "id": "9047",
+        "language": "English",
+        "fulltags": [
+            "society",
+            "politics",
+            "activism"
+        ],
+        "series": null
+    },
+    {
+        "title": "Protecting Your Privacy at the Border",
+        "url": "https://media.ccc.de/v/34c3-9086-protecting_your_privacy_at_the_border",
+        "congress": "34c3",
+        "id": "9086",
+        "language": "English",
+        "fulltags": [
+            "politics",
+            "privacy",
+            "surveillance",
+            "solution"
+        ],
+        "series": null
+    },
+    {
+        "title": "Exploiting The North American Railways",
+        "url": "https://media.ccc.de/v/SHA2017-270-exploiting_the_north_american_railways",
+        "congress": "sha2017",
+        "id": "270",
+        "language": "English",
+        "fulltags": [
+            "anarchy",
+            "travel"
+        ],
+        "series": null
+    },
+    {
+        "title": "Improving security with Fuzzing and Sanitizers",
+        "url": "https://media.ccc.de/v/SHA2017-148-improving_security_with_fuzzing_and_sanitizers",
+        "congress": "sha2017",
+        "id": "148",
+        "language": "English",
+        "fulltags": [
+            "security",
+            "fuzzing",
+            "asan",
+            "afl",
+            "libfuzzer"
+        ],
+        "series": null
+    },
+    {
+        "title": "Demystifying Network Cards",
+        "url": "https://media.ccc.de/v/34c3-9159-demystifying_network_cards",
+        "congress": "34c3",
+        "id": "9159",
+        "language": "English",
+        "fulltags": [
+            "network",
+            "kernel",
+            "software",
+            "os",
+            "hardware"
+        ],
+        "series": null
+    },
+    {
+        "title": "The Internet in Cuba: A Story of Community Resilience",
+        "url": "https://media.ccc.de/v/34c3-8740-the_internet_in_cuba_a_story_of_community_resilience",
+        "congress": "34c3",
+        "id": "8740",
+        "language": "English",
+        "fulltags": [
+            "network",
+            "activism",
+            "politics",
+            "solution",
+            "freifunk"
+        ],
+        "series": null
+    },
+    {
+        "title": "Black Hat Locksmithing",
+        "url": "https://media.ccc.de/v/SHA2017-34-black_hat_locksmithing",
+        "congress": "sha2017",
+        "id": "34",
+        "language": "English",
+        "fulltags": [
+            "technology",
+            "hardware",
+            "lockpicking",
+            "security",
+            "history"
+        ],
+        "series": null
+    },
+    {
+        "title": "Blinkenrocket!",
+        "url": "https://media.ccc.de/v/34c3-8721-blinkenrocket",
+        "congress": "34c3",
+        "id": "8721",
+        "language": "English",
+        "fulltags": [
+            "electronics",
+            "engineering",
+            "hardware",
+            "software",
+            "education"
+        ],
+        "series": null
+    },
+    {
+        "title": "FaceDancer 2.0",
+        "url": "https://media.ccc.de/v/SHA2017-221-facedancer_2_0",
+        "congress": "sha2017",
+        "id": "221",
+        "language": "English",
+        "fulltags": [
+            "facedancer",
+            "usb",
+            "hardware",
+            "security",
+            "hacking"
+        ],
+        "external_links": [
+            "https://github.com/ktemkin/FaceDancer",
+            "https://github.com/greatscottgadgets/greatfet"
+        ],
+        "series": null
+    },
+    {
+        "title": "Die fabelhafte Welt des Mobilebankings",
+        "url": "https://media.ccc.de/v/34c3-8805-die_fabelhafte_welt_des_mobilebankings",
+        "congress": "34c3",
+        "id": "8805",
+        "language": "German",
+        "fulltags": [
+            "mobile",
+            "banking",
+            "android",
+            "software",
+            "ios",
+            "hacking",
+            "security"
+        ],
+        "series": null
+    },
+    {
+        "title": "Internet of Fails",
+        "url": "https://media.ccc.de/v/34c3-9193-internet_of_fails",
+        "congress": "34c3",
+        "id": "9193",
+        "language": "English",
+        "fulltags": [
+            "iot",
+            "privacy",
+            "security",
+            "hardware",
+            "software",
+            "hacking",
+            "bluetooth"
+        ],
+        "series": null
+    },
+    {
+        "title": "Inside Intel Management Engine",
+        "url": "https://media.ccc.de/v/34c3-8762-inside_intel_management_engine",
+        "congress": "34c3",
+        "id": "8762",
+        "language": "English",
+        "fulltags": [
+            "hardware",
+            "security",
+            "hacking",
+            "os",
+            "usb",
+            "jtag",
+            "assembler"
+        ],
+        "series": null
+    },
+    {
+        "title": "How to drift with any car",
+        "url": "https://media.ccc.de/v/34c3-8758-how_to_drift_with_any_car",
+        "congress": "34c3",
+        "id": "8758",
+        "language": "English",
+        "fulltags": [
+            "automotive",
+            "hacking",
+            "security",
+            "hardware",
+            "software",
+            "electronics"
+        ],
+        "series": null
+    },
+    {
+        "title": "Ladeinfrastruktur f\u00fcr Elektroautos: Ausbau statt Sicherheit",
+        "url": "https://media.ccc.de/v/34c3-9092-ladeinfrastruktur_fur_elektroautos_ausbau_statt_sicherheit",
+        "congress": "34c3",
+        "id": "9092",
+        "language": "German",
+        "fulltags": [
+            "automotive",
+            "hacking",
+            "security",
+            "network",
+            "rfid"
+        ],
+        "series": null
+    },
+    {
+        "title": "The Ultimate Apollo Guidance Computer Talk",
+        "url": "https://media.ccc.de/v/34c3-9064-the_ultimate_apollo_guidance_computer_talk",
+        "congress": "34c3",
+        "id": "9064",
+        "language": "English",
+        "fulltags": [
+            "history",
+            "space",
+            "hardware",
+            "software"
+        ],
+        "series": "ultimate talks"
+    },
+    {
+        "title": "The Ultimate Game Boy Talk",
+        "url": "https://media.ccc.de/v/33c3-8029-the_ultimate_game_boy_talk",
+        "congress": "33c3",
+        "id": "8029",
+        "language": "English",
+        "fulltags": [
+            "history",
+            "hardware",
+            "software"
+        ],
+        "series": "ultimate talks"
+    },
+    {
+        "title": "The Ultimate Amiga 500 Talk",
+        "url": "https://media.ccc.de/v/32c3-7468-the_ultimate_amiga_500_talk",
+        "congress": "32c3",
+        "id": "7468",
+        "language": "English",
+        "fulltags": [
+            "history",
+            "hardware",
+            "software"
+        ],
+        "series": "ultimate talks"
+    },
+    {
+        "title": "The ultimate Galaksija talk",
+        "url": "https://media.ccc.de/v/29c3-5178-en-the_ultimate_galaksija_talk_h264",
+        "congress": "29c3",
+        "id": "5178",
+        "language": "English",
+        "fulltags": [
+            "history",
+            "hardware",
+            "software"
+        ],
+        "series": "ultimate talks"
+    },
+    {
+        "title": "The Atari 2600 Video Computer System: The Ultimate Talk",
+        "url": "https://media.ccc.de/v/28c3-4711-en-the_atari_2600_video_computer_system_the_ultimate_talk",
+        "congress": "28c3",
+        "id": "4711",
+        "language": "English",
+        "fulltags": [
+            "history",
+            "hardware",
+            "software"
+        ],
+        "series": "ultimate talks"
+    },
+    {
+        "title": "The Ultimate Commodore 64 Talk",
+        "url": "https://media.ccc.de/v/25c3-2874-en-the_ultimate_commodore_64_talk",
+        "congress": "25c3",
+        "id": "2874",
+        "language": "English",
+        "fulltags": [
+            "history",
+            "hardware",
+            "software"
+        ],
+        "series": "ultimate talks"
+    },
+    {
+        "title": "QualityLand",
+        "url": "https://media.ccc.de/v/34c3-9285-qualityland",
+        "congress": "34c3",
+        "id": "9285",
+        "language": "German",
+        "fulltags": [
+            "entertainment"
+        ],
+        "series": null
+    },
+    {
+        "title": "Schnaps Hacking",
+        "url": "https://media.ccc.de/v/34c3-8946-schnaps_hacking",
+        "congress": "34c3",
+        "id": "8946",
+        "language": "English",
+        "fulltags": [
+            "food",
+            "law",
+            "making"
+        ],
+        "series": null
+    },
+    {
+        "title": "Home Distilling",
+        "url": "https://media.ccc.de/v/34c3-8938-home_distilling",
+        "congress": "34c3",
+        "id": "8938",
+        "language": "English",
+        "fulltags": [
+            "food",
+            "law",
+            "bio"
+        ],
+        "series": null
+    },
+    {
+        "title": "How Alice and Bob meet if they don't like onions",
+        "url": "https://media.ccc.de/v/34c3-9104-how_alice_and_bob_meet_if_they_don_t_like_onions",
+        "congress": "34c3",
+        "id": "9104",
+        "language": "English",
+        "fulltags": [
+            "crypto",
+            "i2p",
+            "freenet",
+            "gnunet",
+            "jondonym",
+            "tor",
+            "loopix",
+            "vuvuzela",
+            "network"
+        ],
+        "series": null
+    },
+    {
+        "title": "All Computers Are Beschlagnahmt",
+        "url": "https://media.ccc.de/v/34c3-8955-all_computers_are_beschlagnahmt",
+        "congress": "34c3",
+        "id": "8955",
+        "language": "German",
+        "fulltags": [
+            "politics",
+            "activism",
+            "law",
+            "bigbrother"
+        ],
+        "series": null
+    },
+    {
+        "title": "Opening Closed Systems with GlitchKit",
+        "url": "https://media.ccc.de/v/34c3-9207-opening_closed_systems_with_glitchkit",
+        "congress": "34c3",
+        "id": "9207",
+        "language": "English",
+        "fulltags": [
+            "hardware",
+            "hacking",
+            "chipwhisperer",
+            "electronics",
+            "glitchkit"
+        ],
+        "series": null
+    },
+    {
+        "title": "Hardening Open Source Development",
+        "url": "https://media.ccc.de/v/34c3-9249-hardening_open_source_development",
+        "congress": "34c3",
+        "id": "9249",
+        "language": "English",
+        "fulltags": [
+            "software",
+            "security",
+            "engineering"
+        ],
+        "series": null
+    },
+    {
+        "title": "Drones of Power: Airborne Wind Energy",
+        "url": "https://media.ccc.de/v/34c3-8877-drones_of_power_airborne_wind_energy",
+        "congress": "34c3",
+        "id": "8877",
+        "language": "English",
+        "fulltags": [
+            "science",
+            "making",
+            "solution",
+            "energy"
+        ],
+        "series": null
+    },
+    {
+        "title": "0en & 1en auf dem Acker",
+        "url": "https://media.ccc.de/v/34c3-8961-0en_1en_auf_dem_acker",
+        "congress": "34c3",
+        "id": "8961",
+        "language": "German",
+        "fulltags": [
+            "bio",
+            "science",
+            "robotics"
+        ],
+        "series": null
+    },
+    {
+        "title": "The making of a chip",
+        "url": "https://media.ccc.de/v/34c3-9250-the_making_of_a_chip",
+        "congress": "34C3",
+        "id": "9250",
+        "language": "English",
+        "fulltags": [
+            "hardware",
+            "electronics"
+        ],
+        "series": null
+    },
+    {
+        "title": "Zamir Transnational Network und Zagreb Dairy",
+        "url": "https://media.ccc.de/v/34c3-8842-zamir_transnational_network_und_zagreb_dairy",
+        "congress": "34C3",
+        "id": "8842",
+        "language": "German",
+        "fulltags": [
+            "network",
+            "history",
+            "activism"
+        ],
+        "series": null
+    },
+    {
+        "title": "Security Nightmares 0x12",
+        "url": "https://media.ccc.de/v/34c3-8888-security_nightmares_0x12",
+        "congress": "34C3",
+        "id": "8888",
+        "language": "German",
+        "fulltags": [
+            "security",
+            "entertainment"
+        ],
+        "series": "Security Nightmares"
+    },
+    {
+        "title": "Security Nightmares 0x11",
+        "url": "https://media.ccc.de/v/33c3-8413-security_nightmares_0x11",
+        "congress": "33C3",
+        "id": "8413",
+        "language": "German",
+        "fulltags": [
+            "security",
+            "entertainment"
+        ],
+        "series": "security nightmares"
+    },
+    {
+        "title": "Security Nightmares 0x10",
+        "url": "https://media.ccc.de/v/32c3-7546-security_nightmares_0x10",
+        "congress": "32C3",
+        "id": "7446",
+        "language": "German",
+        "fulltags": [
+            "security",
+            "entertainment"
+        ],
+        "series": "security nightmares"
+    },
+    {
+        "title": "Security Nightmares",
+        "url": "https://media.ccc.de/v/31c3_-_6572_-_de_-_saal_1_-_201412301715_-_security_nightmares_-_frank_-_ron",
+        "congress": "31C3",
+        "id": "6572",
+        "language": "German",
+        "fulltags": [
+            "security",
+            "entertainment"
+        ],
+        "series": "security nightmares"
+    },
+    {
+        "title": "Security Nightmares",
+        "url": "https://media.ccc.de/v/30C3_-_5413_-_de_-_saal_1_-_201312301715_-_security_nightmares_-_frank_-_ron",
+        "congress": "30C3",
+        "id": "5413",
+        "language": "German",
+        "fulltags": [
+            "security",
+            "entertainment"
+        ],
+        "series": "security nightmares"
+    },
+    {
+        "title": "Security Nightmares",
+        "url": "https://media.ccc.de/v/29c3-5244-de-en-security_nightmares2012_h264",
+        "congress": "29C3",
+        "id": "5244",
+        "language": "German",
+        "fulltags": [
+            "security",
+            "entertainment"
+        ],
+        "series": "security nightmares"
+    },
+    {
+        "title": "Security Nightmares",
+        "url": "https://media.ccc.de/v/28c3-4898-de-security_nightmares",
+        "congress": "28C3",
+        "id": "4898",
+        "language": "German",
+        "fulltags": [
+            "security",
+            "entertainment"
+        ],
+        "series": "security nightmares"
+    },
+    {
+        "title": "Security Nightmares",
+        "url": "https://media.ccc.de/v/27c3-4230-de-security_nightmares",
+        "congress": "27C3",
+        "id": "4230",
+        "language": "German",
+        "fulltags": [
+            "security",
+            "entertainment"
+        ],
+        "series": "security nightmares"
+    },
+    {
+        "title": "Security Nightmares",
+        "url": "https://media.ccc.de/v/26c3-3687-de-security_nightmares",
+        "congress": "26C3",
+        "id": "3687",
+        "language": "German",
+        "fulltags": [
+            "security",
+            "entertainment"
+        ],
+        "series": "security nightmares"
+    },
+    {
+        "title": "Security Nightmares 2009",
+        "url": "https://media.ccc.de/v/25c3-3021-de-security_nightmares_2009",
+        "congress": "25C3",
+        "id": "3021",
+        "language": "German",
+        "fulltags": [
+            "security",
+            "entertainment"
+        ],
+        "series": "security nightmares"
+    },
+    {
+        "title": "Security Nightmares 2008",
+        "url": "https://media.ccc.de/v/24c3-2336-de-security_nightmares",
+        "congress": "24C3",
+        "id": "2336",
+        "language": "German",
+        "fulltags": [
+            "security",
+            "entertainment"
+        ],
+        "series": "security nightmares"
+    },
+    {
+        "title": "Security Nightmares 2007",
+        "url": "https://media.ccc.de/v/23C3-1682-de-security_nightmares",
+        "congress": "23C3",
+        "id": "1682",
+        "language": "German",
+        "fulltags": [
+            "security",
+            "entertainment"
+        ],
+        "series": "security nightmares"
+    },
+    {
+        "title": "Security Nightmares 2006",
+        "url": "https://media.ccc.de/v/22C3-600-de-security_nightmares",
+        "congress": "22C3",
+        "id": "600",
+        "language": "German",
+        "fulltags": [
+            "security",
+            "entertainment"
+        ],
+        "series": "security nightmares"
+    },
+    {
+        "title": "Security Nightmares III",
+        "url": "https://media.ccc.de/v/20C3-609-Security_Nightmares_III",
+        "congress": "20C3",
+        "id": "609",
+        "language": "German",
+        "fulltags": [
+            "security",
+            "entertainment"
+        ],
+        "series": "security nightmares"
+    },
+    {
+        "title": "Security Nightmares III",
+        "url": "https://media.ccc.de/v/19C3-434-security-nightmares",
+        "congress": "19C3",
+        "id": "434",
+        "language": "German",
+        "fulltags": [
+            "security",
+            "entertainment"
+        ],
+        "series": "security nightmares"
+    }
+]
