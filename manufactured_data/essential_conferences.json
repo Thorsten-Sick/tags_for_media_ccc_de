@@ -1,0 +1,188 @@
+{
+    "conferences": [
+        {
+            "schedule_url": "https://fahrplan.events.ccc.de/congress/2017/Fahrplan/schedule.xml",
+            "acronym": "34c3"
+        },
+        {
+            "schedule_url": "https://fahrplan.events.ccc.de/congress/2015/Fahrplan/schedule.xml",
+            "acronym": "32c3"
+        },
+        {
+            "schedule_url": "https://fahrplan.events.ccc.de/congress/2014/Fahrplan/schedule.xml",
+            "acronym": "31c3"
+        },
+        {
+            "schedule_url": "https://fahrplan.events.ccc.de/congress/2013/Fahrplan/schedule.xml",
+            "acronym": "30c3"
+        },
+        {
+            "schedule_url": "https://fahrplan.events.ccc.de/congress/2012/Fahrplan/schedule.en.xml",
+            "acronym": "29c3"
+        },
+        {
+            "schedule_url": "https://fahrplan.events.ccc.de/congress/2011/Fahrplan/schedule.en.xml",
+            "acronym": "28c3"
+        },
+        {
+            "schedule_url": "https://fahrplan.events.ccc.de/congress/2010/Fahrplan/schedule.en.xml",
+            "acronym": "27c3"
+        },
+        {
+            "schedule_url": "https://fahrplan.events.ccc.de/congress/2009/Fahrplan/schedule.en.xml",
+            "acronym": "26c3"
+        },
+        {
+            "schedule_url": "https://fahrplan.events.ccc.de/congress/2008/Fahrplan/schedule.en.xml",
+            "acronym": "25c3"
+        },
+        {
+            "schedule_url": "https://fahrplan.events.ccc.de/congress/2007/Fahrplan/schedule.en.xml",
+            "acronym": "24c3"
+        },
+        {
+            "schedule_url": "https://fahrplan.events.ccc.de/congress/2006/Fahrplan/schedule.en.xml",
+            "acronym": "23c3"
+        },
+        {
+            "schedule_url": "https://events.ccc.de/camp/2011/Fahrplan/schedule.en.xml",
+            "acronym": "camp2011"
+        },
+        {
+            "schedule_url": "https://entropia.de/GPN18:Fahrplan:XML?action=raw",
+            "acronym": "gpn18"
+        },
+        {
+            "schedule_url": "https://entropia.de/GPN15:Fahrplan:XML?action=raw",
+            "acronym": "gpn15"
+        },
+        {
+            "schedule_url": "https://entropia.de/GPN14:Fahrplan:XML?action=raw",
+            "acronym": "gpn14"
+        },
+        {
+            "schedule_url": "https://entropia.de/GPN13:Fahrplan:XML?action=raw",
+            "acronym": "gpn13"
+        },
+        {
+            "schedule_url": "https://entropia.de/GPN12:Fahrplan:XML?action=raw",
+            "acronym": "gpn12"
+        },
+        {
+            "schedule_url": "https://entropia.de/GPN11:Fahrplan:XML?action=raw",
+            "acronym": "gpn11"
+        },
+        {
+            "schedule_url": "https://talks.mrmcd.net/2017/schedule/export/schedule.xml",
+            "acronym": "mrmcd17"
+        },
+        {
+            "schedule_url": "http://c3voc.de/share/schedules/ogtm18.xml",
+            "acronym": "ogtm18"
+        },
+        {
+            "schedule_url": "https://cfp.privacyweek.at/pw18/schedule/export/schedule.xml",
+            "acronym": "pw18"
+        },
+        {
+            "schedule_url": "https://c3voc.de/share/schedules/ece-shd18.xml",
+            "acronym": "shd18"
+        },
+        {
+            "schedule_url": "https://cfp.all-systems-go.io/en/ASG2018/public/schedule.xml",
+            "acronym": "asgo2018"
+        },
+        {
+            "schedule_url": "https://2018.fiffkon.de/schedule.xml",
+            "acronym": "fiffkon2018"
+        },
+        {
+            "schedule_url": "https://www.thorti.de/media/np14/np14.xml",
+            "acronym": "np14"
+        },
+        {
+            "schedule_url": "http://data.c3voc.de/dcgtw/schedule-dcgtw.xml",
+            "acronym": "dcgtw"
+        },
+        {
+            "schedule_url": "https://glt18-programm.linuxtage.at/schedule.xml",
+            "acronym": "glt18"
+        },
+        {
+            "schedule_url": "https://pretalx.sysmocom.de/osmodevcon2018/schedule/",
+            "acronym": "osmodevcon2018"
+        },
+        {
+            "schedule_url": "https://pretalx.eh18.easterhegg.eu/eh18/schedule.xml",
+            "acronym": "eh18"
+        },
+        {
+            "schedule_url": "http://data.c3voc.de/afu-tm18/schedule-afu-tm18.xml",
+            "acronym": "afu-tm18"
+        },
+        {
+            "schedule_url": "https://frab.das-sendezentrum.de/de/subscribe9/public/schedule",
+            "acronym": "subscribe9"
+        },
+        {
+            "schedule_url": "https://fahrplan.privacyweek.at/",
+            "acronym": "pw17"
+        },
+        {
+            "schedule_url": "https://datenspuren.de/2017/fahrplan/schedule.xml",
+            "acronym": "ds2017"
+        },
+        {
+            "schedule_url": "https://cfp.all-systems-go.io/en/ASG2017/public/schedule.xml",
+            "acronym": "asgo2017"
+        },
+        {
+            "schedule_url": "http://c3voc.de/share/schedules/ogtm17.xml",
+            "acronym": "ogtm17"
+        },
+        {
+            "schedule_url": "https://programm.froscon.de/2017/schedule.xml",
+            "acronym": "froscon2017"
+        },
+        {
+            "schedule_url": "https://schedule.battlemesh.org/",
+            "acronym": "battlemesh"
+        },
+        {
+            "schedule_url": "https://events.opensuse.org/conference/oSC17/schedule.xml",
+            "acronym": "osc17"
+        },
+        {
+            "schedule_url": "https://c3voc.de/share/schedules/tib3s.xml",
+            "acronym": "tib3s"
+        },
+        {
+            "schedule_url": "https://c3voc.de/share/schedules/mm17.xml",
+            "acronym": "mm17"
+        },
+        {
+            "schedule_url": "http://data.c3voc.de/schedule/osmocon17/schedule.xml",
+            "acronym": "osmocon17"
+        },
+        {
+            "schedule_url": "http://frab.fossgis-konferenz.de/de/2017/public/schedule.xml",
+            "acronym": "fossgis2017"
+        },
+        {
+            "schedule_url": "https://c3voc.de/share/schedules/ogtm16.xml",
+            "acronym": "ogtm16"
+        },
+        {
+            "schedule_url": "https://frab.das-sendezentrum.de/de/subscribe8/public/schedule",
+            "acronym": "subscribe8"
+        },
+        {
+            "schedule_url": "http://frab.fossgis-konferenz.de/en/foss4g-2016/public/schedule",
+            "acronym": "foss4g2016"
+        },
+        {
+            "schedule_url": "https://frab.sendegate.de/de/ppw15b/public/schedule",
+            "acronym": "subscribe6"
+        }
+    ]
+}

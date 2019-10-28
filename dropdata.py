@@ -586,627 +586,20 @@ regexes = {r"\Wrfid\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wdrm\W": [POLITICS, CENSORSHIP, SOFTWARE],
            r"\Wkryptographie\W": [SOFTWARE, SECURITY, CRYPTO],
 
-
-
-
-
-
-
-
-
-
            }
 
+#TODO: create object oriented code
 
-default_talks = [{
-          "title": "Dude, you broke the Future!",
-          "url": "https://media.ccc.de/v/34c3-9270-dude_you_broke_the_future",
-          "congress": "34c3",
-          "id": "9270",
-          "language": "English",
-          "fulltags": [KEYNOTE, POLITICS, INSIGHTS, TECHNOLOGY],
-          "series": None,
-         },
-        {
-        "title": "Antipatterns und Missverständnisse in der Softwareentwicklung",
-        "url": "https://media.ccc.de/v/34c3-9095-antipatterns_und_missverstandnisse_in_der_softwareentwicklung",
-        "congress": "34c3",
-        "id": "9095",
-        "language": "German",
-        "fulltags": [TECHNOLOGY, ENGINEERING],
-        "series": None,
-        },
-        {
-        "title": "Console Security - Switch",
-        "url": "https://media.ccc.de/v/34c3-8941-console_security_-_switch",
-        "congress": "34c3",
-        "id": "8941",
-        "language": "English",
-        "fulltags": [CONSOLE, HACKING, NINTENDO, SECURITY, ARM, OS, KERNEL, ASSEMBLER],
-        "series": None,
-        },
-        {
-        "title": "Commissioning methods for IoT",
-        "url": "https://media.ccc.de/v/SHA2017-325-commissioning_methods_for_iot",
-        "congress": "SHA2017",
-        "id": "325",
-        "language": "English",
-        "fulltags": [HARDWARE, NETWORK, IOT, SECURITY],
-        "series": None,
-        },
-        {
-        "title": "Datengarten 85 Crisis Response Makerspace in Berlin",
-        "url": "https://media.ccc.de/v/dg-85",
-        "congress": "datengarten",
-        "id": "dg-85",
-        "language": "German",
-        "fulltags": [SOCIETY, POLITICS, ACTIVISM, HARDWARE, MAKING],
-        "series": None,
-        },
-        {
-        "title": "Schreibtisch-Hooligans",
-        "url": "https://media.ccc.de/v/34c3-8714-schreibtisch-hooligans",
-        "congress": "34c3",
-        "id": "8714",
-        "language": "German",
-        "fulltags": [IFG, ACTIVISM, POLITICS],
-        "series": None,
-        },
-        {
-        "title": "UPSat - the first open source satellite",
-        "url": "https://media.ccc.de/v/34c3-9182-upsat_-_the_first_open_source_satellite",
-        "congress": "34c3",
-        "id": "9182",
-        "language": "English",
-        "fulltags": [ENGINEERING, SCIENCE, SPACE, HARDWARE],
-        "series": None,
-        },
-        {
-        "title": "Tiger, Drucker und ein Mahnmal",
-        "url": "https://media.ccc.de/v/34c3-8896-tiger_drucker_und_ein_mahnmal",
-        "congress": "34c3",
-        "id": "8896",
-        "language": "German",
-        "fulltags": [ENTERTAINMENT, ACTIVISM, POLITICS],
-        "series": None,
-        },
-        {
-        "title": "Taxation",
-        "url": "https://media.ccc.de/v/34c3-9047-taxation",
-        "congress": "34c3",
-        "id": "9047",
-        "language": "English",
-        "fulltags": [SOCIETY, POLITICS, ACTIVISM],
-        "series": None,
-        },
-        {
-        "title": "Protecting Your Privacy at the Border",
-        "url": "https://media.ccc.de/v/34c3-9086-protecting_your_privacy_at_the_border",
-        "congress": "34c3",
-        "id": "9086",
-        "language": "English",
-        "fulltags": [POLITICS, PRIVACY, SURVEILLANCE, SOLUTION],
-        "series": None,
-        },
-        {
-        "title": "Exploiting The North American Railways",
-        "url": "https://media.ccc.de/v/SHA2017-270-exploiting_the_north_american_railways",
-        "congress": "sha2017",
-        "id": "270",
-        "language": "English",
-        "fulltags": [ANARCHY, TRAVEL],
-        "series": None,
-        },
-        {
-        "title": "Improving security with Fuzzing and Sanitizers",
-        "url": "https://media.ccc.de/v/SHA2017-148-improving_security_with_fuzzing_and_sanitizers",
-        "congress": "sha2017",
-        "id": "148",
-        "language": "English",
-        "fulltags": [SECURITY, FUZZING, ASAN, AFL, LIBFUZZER],
-        "series": None,
-        },
-        {
-        "title": "Demystifying Network Cards",
-        "url": "https://media.ccc.de/v/34c3-9159-demystifying_network_cards",
-        "congress": "34c3",
-        "id": "9159",
-        "language": "English",
-        "fulltags": [NETWORK, KERNEL, SOFTWARE, OS, HARDWARE],
-        "series": None,
-        },
-        {
-        "title": "The Internet in Cuba: A Story of Community Resilience",
-        "url": "https://media.ccc.de/v/34c3-8740-the_internet_in_cuba_a_story_of_community_resilience",
-        "congress": "34c3",
-        "id": "8740",
-        "language": "English",
-        "fulltags": [NETWORK, ACTIVISM, POLITICS, SOLUTION, FREIFUNK],
-        "series": None,
-        },
-        {
-        "title": "Black Hat Locksmithing",
-        "url": "https://media.ccc.de/v/SHA2017-34-black_hat_locksmithing",
-        "congress": "sha2017",
-        "id": "34",
-        "language": "English",
-        "fulltags": [TECHNOLOGY, HARDWARE, LOCKPICKING, SECURITY, HISTORY],
-        "series": None,
-        },
-        {
-        "title": "Blinkenrocket!",
-        "url": "https://media.ccc.de/v/34c3-8721-blinkenrocket",
-        "congress": "34c3",
-        "id": "8721",
-        "language": "English",
-        "fulltags": [ELECTRONICS, ENGINEERING, HARDWARE, SOFTWARE, EDUCATION],
-        "series": None,
-        },
-        {
-        "title": "FaceDancer 2.0",
-        "url": "https://media.ccc.de/v/SHA2017-221-facedancer_2_0",
-        "congress": "sha2017",
-        "id": "221",
-        "language": "English",
-        "fulltags": [FACEDANCER, USB, HARDWARE, SECURITY, HACKING],
-        "external_links": ["https://github.com/ktemkin/FaceDancer", "https://github.com/greatscottgadgets/greatfet"],
-        "series": None,
-        },
-        {
-        "title": "Die fabelhafte Welt des Mobilebankings",
-        "url": "https://media.ccc.de/v/34c3-8805-die_fabelhafte_welt_des_mobilebankings",
-        "congress": "34c3",
-        "id": "8805",
-        "language": "German",
-        "fulltags": [MOBILE, BANKING, ANDROID, SOFTWARE, IOS, HACKING, SECURITY],
-        "series": None,
-        },
-        {
-        "title": "Internet of Fails",
-        "url": "https://media.ccc.de/v/34c3-9193-internet_of_fails",
-        "congress": "34c3",
-        "id": "9193",
-        "language": "English",
-        "fulltags": [IOT, PRIVACY, SECURITY, HARDWARE, SOFTWARE, HACKING, BLUETOOTH],
-        "series": None,
-        },
-        {
-        "title": "Inside Intel Management Engine",
-        "url": "https://media.ccc.de/v/34c3-8762-inside_intel_management_engine",
-        "congress": "34c3",
-        "id": "8762",
-        "language": "English",
-        "fulltags": [HARDWARE, SECURITY, HACKING, OS, USB, JTAG, ASSEMBLER],
-        "series": None,
-        },
-        {
-        "title": "How to drift with any car",
-        "url": "https://media.ccc.de/v/34c3-8758-how_to_drift_with_any_car",
-        "congress": "34c3",
-        "id": "8758",
-        "language": "English",
-        "fulltags": [AUTOMOTIVE, HACKING, SECURITY, HARDWARE, SOFTWARE, ELECTRONICS],
-        "series": None,
-        },
-        {
-        "title": "Ladeinfrastruktur für Elektroautos: Ausbau statt Sicherheit",
-        "url": "https://media.ccc.de/v/34c3-9092-ladeinfrastruktur_fur_elektroautos_ausbau_statt_sicherheit",
-        "congress": "34c3",
-        "id": "9092",
-        "language": "German",
-        "fulltags": [AUTOMOTIVE, HACKING, SECURITY, NETWORK, RFID],
-        "series": None,
-        },
-        {
-        "title": "The Ultimate Apollo Guidance Computer Talk",
-        "url": "https://media.ccc.de/v/34c3-9064-the_ultimate_apollo_guidance_computer_talk",
-        "congress": "34c3",
-        "id": "9064",
-        "language": "English",
-        "fulltags": [HISTORY, SPACE, HARDWARE, SOFTWARE],
-        "series": ULTIMATE_TALK,
-        },
-        {
-        "title": "The Ultimate Game Boy Talk",
-        "url": "https://media.ccc.de/v/33c3-8029-the_ultimate_game_boy_talk",
-        "congress": "33c3",
-        "id": "8029",
-        "language": "English",
-        "fulltags": [HISTORY, HARDWARE, SOFTWARE],
-        "series": ULTIMATE_TALK,
-        },
-        {
-        "title": "The Ultimate Amiga 500 Talk",
-        "url": "https://media.ccc.de/v/32c3-7468-the_ultimate_amiga_500_talk",
-        "congress": "32c3",
-        "id": "7468",
-        "language": "English",
-        "fulltags": [HISTORY, HARDWARE, SOFTWARE],
-        "series": ULTIMATE_TALK,
-        },
-        {
-        "title": "The ultimate Galaksija talk",
-        "url": "https://media.ccc.de/v/29c3-5178-en-the_ultimate_galaksija_talk_h264",
-        "congress": "29c3",
-        "id": "5178",
-        "language": "English",
-        "fulltags": [HISTORY, HARDWARE, SOFTWARE],
-        "series": ULTIMATE_TALK,
-        },
-        {
-        "title": "The Atari 2600 Video Computer System: The Ultimate Talk",
-        "url": "https://media.ccc.de/v/28c3-4711-en-the_atari_2600_video_computer_system_the_ultimate_talk",
-        "congress": "28c3",
-        "id": "4711",
-        "language": "English",
-        "fulltags": [HISTORY, HARDWARE, SOFTWARE],
-        "series": ULTIMATE_TALK,
-        },
-        {
-        "title": "The Ultimate Commodore 64 Talk",
-        "url": "https://media.ccc.de/v/25c3-2874-en-the_ultimate_commodore_64_talk",
-        "congress": "25c3",
-        "id": "2874",
-        "language": "English",
-        "fulltags": [HISTORY, HARDWARE, SOFTWARE],
-        "series": ULTIMATE_TALK,
-        },
-        {
-        "title": "QualityLand",
-        "url": "https://media.ccc.de/v/34c3-9285-qualityland",
-        "congress": "34c3",
-        "id": "9285",
-        "language": "German",
-        "fulltags": [ENTERTAINMENT],
-        "series": None,
-        },
-        {
-        "title": "Schnaps Hacking",
-        "url": "https://media.ccc.de/v/34c3-8946-schnaps_hacking",
-        "congress": "34c3",
-        "id": "8946",
-        "language": "English",
-        "fulltags": [FOOD, LAW, MAKING],
-        "series": None,
-        },
-        {
-        "title": "Home Distilling",
-        "url": "https://media.ccc.de/v/34c3-8938-home_distilling",
-        "congress": "34c3",
-        "id": "8938",
-        "language": "English",
-        "fulltags": [FOOD, LAW, BIO],
-        "series": None,
-        },
-        {
-        "title": "How Alice and Bob meet if they don't like onions",
-        "url": "https://media.ccc.de/v/34c3-9104-how_alice_and_bob_meet_if_they_don_t_like_onions",
-        "congress": "34c3",
-        "id": "9104",
-        "language": "English",
-        "fulltags": [CRYPTO, I2P, FREENET, GNUNET, JONDONYM, TOR, LOOPIX, VUVUZELA, NETWORK],
-        "series": None,
-        },
-        {
-        "title": "All Computers Are Beschlagnahmt",
-        "url": "https://media.ccc.de/v/34c3-8955-all_computers_are_beschlagnahmt",
-        "congress": "34c3",
-        "id": "8955",
-        "language": "German",
-        "fulltags": [POLITICS, ACTIVISM, LAW, BIGBROTHER],
-        "series": None,
-        },
-        {
-        "title": "Opening Closed Systems with GlitchKit",
-        "url": "https://media.ccc.de/v/34c3-9207-opening_closed_systems_with_glitchkit",
-        "congress": "34c3",
-        "id": "9207",
-        "language": "English",
-        "fulltags": [HARDWARE, HACKING, CHIPWHISPERER, ELECTRONICS, GLITCHKIT],
-        "series": None,
-        },
-        {
-        "title": "Hardening Open Source Development",
-        "url": "https://media.ccc.de/v/34c3-9249-hardening_open_source_development",
-        "congress": "34c3",
-        "id": "9249",
-        "language": "English",
-        "fulltags": [SOFTWARE, SECURITY, ENGINEERING],
-        "series": None,
-        },
-        {
-        "title": "Drones of Power: Airborne Wind Energy",
-        "url": "https://media.ccc.de/v/34c3-8877-drones_of_power_airborne_wind_energy",
-        "congress": "34c3",
-        "id": "8877",
-        "language": "English",
-        "fulltags": [SCIENCE, MAKING, SOLUTION, ENERGY],
-        "series": None,
-        },
-        {
-        "title": "0en & 1en auf dem Acker",
-        "url": "https://media.ccc.de/v/34c3-8961-0en_1en_auf_dem_acker",
-        "congress": "34c3",
-        "id": "8961",
-        "language": "German",
-        "fulltags": [BIO, SCIENCE, ROBOTICS],
-        "series": None,
-        },
-        {
-        "title": "The making of a chip",
-        "url": "https://media.ccc.de/v/34c3-9250-the_making_of_a_chip",
-        "congress": "34C3",
-        "id": "9250",
-        "language": "English",
-        "fulltags": [HARDWARE, ELECTRONICS],
-        "series": None,
-        },
-        {
-        "title": "Zamir Transnational Network und Zagreb Dairy",
-        "url": "https://media.ccc.de/v/34c3-8842-zamir_transnational_network_und_zagreb_dairy",
-        "congress": "34C3",
-        "id": "8842",
-        "language": "German",
-        "fulltags": [NETWORK, HISTORY, ACTIVISM],
-        "series": None,
-        },
-        {
-        "title": "Security Nightmares 0x12",
-        "url": "https://media.ccc.de/v/34c3-8888-security_nightmares_0x12",
-        "congress": "34C3",
-        "id": "8888",
-        "language": "German",
-        "fulltags": [SECURITY, ENTERTAINMENT],
-        "series": "Security Nightmares",
-        },
-        {
-        "title": "Security Nightmares 0x11",
-        "url": "https://media.ccc.de/v/33c3-8413-security_nightmares_0x11",
-        "congress": "33C3",
-        "id": "8413",
-        "language": "German",
-        "fulltags": [SECURITY, ENTERTAINMENT],
-        "series": SECURITY_NIGHTMARES,
-        },
-        {
-        "title": "Security Nightmares 0x10",
-        "url": "https://media.ccc.de/v/32c3-7546-security_nightmares_0x10",
-        "congress": "32C3",
-        "id": "7446",
-        "language": "German",
-        "fulltags": [SECURITY, ENTERTAINMENT],
-        "series": SECURITY_NIGHTMARES,
-        },
-        {
-        "title": "Security Nightmares",
-        "url": "https://media.ccc.de/v/31c3_-_6572_-_de_-_saal_1_-_201412301715_-_security_nightmares_-_frank_-_ron",
-        "congress": "31C3",
-        "id": "6572",
-        "language": "German",
-        "fulltags": [SECURITY, ENTERTAINMENT],
-        "series": SECURITY_NIGHTMARES,
-        },
-        {
-        "title": "Security Nightmares",
-        "url": "https://media.ccc.de/v/30C3_-_5413_-_de_-_saal_1_-_201312301715_-_security_nightmares_-_frank_-_ron",
-        "congress": "30C3",
-        "id": "5413",
-        "language": "German",
-        "fulltags": [SECURITY, ENTERTAINMENT],
-        "series": SECURITY_NIGHTMARES,
-        },
-        {
-        "title": "Security Nightmares",
-        "url": "https://media.ccc.de/v/29c3-5244-de-en-security_nightmares2012_h264",
-        "congress": "29C3",
-        "id": "5244",
-        "language": "German",
-        "fulltags": [SECURITY, ENTERTAINMENT],
-        "series": SECURITY_NIGHTMARES,
-        },
-        {
-        "title": "Security Nightmares",
-        "url": "https://media.ccc.de/v/28c3-4898-de-security_nightmares",
-        "congress": "28C3",
-        "id": "4898",
-        "language": "German",
-        "fulltags": [SECURITY, ENTERTAINMENT],
-        "series": SECURITY_NIGHTMARES,
-        },
-        {
-        "title": "Security Nightmares",
-        "url": "https://media.ccc.de/v/27c3-4230-de-security_nightmares",
-        "congress": "27C3",
-        "id": "4230",
-        "language": "German",
-        "fulltags": [SECURITY, ENTERTAINMENT],
-        "series": SECURITY_NIGHTMARES,
-        },
-        {
-        "title": "Security Nightmares",
-        "url": "https://media.ccc.de/v/26c3-3687-de-security_nightmares",
-        "congress": "26C3",
-        "id": "3687",
-        "language": "German",
-        "fulltags": [SECURITY, ENTERTAINMENT],
-        "series": SECURITY_NIGHTMARES,
-        },
-        {
-        "title": "Security Nightmares 2009",
-        "url": "https://media.ccc.de/v/25c3-3021-de-security_nightmares_2009",
-        "congress": "25C3",
-        "id": "3021",
-        "language": "German",
-        "fulltags": [SECURITY, ENTERTAINMENT],
-        "series": SECURITY_NIGHTMARES,
-        },
-        {
-        "title": "Security Nightmares 2008",
-        "url": "https://media.ccc.de/v/24c3-2336-de-security_nightmares",
-        "congress": "24C3",
-        "id": "2336",
-        "language": "German",
-        "fulltags": [SECURITY, ENTERTAINMENT],
-        "series": SECURITY_NIGHTMARES,
-        },
-        {
-        "title": "Security Nightmares 2007",
-        "url": "https://media.ccc.de/v/23C3-1682-de-security_nightmares",
-        "congress": "23C3",
-        "id": "1682",
-        "language": "German",
-        "fulltags": [SECURITY, ENTERTAINMENT],
-        "series": SECURITY_NIGHTMARES,
-        },
-        {
-        "title": "Security Nightmares 2006",
-        "url": "https://media.ccc.de/v/22C3-600-de-security_nightmares",
-        "congress": "22C3",
-        "id": "600",
-        "language": "German",
-        "fulltags": [SECURITY, ENTERTAINMENT],
-        "series": SECURITY_NIGHTMARES,
-        },
-        # No security nightmares 21C3 ?
-        {
-        "title": "Security Nightmares III",
-        "url": "https://media.ccc.de/v/20C3-609-Security_Nightmares_III",
-        "congress": "20C3",
-        "id": "609",
-        "language": "German",
-        "fulltags": [SECURITY, ENTERTAINMENT],
-        "series": SECURITY_NIGHTMARES,
-        },
-        {
-        "title": "Security Nightmares III",
-        "url": "https://media.ccc.de/v/19C3-434-security-nightmares",
-        "congress": "19C3",
-        "id": "434",
-        "language": "German",
-        "fulltags": [SECURITY, ENTERTAINMENT],
-        "series": SECURITY_NIGHTMARES,
-        },
-        # No security nightmares left...
-        ]
+#TODO: extract tags and stuff into db
 
 
-fraps = [("https://fahrplan.events.ccc.de/congress/2017/Fahrplan/schedule.xml",
-          "34c3"),
-          ("https://fahrplan.events.ccc.de/congress/2016/Fahrplan/schedule.xml",
-          "33c3"),
-          ("https://fahrplan.events.ccc.de/congress/2015/Fahrplan/schedule.xml",
-          "32c3"),
-          ("https://fahrplan.events.ccc.de/congress/2014/Fahrplan/schedule.xml",
-          "31c3"),
-          ("https://fahrplan.events.ccc.de/congress/2013/Fahrplan/schedule.xml",
-          "30c3"),
-          ("https://fahrplan.events.ccc.de/congress/2012/Fahrplan/schedule.en.xml",
-          "29c3"),
-          ("https://fahrplan.events.ccc.de/congress/2011/Fahrplan/schedule.en.xml",
-          "28c3"),
-          ("https://fahrplan.events.ccc.de/congress/2010/Fahrplan/schedule.en.xml",
-          "27c3"),
-          ("https://fahrplan.events.ccc.de/congress/2009/Fahrplan/schedule.en.xml",
-          "26c3"),
-          ("https://fahrplan.events.ccc.de/congress/2008/Fahrplan/schedule.en.xml",
-          "25c3"),
-          ("https://fahrplan.events.ccc.de/congress/2007/Fahrplan/schedule.en.xml",
-          "24c3"),
-          ("https://fahrplan.events.ccc.de/congress/2006/Fahrplan/schedule.en.xml",
-          "23c3"),
-
-          ("https://events.ccc.de/camp/2011/Fahrplan/schedule.en.xml",
-          "camp2011"),
-          ("https://events.ccc.de/camp/2015/Fahrplan/schedule.xml",
-          "camp2015"),
-
-          ("https://entropia.de/GPN18:Fahrplan:XML?action=raw",
-          "gpn18"),
-          ("https://entropia.de/GPN17:Fahrplan:XML?action=raw",
-          "gpn17"),
-          ("https://entropia.de/GPN16:Fahrplan:XML?action=raw",
-          "gpn16"),
-          ("https://entropia.de/GPN15:Fahrplan:XML?action=raw",
-          "gpn15"),
-          ("https://entropia.de/GPN14:Fahrplan:XML?action=raw",
-          "gpn14"),
-          ("https://entropia.de/GPN13:Fahrplan:XML?action=raw",
-          "gpn13"),
-          ("https://entropia.de/GPN12:Fahrplan:XML?action=raw",
-          "gpn12"),
-          ("https://entropia.de/GPN11:Fahrplan:XML?action=raw",
-          "gpn11"),
-
-          ("https://talks.mrmcd.net/2017/schedule/export/schedule.xml",
-          "mrmcd17"),
-          ("http://c3voc.de/share/schedules/ogtm18.xml",
-          "ogtm18"),  # Open Government Tag München
-          ("https://cfp.privacyweek.at/pw18/schedule/export/schedule.xml",
-          "pw18"),  #  Privacy Week
-          ("https://c3voc.de/share/schedules/ece-shd18.xml",
-          "shd18"),  # Smart Home Day
-          ("https://cfp.all-systems-go.io/en/ASG2018/public/schedule.xml",
-          "asgo2018"),  # All systems go
-          ("https://2018.fiffkon.de/schedule.xml",
-          "fiffkon2018"),
-          ("https://www.thorti.de/media/np14/np14.xml",
-          "np14"),  # Das ist Netzpolitik 14
-          ("https://www.emfcamp.org/schedule.frab",
-          "emf18"),  # EMF camp 18
-          ("http://data.c3voc.de/dcgtw/schedule-dcgtw.xml",
-          "dcgtw"),  # Das digitale Chamäleon
-          ("https://glt18-programm.linuxtage.at/schedule.xml",
-          "glt18"),  # Grazer Linuxtage
-          ("https://pretalx.sysmocom.de/osmodevcon2018/schedule/",
-          "osmodevcon2018"),
-          ("https://pretalx.eh18.easterhegg.eu/eh18/schedule.xml",
-          "eh18"),
-          ("http://frab.fossgis-konferenz.de/de/2018/public/schedule.xml",
-          "fossgis2018"),
-          ("http://data.c3voc.de/afu-tm18/schedule-afu-tm18.xml",
-          "afu-tm18"),  # Amateurfunktagung
-          ("https://frab.das-sendezentrum.de/de/subscribe9/public/schedule",
-          "subscribe9"),
-          ("https://fahrplan.privacyweek.at/",
-          "pw17"),   # Privacy week
-          ("https://datenspuren.de/2017/fahrplan/schedule.xml",
-          "ds2017"),
-          ("https://cfp.all-systems-go.io/en/ASG2017/public/schedule.xml",
-          "asgo2017"),
-          ("http://c3voc.de/share/schedules/ogtm17.xml",
-          "ogtm17"),
-          ("http://data.c3voc.de/jh17/schedule-jh17-ulm.xml",
-          "jh17-ulm"),   # Jugend hackt
-          ("https://programm.froscon.de/2017/schedule.xml",
-          "froscon2017"),
-          ("https://schedule.battlemesh.org/",
-          "battlemesh"),
-          ("https://events.opensuse.org/conference/oSC17/schedule.xml",
-          "osc17"),
-          ("https://c3voc.de/share/schedules/tib3s.xml",
-          "tib3s"),  # TIB Software and Service for Science
-          ("https://c3voc.de/share/schedules/mm17.xml",
-          "mm17"),  # Make Munich
-          ("http://data.c3voc.de/schedule/osmocon17/schedule.xml",
-          "osmocon17"),
-          ("http://frab.fossgis-konferenz.de/de/2017/public/schedule.xml",
-          "fossgis2017"),
-          ("https://c3voc.de/share/schedules/ogtm16.xml",
-          "ogtm16"),
-          ("https://frab.das-sendezentrum.de/de/subscribe8/public/schedule",
-          "subscribe8"),
-          ("http://frab.fossgis-konferenz.de/en/foss4g-2016/public/schedule",
-          "foss4g2016"),
-          ("https://frab.sendegate.de/de/ppw15b/public/schedule",
-          "subscribe6"),
-          ]
 
 # See: https://github.com/voc/voctoweb/issues/246
 voctoweburl = "https://api.media.ccc.de/public/conferences"
 
 
-def get_congress(filename):
-    return filename.split("-")[0]
+#def get_congress(filename):
+#    return filename.split("-")[0]
 
 
 def get_id(filename):
@@ -1217,9 +610,7 @@ def text_to_tags(text):
     """ Generate tags from a string """
 
     res = []
-
     text = text.lower()
-
     for akey in regexes.keys():
         if re.search(akey, text, re.MULTILINE):
             res += regexes[akey]
@@ -1236,6 +627,7 @@ def get_tags(filename):
 
 
 def from_subtitles(directory):
+    # TODO: Can we automatically find more subtitles ?
     res = {}
 
     for root, dirs, files in os.walk(directory):
@@ -1255,19 +647,32 @@ def from_subtitles(directory):
 
 # FRAB
 
+def from_voctoweb_data(data):
+    """
+    Transfers voctoweb style data into data we can handle
+    :param data: voctoweb style json data as dict
+    :return:
+    """
+
+    res = []
+    for entry in data["conferences"]:
+        if "acronym" in entry and "schedule_url" in entry and \
+                entry["schedule_url"] and \
+                len(entry.get("acronym", "")) > 0 and \
+                len(entry.get("schedule_url", "")) > 0 and \
+                entry["schedule_url"].startswith("http"):
+            res.append((entry["schedule_url"], entry["acronym"]))
+    return res
+
 def from_voctoweb():
     """ Use the voctoweb database and extract complete acronym/schedule-url pairs"""
-    res = []
+
     r = requests.get(voctoweburl)
     if r.status_code == requests.codes.ok:
         data = r.json()
-        for entry in data["conferences"]:
-            if "acronym" in entry and "schedule_url" in entry and\
-               entry["schedule_url"] and\
-               len(entry.get("acronym", "")) > 0 and \
-               len(entry.get("schedule_url", "")) > 0 and\
-               entry["schedule_url"].startswith("http"):
-                res.append((entry["schedule_url"], entry["acronym"]))
+        # TODO: Are there any broken entries ?
+        # TODO: Use acronym, schedule_url, title, event_last_released_at
+        res = from_voctoweb_data(data)
     return res
 
 
@@ -1286,6 +691,8 @@ def download_one(entry):
             print("Error: Broken url: " + url)
         except requests.exceptions.ConnectionError:
             print("Error: Connection error url: " + url)
+    else:
+        print("Already have file {}".format(filename))
 
 def from_frabs(offline=False):
     """
@@ -1293,9 +700,12 @@ def from_frabs(offline=False):
     """
     collected = {}
 
-    combined_fraps = list(fraps)
+    with open("manufactured_data/essential_conferences.json") as fh:
+        data = json.load(fh)
+        combined_fraps = from_voctoweb_data(data)
     combined_fraps += from_voctoweb()
     combined_fraps = list(set(combined_fraps))
+
 
     # Getting files
     # Todo: optimize
