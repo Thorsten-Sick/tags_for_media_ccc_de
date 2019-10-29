@@ -53,6 +53,10 @@
             "acronym": "gpn18"
         },
         {
+            "schedule_url": "https://entropia.de/GPN19:Fahrplan:XML?action=raw",
+            "acronym": "gpn19"
+        },
+        {
             "schedule_url": "https://entropia.de/GPN15:Fahrplan:XML?action=raw",
             "acronym": "gpn15"
         },

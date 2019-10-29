@@ -432,7 +432,6 @@ regexes = {r"\Wrfid\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
            r"\Wios\W": [OS, IOS, APPLE],
            r"\Wspace\W": [SPACE, SCIENCE],
            r"\Winterplanetary\W": [SPACE, SCIENCE],
-           r"\Wmethodisch inkorrekt\W": [SCIENCE],
            r"\Wartificial intelligence\W": [AI],
            r"\Wextraterrestrial\W": [SPACE, SCIENCE],
            r"\Wdnssec\W": [NETWORK, SECURITY],
@@ -588,9 +587,9 @@ regexes = {r"\Wrfid\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
 
            }
 
-#TODO: create object oriented code
+# TODO: create object oriented code
 
-#TODO: extract tags and stuff into db
+# TODO: extract tags and stuff into db
 
 
 
@@ -601,165 +600,171 @@ voctoweburl = "https://api.media.ccc.de/public/conferences"
 #def get_congress(filename):
 #    return filename.split("-")[0]
 
+class MediaTagger():
 
-def get_id(filename):
-    return filename.split("-")[1]
+    def __init__(self):
+        pass
 
-
-def text_to_tags(text):
-    """ Generate tags from a string """
-
-    res = []
-    text = text.lower()
-    for akey in regexes.keys():
-        if re.search(akey, text, re.MULTILINE):
-            res += regexes[akey]
-
-    return list(set(res))
+    def get_id(self, filename):
+        return filename.split("-")[1]
 
 
-def get_tags(filename):
-    res = []
-    with open(filename, "rt") as fh:
-        content = fh.read().lower()
-        res = text_to_tags(content)
-    return res
+    def text_to_tags(self, text):
+        """ Generate tags from a string """
+
+        res = []
+        text = text.lower()
+        for akey in regexes.keys():
+            if re.search(akey, text, re.MULTILINE):
+                res += regexes[akey]
+
+        return list(set(res))
 
 
-def from_subtitles(directory):
-    # TODO: Can we automatically find more subtitles ?
-    res = {}
-
-    for root, dirs, files in os.walk(directory):
-        for name in files:
-            if name.endswith(".srt"):
-                fullname = os.path.join(root, name)
-                print(fullname)
-                tags = get_tags(fullname)
-                print(tags)
-                talkid = get_id(name)
-                if talkid not in res:
-                    res[talkid] = tags
-                else:
-                    res[talkid] = list(set(res[talkid] + tags))
-    return res
+    def get_tags(self, filename):
+        res = []
+        with open(filename, "rt") as fh:
+            content = fh.read().lower()
+            res = self.text_to_tags(content)
+        return res
 
 
-# FRAB
+    def from_subtitles(self, directory):
+        # TODO: Can we automatically find more subtitles ?
+        res = {}
 
-def from_voctoweb_data(data):
-    """
-    Transfers voctoweb style data into data we can handle
-    :param data: voctoweb style json data as dict
-    :return:
-    """
-
-    res = []
-    for entry in data["conferences"]:
-        if "acronym" in entry and "schedule_url" in entry and \
-                entry["schedule_url"] and \
-                len(entry.get("acronym", "")) > 0 and \
-                len(entry.get("schedule_url", "")) > 0 and \
-                entry["schedule_url"].startswith("http"):
-            res.append((entry["schedule_url"], entry["acronym"]))
-    return res
-
-def from_voctoweb():
-    """ Use the voctoweb database and extract complete acronym/schedule-url pairs"""
-
-    r = requests.get(voctoweburl)
-    if r.status_code == requests.codes.ok:
-        data = r.json()
-        # TODO: Are there any broken entries ?
-        # TODO: Use acronym, schedule_url, title, event_last_released_at
-        res = from_voctoweb_data(data)
-    return res
+        for root, dirs, files in os.walk(directory):
+            for name in files:
+                if name.endswith(".srt"):
+                    fullname = os.path.join(root, name)
+                    print(fullname)
+                    tags = self.get_tags(fullname)
+                    print(tags)
+                    talkid = self.get_id(name)
+                    if talkid not in res:
+                        res[talkid] = tags
+                    else:
+                        res[talkid] = list(set(res[talkid] + tags))
+        return res
 
 
-def download_one(entry):
-    """ Download one entry in the schedule.xml list """
-    url, acronym = entry
-    filename = "data/"+acronym+".xml"
-    if not pathlib.Path(filename).is_file():
-        try:
-            r = requests.get(url)
-            print(url)
-            if r.status_code == requests.codes.ok:
-                with open(filename, "w") as fh:
-                    fh.write(r.text)
-        except requests.exceptions.MissingSchema:
-            print("Error: Broken url: " + url)
-        except requests.exceptions.ConnectionError:
-            print("Error: Connection error url: " + url)
-    else:
-        print("Already have file {}".format(filename))
+    # FRAB
 
-def from_frabs(offline=False):
-    """
-    offline: Do not download detailed frabs, use existing files only
-    """
-    collected = {}
+    def from_voctoweb_data(self, data):
+        """
+        Transfers voctoweb style data into data we can handle
+        :param data: voctoweb style json data as dict
+        :return:
+        """
 
-    with open("manufactured_data/essential_conferences.json") as fh:
-        data = json.load(fh)
-        combined_fraps = from_voctoweb_data(data)
-    combined_fraps += from_voctoweb()
-    combined_fraps = list(set(combined_fraps))
+        res = []
+        for entry in data["conferences"]:
+            if "acronym" in entry and "schedule_url" in entry and \
+                    entry["schedule_url"] and \
+                    len(entry.get("acronym", "")) > 0 and \
+                    len(entry.get("schedule_url", "")) > 0 and \
+                    entry["schedule_url"].startswith("http"):
+                res.append((entry["schedule_url"], entry["acronym"]))
+        return res
+
+    def from_voctoweb(self):
+        """ Use the voctoweb database and extract complete acronym/schedule-url pairs"""
+
+        r = requests.get(voctoweburl)
+        res = None
+        if r.status_code == requests.codes.ok:
+            data = r.json()
+            # TODO: Are there any broken entries ?
+            # TODO: Use acronym, schedule_url, title, event_last_released_at
+            res = self.from_voctoweb_data(data)
+        return res
 
 
-    # Getting files
-    # Todo: optimize
-
-    if not offline:
-        workers = min(MAX_WORKERS, len(combined_fraps))
-        with futures.ThreadPoolExecutor(workers) as executor:
-            res = executor.map(download_one, combined_fraps)
-
-    print("# Processing")
-    # reading files
-    for url, acronym in combined_fraps:
+    def download_one(self, entry):
+        """ Download one entry in the schedule.xml list """
+        url, acronym = entry
         filename = "data/"+acronym+".xml"
-        print(filename)
-        try:
-            e = xml.etree.ElementTree.parse(filename).getroot()
-        except FileNotFoundError:
-            print("Error: Missing file {}".format(filename))
-        except xml.etree.ElementTree.ParseError:
-            print("Error: Broken file {}".format(filename))
+        if not pathlib.Path(filename).is_file():
+            try:
+                r = requests.get(url)
+                print(url)
+                if r.status_code == requests.codes.ok:
+                    with open(filename, "w") as fh:
+                        fh.write(r.text)
+            except requests.exceptions.MissingSchema:
+                print("Error: Broken url: " + url)
+            except requests.exceptions.ConnectionError:
+                print("Error: Connection error url: " + url)
         else:
-            for days in e.findall('day'):
-                for rooms in days.findall("room"):
-                    for event in rooms.findall("event"):
-                        e = {}
-                        try:
-                            e["guid"] = event.attrib["guid"]
-                        except KeyError:
-                            e["guid"] = None
-                        e["id"] = event.attrib["id"]
-                        e["title"] = event.find("title").text
-                        e["subtitle"] = event.find("subtitle").text
-                        e["abstract"] = event.find("abstract").text
-                        e["description"] = event.find("description").text
-                        try:
-                            e["slug"] = event.find("slug").text
-                        except AttributeError:
-                            e["slug"] = None
-                        e["fulltags"] = text_to_tags("{title} {subtitle} {abstract} {description}".format(**e))
+            print("Already have file {}".format(filename))
 
-                        e["acronym"] = acronym
-                        if e["guid"]:
-                            collected[e["guid"]] = e
-    return collected
+    def from_frabs(self, offline=False):
+        """
+        offline: Do not download detailed frabs, use existing files only
+        """
+        collected = {}
 
-# Defaults
+        combined_fraps = []
+        #with open("manufactured_data/essential_conferences.json") as fh:
+        #    data = json.load(fh)
+        #    combined_fraps = self.from_voctoweb_data(data)
+        combined_fraps += self.from_voctoweb()
+        combined_fraps = list(set(combined_fraps))
 
-def simplify_defaults():
-    res = {}
-    with open("manufactured_data/talks.json") as fh:
-        dt = json.load(fh)
-        for talk in dt:
-            res[talk["id"]] = talk["fulltags"]
-    return res
+
+        # Getting files
+        # Todo: optimize
+
+        if not offline:
+            workers = min(MAX_WORKERS, len(combined_fraps))
+            with futures.ThreadPoolExecutor(workers) as executor:
+                res = executor.map(self.download_one, combined_fraps)
+
+        print("# Processing")
+        # reading files
+        for url, acronym in combined_fraps:
+            filename = "data/"+acronym+".xml"
+            print(filename)
+            try:
+                e = xml.etree.ElementTree.parse(filename).getroot()
+            except FileNotFoundError:
+                print("Error: Missing file {}".format(filename))
+            except xml.etree.ElementTree.ParseError:
+                print("Error: Broken file {}".format(filename))
+            else:
+                for days in e.findall('day'):
+                    for rooms in days.findall("room"):
+                        for event in rooms.findall("event"):
+                            e = {}
+                            try:
+                                e["guid"] = event.attrib["guid"]
+                            except KeyError:
+                                e["guid"] = None
+                            e["id"] = event.attrib["id"]
+                            e["title"] = event.find("title").text
+                            e["subtitle"] = event.find("subtitle").text
+                            e["abstract"] = event.find("abstract").text
+                            e["description"] = event.find("description").text
+                            try:
+                                e["slug"] = event.find("slug").text
+                            except AttributeError:
+                                e["slug"] = None
+                            e["fulltags"] = self.text_to_tags("{title} {subtitle} {abstract} {description}".format(**e))
+
+                            e["acronym"] = acronym
+                            if e["guid"]:
+                                collected[e["guid"]] = e
+        return collected
+
+    # Defaults
+
+    def simplify_defaults(self):
+        res = {}
+        with open("manufactured_data/talks.json") as fh:
+            dt = json.load(fh)
+            for talk in dt:
+                res[talk["id"]] = talk["fulltags"]
+        return res
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -773,20 +778,21 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     talks = {}
+    mt = MediaTagger()
 
     if args.frab:
-        talks = from_frabs(args.offline)
+        talks = mt.from_frabs(args.offline)
 
     # Generate db from subtitles
     # Subtitles are on mirror.selfnet.de/c3subtitles/congress...
     if args.subtitles:
-        talks = from_subtitles(args.subtitles)
+        talks = mt.from_subtitles(args.subtitles)
         print(talks)
 
     # Load defaults: Defaults override everything else !
     if args.default:
         # TODO: data format of json file must be changed and adjusted to new features-it is broken currently
-        simple = simplify_defaults()
+        simple = mt.simplify_defaults()
         print("Defaults:")
         print(simple)
         for akey in simple.keys():
@@ -824,3 +830,5 @@ if __name__ == "__main__":
     if args.statistics:
         pprint(stats.items())
         pprint(stats_sorted_by_value)
+
+    # TODO: Check that the online frap really works - not only the local DB
