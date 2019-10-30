@@ -162,7 +162,7 @@ ARM = "arm"
 
 #SERIES
 SECURITY_NIGHTMARES = "security nightmares"
-METHODISCH_INKORREKT = "methodisch inkorrekt"  # TODO
+METHODISCH_INKORREKT = "methodisch inkorrekt"
 ULTIMATE_TALK = "ultimate talks"
 INFRASTRUCTURE_REV = "infrastructure review" # TODO
 
@@ -591,7 +591,7 @@ regexes = {r"\Wrfid\W": [RFID, ELECTRONICS, WIRELESS, HARDWARE],
 
 # TODO: extract tags and stuff into db
 
-
+# TODO: Better UTF8 handling
 
 # See: https://github.com/voc/voctoweb/issues/246
 voctoweburl = "https://api.media.ccc.de/public/conferences"
@@ -602,15 +602,79 @@ voctoweburl = "https://api.media.ccc.de/public/conferences"
 
 class MediaTagger():
 
-    def __init__(self):
-        pass
+    def __init__(self, frab = False, subtitles=None, offline = False, default = None):
+        """
+
+        :param frab: Use frab as base source to find talks
+        :param subtitles: Parse subtitles
+        :param offline: Do not try to update db files, just use what is already cached
+        :param default: Override live data with pre-stored defaults (only available for a few files, good to quick-fix classification problems)
+        """
+        self.config = {"frab": frab,
+                       "subtitles": subtitles,
+                       "default": default,
+                       "offline": offline}
+
+
+        if self.config["frab"]:
+            self.talks = self.from_frabs(self.config["offline"])
+
+        # Generate db from subtitles
+        # Subtitles are on mirror.selfnet.de/c3subtitles/congress...
+
+        # TODO: Automated subtitle fetching from domain
+        # TODO: Better interaction with other sources (talks currently overwritten)
+
+        if self.config["subtitles"]:
+
+
+            self.talks = self.from_subtitles(self.config["subtitles"])
+            print(self.talks)
+
+        # Load defaults: Defaults override everything else !
+        if self.config["default"]:
+            # TODO: data format of json file must be changed and adjusted to new features-it is broken currently
+            simple = self.simplify_defaults()
+            print("Defaults:")
+            print(simple)
+            for akey in simple.keys():
+                self.talks[akey] = simple[akey]
+
+        # Calculate stats to find subtags
+        self.stats = defaultdict(int)
+        for anid in self.talks.keys():
+            for atag in self.talks[anid]["fulltags"]:
+                self.stats[atag] += 1
+        self.stats_sorted_by_value = sorted(self.stats.items(), key=lambda kv: kv[1])
+
+        subtags = []
+        for atag, acount in self.stats_sorted_by_value:
+            if acount < SUBTAG_THRESHOLD and atag not in topics:
+                subtags.append(atag)
+
+        # Go through talks. Look into fulltags and extract
+        subtags = set(subtags)
+        for anid in self.talks.keys():
+            # Calculating subtags, tags and topics
+            self.talks[anid]["subtags"] = list(set(self.talks[anid]["fulltags"]).intersection(subtags))
+            self.talks[anid]["topics"] = list(set(self.talks[anid]["fulltags"]).intersection(topics))
+            self.talks[anid]["tags"] = list(set(self.talks[anid]["fulltags"]) - topics - subtags)
 
     def get_id(self, filename):
+        """
+
+        :param filename:
+        :return:
+        """
         return filename.split("-")[1]
 
 
     def text_to_tags(self, text):
-        """ Generate tags from a string """
+        """ Generate tags from a string
+
+        :param text:
+        :return:
+        """
 
         res = []
         text = text.lower()
@@ -622,6 +686,11 @@ class MediaTagger():
 
 
     def get_tags(self, filename):
+        """
+
+        :param filename:
+        :return:
+        """
         res = []
         with open(filename, "rt") as fh:
             content = fh.read().lower()
@@ -630,6 +699,11 @@ class MediaTagger():
 
 
     def from_subtitles(self, directory):
+        """
+
+        :param directory: directory containing the subtitles
+        :return:
+        """
         # TODO: Can we automatically find more subtitles ?
         res = {}
 
@@ -653,6 +727,7 @@ class MediaTagger():
     def from_voctoweb_data(self, data):
         """
         Transfers voctoweb style data into data we can handle
+
         :param data: voctoweb style json data as dict
         :return:
         """
@@ -668,7 +743,10 @@ class MediaTagger():
         return res
 
     def from_voctoweb(self):
-        """ Use the voctoweb database and extract complete acronym/schedule-url pairs"""
+        """ Use the voctoweb database and extract complete acronym/schedule-url pairs
+
+        :return:
+        """
 
         r = requests.get(voctoweburl)
         res = None
@@ -681,7 +759,11 @@ class MediaTagger():
 
 
     def download_one(self, entry):
-        """ Download one entry in the schedule.xml list """
+        """ Download one entry in the schedule.xml list
+
+        :param entry:
+        :return:
+        """
         url, acronym = entry
         filename = "data/"+acronym+".xml"
         if not pathlib.Path(filename).is_file():
@@ -700,14 +782,17 @@ class MediaTagger():
 
     def from_frabs(self, offline=False):
         """
-        offline: Do not download detailed frabs, use existing files only
+
+        :param offline: Do not download detailed frabs, use existing files only
+        :return:
         """
+
         collected = {}
 
         combined_fraps = []
-        #with open("manufactured_data/essential_conferences.json") as fh:
-        #    data = json.load(fh)
-        #    combined_fraps = self.from_voctoweb_data(data)
+        with open("manufactured_data/essential_conferences.json") as fh:
+            data = json.load(fh)
+            combined_fraps = self.from_voctoweb_data(data)
         combined_fraps += self.from_voctoweb()
         combined_fraps = list(set(combined_fraps))
 
@@ -759,6 +844,12 @@ class MediaTagger():
     # Defaults
 
     def simplify_defaults(self):
+        """
+
+        Load manually generated data that can override automatically generated data
+
+        :return:
+        """
         res = {}
         with open("manufactured_data/talks.json") as fh:
             dt = json.load(fh)
@@ -766,9 +857,35 @@ class MediaTagger():
                 res[talk["id"]] = talk["fulltags"]
         return res
 
+
+    def print_stats(self):
+        """
+
+        Pretty print some stats
+
+        :return:
+        """
+        print("Items:")
+        pprint(self.stats.items())
+        print("Sorted by value:")
+        pprint(self.stats_sorted_by_value)
+
+    def write_file(self, filename):
+        """
+        Write
+        :param filename: to write to, without extension
+        :return:
+        """
+
+        #with open(filename+".yaml", "wt") as fh:
+        #    fh.write(dump(self.talks, Dumper=Dumper))
+
+        with open(filename+".json", "wt") as fh:
+            json.dump(self.talks, fh, indent=4)
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--subtitles", help="Process subtitles folder. Output json", default = None, type=str)
+    parser.add_argument("--subtitles", help="Name of the subtitles folder", default = None, type=str)
     parser.add_argument("--out", help="out filename. Without postfix .json or .yaml. This will be added", default = None, type = str)
     parser.add_argument("--default", help="Load hard coded default talks as well", action="store_true", default = False)
     parser.add_argument("--frab", help="Use frabs to generate data", action="store_true", default = False)
@@ -778,57 +895,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     talks = {}
-    mt = MediaTagger()
-
-    if args.frab:
-        talks = mt.from_frabs(args.offline)
-
-    # Generate db from subtitles
-    # Subtitles are on mirror.selfnet.de/c3subtitles/congress...
-    if args.subtitles:
-        talks = mt.from_subtitles(args.subtitles)
-        print(talks)
-
-    # Load defaults: Defaults override everything else !
-    if args.default:
-        # TODO: data format of json file must be changed and adjusted to new features-it is broken currently
-        simple = mt.simplify_defaults()
-        print("Defaults:")
-        print(simple)
-        for akey in simple.keys():
-            talks[akey] = simple[akey]
-
-    # Calculate stats to find subtags
-    stats = defaultdict(int)
-    for anid in talks.keys():
-        for atag in talks[anid]["fulltags"]:
-            stats[atag] += 1
-    stats_sorted_by_value = sorted(stats.items(), key=lambda kv: kv[1])
-
-    subtags = []
-    for atag, acount in stats_sorted_by_value:
-        if acount < SUBTAG_THRESHOLD and atag not in topics:
-            subtags.append(atag)
-
-    # Go through talks. Look into fulltags and extract
-    subtags = set(subtags)
-    for anid in talks.keys():
-        # Calculating subtags, tags and topics
-        talks[anid]["subtags"] = list(set(talks[anid]["fulltags"]).intersection(subtags))
-        talks[anid]["topics"] = list(set(talks[anid]["fulltags"]).intersection(topics))
-        talks[anid]["tags"] = list(set(talks[anid]["fulltags"]) - topics - subtags)
-
+    mt = MediaTagger(frab=args.frab, subtitles=args.subtitles, default = args.default, offline = args.offline)
 
     # output data
     if args.out:
-        with open(args.out+".yaml", "wt") as fh:
-            fh.write(dump(talks, Dumper=Dumper))
-
-        with open(args.out+".json", "wt") as fh:
-            json.dump(talks, fh, indent=4)
+        mt.write_file(args.out)
 
     if args.statistics:
-        pprint(stats.items())
-        pprint(stats_sorted_by_value)
-
-    # TODO: Check that the online frap really works - not only the local DB
+        mt.print_stats()
