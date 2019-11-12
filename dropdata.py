@@ -11,11 +11,11 @@ from concurrent import futures
 from collections import defaultdict
 from pprint import pprint
 
-# TODO: Verify offline functionality
-
 # For concurrent
 
 MAX_WORKERS = 50
+voctoweb_cache_filename = "data/voctoweb_cache.json"
+
 
 # TAGS
 KEYNOTE = "keynote"
@@ -611,6 +611,7 @@ class MediaTagger():
                        "default": default,
                        "offline": offline}
 
+        self.voctoweb_data = None
 
         if self.config["frab"]:
             self.talks = self.from_frabs(self.config["offline"])
@@ -720,13 +721,15 @@ class MediaTagger():
 
     # FRAB
 
-    def from_voctoweb_data(self, data):
+    def from_voctoweb_data(self, data=None):
         """
         Transfers voctoweb style data into data we can handle
 
-        :param data: voctoweb style json data as dict
         :return:
         """
+
+        if data is None:
+            data = self.voctoweb_data
 
         res = []
         for entry in data["conferences"]:
@@ -744,13 +747,21 @@ class MediaTagger():
         :return:
         """
 
-        r = requests.get(voctoweburl)
         res = None
-        if r.status_code == requests.codes.ok:
-            data = r.json()
-            # TODO: Are there any broken entries ?
-            # TODO: Use acronym, schedule_url, title, event_last_released_at
-            res = self.from_voctoweb_data(data)
+
+        if not self.config["offline"]:
+            r = requests.get(voctoweburl)
+            if r.status_code == requests.codes.ok:
+                self.voctoweb_data = r.json()
+                with open(voctoweb_cache_filename, "wt") as fh:
+                    json.dump(self.voctoweb_data, fh, indent=True)
+                # TODO: Are there any broken entries ?
+                # TODO: Use acronym, schedule_url, title, event_last_released_at
+        else:
+            with open(voctoweb_cache_filename) as fh:
+                self.voctoweb_data = json.load(fh)
+
+        res = self.from_voctoweb_data()
         return res
 
 
