@@ -11,11 +11,7 @@ from concurrent import futures
 from collections import defaultdict
 from pprint import pprint
 
-from yaml import load, dump
-try:
-    from yaml import CLoader as Loader, CDumper as Dumper
-except ImportError:
-    from yaml import Loader, Dumper
+# TODO: Verify offline functionality
 
 # For concurrent
 
@@ -876,9 +872,6 @@ class MediaTagger():
         :param filename: to write to, without extension
         :return:
         """
-
-        #with open(filename+".yaml", "wt") as fh:
-        #    fh.write(dump(self.talks, Dumper=Dumper))
 
         with open(filename+".json", "wt") as fh:
             json.dump(self.talks, fh, indent=4)
