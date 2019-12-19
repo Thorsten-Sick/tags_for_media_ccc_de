@@ -4,7 +4,8 @@ import json
 import argparse
 import os
 import re
-import xml.etree.ElementTree
+import xml.etree.ElementTree as ET
+import xml
 import requests
 import pathlib
 from concurrent import futures
@@ -16,6 +17,7 @@ from pprint import pprint
 MAX_WORKERS = 50
 voctoweb_cache_filename = "data/voctoweb_cache.json"
 
+# TODO: Check if "Sonoj 2019", "Linux Weekend Hrebst 2000", "Datengarten 104", "Denog 11" are in the db, they just got added.
 
 # TAGS
 KEYNOTE = "keynote"
@@ -753,12 +755,12 @@ class MediaTagger():
             r = requests.get(voctoweburl)
             if r.status_code == requests.codes.ok:
                 self.voctoweb_data = r.json()
-                with open(voctoweb_cache_filename, "wt") as fh:
-                    json.dump(self.voctoweb_data, fh, indent=True)
+                with open(voctoweb_cache_filename, "wt", encoding="utf-8") as fh:
+                    json.dump(self.voctoweb_data, fh, indent=True, ensure_ascii=False)
                 # TODO: Are there any broken entries ?
                 # TODO: Use acronym, schedule_url, title, event_last_released_at
         else:
-            with open(voctoweb_cache_filename) as fh:
+            with open(voctoweb_cache_filename, "t", encoding="utf-8") as fh:
                 self.voctoweb_data = json.load(fh)
 
         res = self.from_voctoweb_data()
@@ -818,7 +820,9 @@ class MediaTagger():
             filename = "data/"+acronym+".xml"
             print(filename)
             try:
-                e = xml.etree.ElementTree.parse(filename).getroot()
+                xmlp = ET.XMLParser(encoding="utf-8")   # Encoding is always utf-8
+                e = ET.parse(filename, parser=xmlp).getroot()
+                #e = xml.etree.ElementTree.parse(filename).getroot()
             except FileNotFoundError:
                 print("Error: Missing file {}".format(filename))
             except xml.etree.ElementTree.ParseError:
@@ -884,8 +888,8 @@ class MediaTagger():
         :return:
         """
 
-        with open(filename+".json", "wt") as fh:
-            json.dump(self.talks, fh, indent=4)
+        with open(filename+".json", "wt", encoding='utf8') as fh:
+            json.dump(self.talks, fh, indent=4, ensure_ascii=False)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
