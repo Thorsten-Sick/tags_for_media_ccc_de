@@ -725,7 +725,7 @@ class MediaTagger():
 
     def from_voctoweb_data(self, data=None):
         """
-        Transfers voctoweb style data into data we can handle
+        Transfers voctoweb xml style data into data we can handle
 
         :return:
         """
@@ -789,6 +789,19 @@ class MediaTagger():
         else:
             print("Already have file {}".format(filename))
 
+    def add_track(self, track):
+        """
+        Process track and add to internal DB
+
+        :param track: track to add
+        :return: normalized track
+        """
+        t = track.lower().strip() or ""
+
+        # TODO: implement internal track DB
+        return t
+
+
     def from_frabs(self, offline=False):
         """
 
@@ -846,11 +859,57 @@ class MediaTagger():
                             except AttributeError:
                                 e["slug"] = None
                             e["fulltags"] = self.text_to_tags("{title} {subtitle} {abstract} {description}".format(**e))
-
+                            e["date"] = event.find("date").text
+                            # TODO: process date
+                            e["start"] = event.find("start").text
+                            d = event.find("duration").text
+                            h,m = d.split(":")
+                            e["duration"] = int(h)*60 + int(m)
+                            e["room"] = event.find("room").text
+                            e["track"] = self.add_track(event.find("track").text)
+                            e["language"] = event.find("language").text
+                            e["type"] = event.find("type").text
+                            # TODO add subtitles
+                            # TODO add <persons> <person id='7905'>gronke</person> </persons>
                             e["acronym"] = acronym
                             if e["guid"]:
                                 collected[e["guid"]] = e
         return collected
+    """
+    <event guid='9e774be1-eb68-4ccc-94bd-a65f9abd752d' id='9249'>
+<date>2017-12-30T14:30:00+01:00</date>
+<start>14:30</start>
+<duration>00:30</duration>
+<room>Saal Dijkstra</room>
+<slug>34c3-9249-hardening_open_source_development</slug>
+<url>https://fahrplan.events.ccc.de/congress/2017/Fahrplan/events/9249.html</url>
+<recording>
+<license></license>
+<optout>false</optout>
+</recording>
+<title>Hardening Open Source Development</title>
+<subtitle></subtitle>
+<track>Resilience</track>
+<type>lecture</type>
+<language>en</language>
+<abstract>&lt;p&gt;As authors it is our responsibility to build secure software and give each other the chance to verify and monitor our work.
+Various flaws in development toolchains that allow code execution just by viewing or working in malicious repositories question the integrity of development environments and as such our projects as a whole.&lt;/p&gt;
+&lt;p&gt;This talk will discuss practical solutions for both technical and social challenges of collaboration.&lt;/p&gt;</abstract>
+<description>&lt;p&gt;Not only the software we build can be flawed, but also its dependencies, our tools or just the process of building it.&lt;br/&gt;
+Vulnerabilities in shell-integrations, code linters, package managers or compilers can become dangerous vectors of malware infection for developers. Beyond that risk we see software shipped straight from the developers editor to a repository, through the build chain, across the CDN, referenced from the package registry, almost directly to the user. Since even our favorite package managers have demonstrated large scale malware delivery, there is reason to seriously question our ability to guarantee our own products safefy at all.&lt;/p&gt;
+&lt;p&gt;Deciding to distrust our own equipment and abilities leads us to find solutions that work based on collaboration to gain safety against failure or fraud. Cleanly defined merge and release processes with automated quality enforcement and distributed quorum based verification are essential mitigations that allow others to verify our work.
+By sharing lessons learned from 15 years of building software in open-source and enterprise environments I want to raise awareness for security in the development process and present practical solutions.&lt;/p&gt;</description>
+<logo></logo>
+
+<links>
+</links>
+<attachments>
+</attachments>
+</event>
+
+    """
+
+
 
     # Defaults
 
