@@ -796,10 +796,11 @@ class MediaTagger():
         :param track: track to add
         :return: normalized track
         """
-        t = track.lower().strip() or ""
+        if track:
+            t = track.lower().strip() or ""
 
         # TODO: implement internal track DB
-        return t
+        return t or ""
 
 
     def from_frabs(self, offline=False):
