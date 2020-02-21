@@ -1,0 +1,20 @@
+
+setup.py:
+
+https://packaging.python.org/tutorials/packaging-projects/#setup-py
+
+* Upload package to pypi
+
+tox:
+
+https://tox.readthedocs.io/en/latest/
+
+* Generate unit tests
+* Generate coverage
+
+
+Virtualenv:
+
+* Use virtualenv to get the newest packages (prompt_toolkit)
+
+https://virtualenv.pypa.io/en/stable/
