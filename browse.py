@@ -11,7 +11,6 @@
 
 # TODO: use prompt_toolkit autocompletion, auto suggestion and history
 
-
 # TODO: Use pygments for syntax highlighting https://pygments.org/
 
 from prompt_toolkit import prompt
@@ -22,13 +21,23 @@ from prompt_toolkit.completion import NestedCompleter
 def printHelp():
     print("""
     
-    tags: search for tags
+    TODO tags: search for tags
+    TODO similar: Find similar content
+    TODO seen: Mark talks as seen
+    TODO irrelevant: Mark talks as irrelevant
+    TODO relevant: Mark talks as relevant
+    TODO show: Show content in browser
+    TODO details: Show details
     quit: quit
     help: get help
     """)
 
 if __name__=="__main__":
-    BrowserCompleter = NestedCompleter.from_nested_dict({'help': None, 'quit':None, 'tags':None}, ignore_case=True)
+    BrowserCompleter = NestedCompleter.from_nested_dict({'help': None,       # Show help
+                                                        'quit':None,         # Quit
+                                                        'tags':None,        # Search for tags
+                                                        'similar':None,     # Find similar content using k-nearest
+                                                        })
 
     while 1:
         user_input = prompt('> ',

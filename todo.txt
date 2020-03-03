@@ -11,10 +11,3 @@ https://tox.readthedocs.io/en/latest/
 
 * Generate unit tests
 * Generate coverage
-
-
-Virtualenv:
-
-* Use virtualenv to get the newest packages (prompt_toolkit)
-
-https://virtualenv.pypa.io/en/stable/

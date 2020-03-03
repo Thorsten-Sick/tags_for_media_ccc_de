@@ -1,0 +1,8 @@
+prompt_toolkit>3.0.0
+seaborn>0.9
+matplotlib>3.1
+pandas>1.0.0
+requests>2.22.0
+
+
+
