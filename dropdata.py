@@ -608,6 +608,8 @@ class MediaTagger():
         :param offline: Do not try to update db files, just use what is already cached
         :param default: Override live data with pre-stored defaults (only available for a few files, good to quick-fix classification problems)
         """
+        self.talks = None
+
         self.config = {"frab": frab,
                        "subtitles": subtitles,
                        "default": default,
@@ -641,9 +643,10 @@ class MediaTagger():
 
         # Calculate stats to find subtags
         self.stats = defaultdict(int)
-        for anid in self.talks.keys():
-            for atag in self.talks[anid]["fulltags"]:
-                self.stats[atag] += 1
+        if self.talks:
+            for anid in self.talks.keys():
+                for atag in self.talks[anid]["fulltags"]:
+                    self.stats[atag] += 1
         self.stats_sorted_by_value = sorted(self.stats.items(), key=lambda kv: kv[1])
 
         subtags = []
@@ -653,11 +656,19 @@ class MediaTagger():
 
         # Go through talks. Look into fulltags and extract
         subtags = set(subtags)
-        for anid in self.talks.keys():
-            # Calculating subtags, tags and topics
-            self.talks[anid]["subtags"] = list(set(self.talks[anid]["fulltags"]).intersection(subtags))
-            self.talks[anid]["topics"] = list(set(self.talks[anid]["fulltags"]).intersection(topics))
-            self.talks[anid]["tags"] = list(set(self.talks[anid]["fulltags"]) - topics - subtags)
+        if self.talks:
+            for anid in self.talks.keys():
+                # Calculating subtags, tags and topics
+                self.talks[anid]["subtags"] = list(set(self.talks[anid]["fulltags"]).intersection(subtags))
+                self.talks[anid]["topics"] = list(set(self.talks[anid]["fulltags"]).intersection(topics))
+                self.talks[anid]["tags"] = list(set(self.talks[anid]["fulltags"]) - topics - subtags)
+
+    def list_tags(self):
+        """Returns all registered tags"""
+
+        # TODO: Find a way to also handle less common tags. So far only doing it for topics
+
+        return list(topics)
 
     def get_id(self, filename):
         """

@@ -17,6 +17,7 @@ from prompt_toolkit import prompt
 from prompt_toolkit.history import FileHistory
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.completion import NestedCompleter
+from dropdata import MediaTagger
 
 def printHelp():
     print("""
@@ -32,12 +33,22 @@ def printHelp():
     help: get help
     """)
 
-if __name__=="__main__":
-    BrowserCompleter = NestedCompleter.from_nested_dict({'help': None,       # Show help
+def getCompleter():
+    """ Generates a nested completer
+
+    :return:
+    """
+
+    mt = MediaTagger(frab=False, subtitles=False, default=False, offline=True)
+
+    return NestedCompleter.from_nested_dict({'help': None,       # Show help
                                                         'quit':None,         # Quit
-                                                        'tags':None,        # Search for tags
+                                                        'tags': {key: None for (key) in mt.list_tags()},        # Search for tags
                                                         'similar':None,     # Find similar content using k-nearest
                                                         })
+
+if __name__=="__main__":
+    BrowserCompleter = getCompleter()
 
     while 1:
         user_input = prompt('> ',
