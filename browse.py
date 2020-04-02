@@ -21,8 +21,9 @@ from dropdata import MediaTagger
 
 def printHelp():
     print("""
-    
-    TODO tags: search for tags
+
+    tags: list tags
+    TODO tags + tag: list all talks containing a specific tag 
     TODO similar: Find similar content
     TODO seen: Mark talks as seen
     TODO irrelevant: Mark talks as irrelevant
@@ -42,14 +43,15 @@ def getCompleter():
     mt = MediaTagger(frab=False, subtitles=False, default=False, offline=True)
 
     return NestedCompleter.from_nested_dict({'help': None,       # Show help
-                                                        'quit':None,         # Quit
-                                                        'tags': {key: None for (key) in mt.list_tags()},        # Search for tags
-                                                        'similar':None,     # Find similar content using k-nearest
-                                                        })
+                                             'quit':None,         # Quit
+                                             'tags': {key: None for (key) in mt.list_tags()+[""]},        # Search for tags
+                                             'similar':None,     # Find similar content using k-nearest
+                                             })
 
 if __name__=="__main__":
     BrowserCompleter = getCompleter()
 
+    mt = MediaTagger(frab=False, subtitles=False, default=False, offline=True)
     while 1:
         user_input = prompt('> ',
                             history=FileHistory("history.txt"),
@@ -62,5 +64,8 @@ if __name__=="__main__":
             break
         elif user_input == "help":
             printHelp()
+        elif user_input == "tags":
+            # pure tags, list them
+            print(",".join(mt.list_tags()))
         else:
             print(user_input)
