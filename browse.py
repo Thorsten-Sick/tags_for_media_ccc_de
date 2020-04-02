@@ -18,12 +18,13 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.completion import NestedCompleter
 from dropdata import MediaTagger
+import argparse
 
 def printHelp():
     print("""
 
     tags: list tags
-    TODO tags + tag: list all talks containing a specific tag 
+    TODO tags + tag: list all talks containing a specific tag
     TODO similar: Find similar content
     TODO seen: Mark talks as seen
     TODO irrelevant: Mark talks as irrelevant
@@ -49,9 +50,19 @@ def getCompleter():
                                              })
 
 if __name__=="__main__":
+    ### Parsing args
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--data", help="Database file name", default = "frab.json", type = str)
+
+    args = parser.parse_args()
+
+    ### Load data
+
+    ### Logic
     BrowserCompleter = getCompleter()
 
     mt = MediaTagger(frab=False, subtitles=False, default=False, offline=True)
+    mt.read_file(args.data)
     while 1:
         user_input = prompt('> ',
                             history=FileHistory("history.txt"),

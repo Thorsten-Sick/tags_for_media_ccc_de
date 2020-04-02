@@ -807,11 +807,13 @@ class MediaTagger():
         :param track: track to add
         :return: normalized track
         """
+        t = ""
+
         if track:
             t = track.lower().strip() or ""
 
         # TODO: implement internal track DB
-        return t or ""
+        return t
 
 
     def from_frabs(self, offline=False):
@@ -871,16 +873,16 @@ class MediaTagger():
                             except AttributeError:
                                 e["slug"] = None
                             e["fulltags"] = self.text_to_tags("{title} {subtitle} {abstract} {description}".format(**e))
-                            e["date"] = event.find("date").text
+                            e["date"] = event.find("date").text if event.find("date") else ""
                             # TODO: process date
-                            e["start"] = event.find("start").text
-                            d = event.find("duration").text
+                            e["start"] = event.find("start").text if event.find("start") else ""
+                            d = event.find("duration").text if event.find("duration") else "0:0"
                             h,m = d.split(":")
                             e["duration"] = int(h)*60 + int(m)
-                            e["room"] = event.find("room").text
-                            e["track"] = self.add_track(event.find("track").text)
-                            e["language"] = event.find("language").text
-                            e["type"] = event.find("type").text
+                            e["room"] = event.find("room").text if event.find("room") else ""
+                            e["track"] = self.add_track(event.find("track").text if event.find("track") else "unknown")
+                            e["language"] = event.find("language").text if event.find("language") else ""
+                            e["type"] = event.find("type").text if event.find("type") else "unkown"
                             # TODO add subtitles
                             # TODO add <persons> <person id='7905'>gronke</person> </persons>
                             e["acronym"] = acronym
@@ -952,6 +954,15 @@ By sharing lessons learned from 15 years of building software in open-source and
         print("Sorted by value:")
         pprint(self.stats_sorted_by_value)
 
+    def read_file(self, filename):
+        """ Reads a data file
+
+        :param filename: The json file to read. With extension
+        """
+
+        with open(filename, "rt") as fh:
+            self.talks = json.load(fh)
+
     def write_file(self, filename):
         """
         Write
@@ -959,7 +970,7 @@ By sharing lessons learned from 15 years of building software in open-source and
         :return:
         """
 
-        with open(filename+".json", "wt", encoding='utf8') as fh:
+        with open(filename, "wt", encoding='utf8') as fh:
             json.dump(self.talks, fh, indent=4, ensure_ascii=False)
 
 if __name__ == "__main__":
@@ -978,6 +989,8 @@ if __name__ == "__main__":
 
     # output data
     if args.out:
+        if not args.out.endswith(".json"):
+            args.out += ".json"
         mt.write_file(args.out)
 
     if args.statistics:
