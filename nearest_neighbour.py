@@ -52,4 +52,12 @@ if __name__ == "__main__":
     pass
 
     nn = NN()
+    # TODO: Add values to these variables
+    guid = None
+    title = None
+    subtitle = None
+    abstract = None
+    description = None
+    track = None
+    person_ids = None
     nn.add_text(guid, title, subtitle, abstract, description, track, person_ids)
