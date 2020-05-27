@@ -13,6 +13,10 @@ program - that way it can be exported in any format.
 - jeopardy series
 -
 
+TODO: Moving towards plugins for different data sources
+TODO: Moving towards a proper database (ElasticSearch overkill)
+
+
 # Calling it
 
 Frab only:
@@ -30,3 +34,29 @@ mirror.selfnet.de
 
 Getting statistics:
 ./dropdata.py --frab --statistics
+
+
+## Development
+
+### Running tox tests
+
+*tox*
+
+### Travis on Github
+
+### Running unittests
+
+TODO: Running tests
+
+https://docs.python.org/3/library/unittest.html
+
+### Virtual Env and requirements
+
+TODO: Enter/exit Venv (because I will use it a lot more)
+
+
+
+
+TODO: Building packages (local, remote)
+
+https://medium.com/@alejandrodnm/testing-against-multiple-python-versions-with-tox-9c68799c7880
