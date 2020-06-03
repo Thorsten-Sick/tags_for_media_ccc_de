@@ -34,5 +34,8 @@ jobs:
  #       pytest
     - name: List changed files
       run: |
-        git diff --name-only "$GITHUB_BASE_REF..$GITHUB_SHA" | xargs echo
-        git diff --name-only "$GITHUB_BASE_REF..$GITHUB_SHA" | xargs ! fgrep "kaputt" -q
+        URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+        FILES=$(curl -s -X GET -G $URL | jq -r '.[] | .filename')
+        echo $FILES
+        # git diff --name-only "$GITHUB_BASE_REF..$GITHUB_SHA" | xargs echo
+        ! fgrep "kaputt" -q $FILES
