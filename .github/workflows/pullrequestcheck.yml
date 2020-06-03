@@ -33,6 +33,6 @@ jobs:
       run: |
         pytest
     - name: List changed files
-    	run: |
-    	  git diff --name-only "$GITHUB_BASE_REF..$GITHUB_SHA" | xargs echo
-    	  git diff --name-only "$GITHUB_BASE_REF..$GITHUB_SHA" | xargs ! fgrep "kaputt" -q
+      run: |
+    	git diff --name-only "$GITHUB_BASE_REF..$GITHUB_SHA" | xargs echo
+    	git diff --name-only "$GITHUB_BASE_REF..$GITHUB_SHA" | xargs ! fgrep "kaputt" -q
