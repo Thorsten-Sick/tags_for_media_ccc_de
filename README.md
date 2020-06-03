@@ -13,7 +13,7 @@ program - that way it can be exported in any format.
 - jeopardy series
 -
 
-TODO: Moving towards plugins for different data sources
+TODO: Moving towards plugins for different data sources  (?): https://pluggy.readthedocs.io/en/latest/#a-toy-example
 TODO: Moving towards a proper database (ElasticSearch overkill)
 
 
@@ -40,7 +40,7 @@ Getting statistics:
 
 ### Running tox tests
 
-*tox*
+Just call *tox*
 
 ### Travis on Github
 
