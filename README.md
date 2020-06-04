@@ -59,19 +59,26 @@ Just call *tox*
 
 ### Travis on Github
 
+Configuration for the Travis CI is in .github/workflows.
+
+The two config files are run on:
+
+* Push to master
+* Doing a PR
+
 ### Running unittests
 
-TODO: Running tests
-
+*python -m unittest discover* will find the unit tests in the *test* directory and run them. They are based on: 
 https://docs.python.org/3/library/unittest.html
 
 ### Virtual Env and requirements
 
 TODO: Enter/exit Venv (because I will use it a lot more)
 
-
-
-
 TODO: Building packages (local, remote)
 
 https://medium.com/@alejandrodnm/testing-against-multiple-python-versions-with-tox-9c68799c7880
+
+%% TODO: Experiment cleanup
+%% * Remove demo calls from Travis workflows
+%% * Remove demo unit test
